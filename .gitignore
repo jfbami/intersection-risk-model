@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# Secrets / environment
+.env
+.env.local
+.streamlit/secrets.toml
+
+# Large raw inputs (re-downloadable via seattle_arcgis.py) and download caches.
+# Small derived outputs (data/intermediate, data/model, data/cmf_library.json)
+# are committed so the API + frontend run on a fresh clone.
+data/raw/
+cache/
+
+# Legacy / removed artifacts
+features.pdf
+make_features_pdf.py

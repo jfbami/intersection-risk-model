@@ -1,0 +1,878 @@
+{
+  "schema_version": 2,
+  "source": "FHWA CMF Clearinghouse",
+  "source_export_date": "2025-11-10",
+  "generated_at": "2026-05-27",
+  "filter": {
+    "crash_type": "Filtered per mode (bike/ped/vehicle)",
+    "intersection_related": true,
+    "approved": true,
+    "exclude_rural": true
+  },
+  "methodology": {
+    "se_fallback": "adjStanErrorAmf → unAdjStanErrorAmf → across-study variance",
+    "aggregation": "Variance-weighted average ONLY when every study in the group reports an SE. When SE coverage is uneven, falls back to a simple mean across all studies with across-study sample variance for the CI — avoids over-weighting whichever paper happened to report SEs.",
+    "ci_level": 0.9,
+    "ci_z_score": 1.6449,
+    "anti_indications": "Treatments with studied AMF > 1 are kept and labeled — the studied direction is NOT a recommendation; see each entry's `direction` and `notes`."
+  },
+  "treatments": [
+    {
+      "id": "cycle_track_at_intersection",
+      "name": "Install cycle track / protected bike lane at intersection",
+      "description": "Physically separated cycle track (raised, bollard-, or curb-protected) extending through the intersection.",
+      "cmf": 0.4275,
+      "cmf_ci_low": 0.1404,
+      "cmf_ci_high": 0.7146,
+      "applies_to": "bike",
+      "preconditions": {
+        "bike_facility": 0
+      },
+      "direction": "helpful",
+      "cmf_clearinghouse_id": 1080,
+      "studied_amf": 0.4275,
+      "studied_amf_ci_low": 0.1404,
+      "studied_amf_ci_high": 0.7146,
+      "se_method": "across_study",
+      "n_studies": 4,
+      "studies": [
+        {
+          "citation": "Nosal, T. and L.F. Miranda-Moreno. \"Cycle-tracks, bicycle lanes & on-street cycling in Montreal: a preliminary comparison of the cyclist injury risk.\" Presented at the 91st Annual Meeting of the Transportation Research Board, January 22-26, Washington, DC, 2012.",
+          "amf": 0.92,
+          "se": null,
+          "se_method": "none",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Nosal, T. and L.F. Miranda-Moreno. \"Cycle-tracks, bicycle lanes & on-street cycling in Montreal: a preliminary comparison of the cyclist injury risk.\" Presented at the 91st Annual Meeting of the Transportation Research Board, January 22-26, Washington, DC, 2012.",
+          "amf": 0.26,
+          "se": null,
+          "se_method": "none",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Nosal, T. and L.F. Miranda-Moreno. \"Cycle-tracks, bicycle lanes & on-street cycling in Montreal: a preliminary comparison of the cyclist injury risk.\" Presented at the 91st Annual Meeting of the Transportation Research Board, January 22-26, Washington, DC, 2012.",
+          "amf": 0.12,
+          "se": null,
+          "se_method": "none",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Nosal, T. and L.F. Miranda-Moreno. \"Cycle-tracks, bicycle lanes & on-street cycling in Montreal: a preliminary comparison of the cyclist injury risk.\" Presented at the 91st Annual Meeting of the Transportation Research Board, January 22-26, Washington, DC, 2012.",
+          "amf": 0.41,
+          "se": null,
+          "se_method": "none",
+          "qual_rating": 2
+        }
+      ],
+      "source": "FHWA CMF Clearinghouse (cmid 1080, export 2025-11-10)",
+      "notes": "Clearinghouse evidence: 4 studies measuring 'install cycle tracks, bike lanes, or on-street cycling' at urban intersections."
+    },
+    {
+      "id": "offset_cycle_track_with_priority",
+      "name": "Cycle track set back 2–5m from the main road with cyclist priority",
+      "description": "Cycle track offset from the carriageway, with priority for cyclists at intersection crossings.",
+      "cmf": 0.55,
+      "cmf_ci_low": 0.2753,
+      "cmf_ci_high": 0.8247,
+      "applies_to": "bike",
+      "preconditions": {
+        "bike_facility": 0
+      },
+      "direction": "helpful",
+      "cmf_clearinghouse_id": 1037,
+      "studied_amf": 0.55,
+      "studied_amf_ci_low": 0.2753,
+      "studied_amf_ci_high": 0.8247,
+      "se_method": "unadjusted",
+      "n_studies": 1,
+      "studies": [
+        {
+          "citation": "J.P. Schepers, J.P., Kroeze, P.A., Sweers, W., and Wust, J.C., \"Road Factors and Bicycle-Motor Vehicle Crashes at Unsignalized Priority Intersections.\" Accident Analysis and Prevention, Vol. 43, Issue 3, Elsevier Ltd., (2011) pp. 853-861.",
+          "amf": 0.55,
+          "se": 0.167,
+          "se_method": "unadjusted",
+          "qual_rating": 3
+        }
+      ],
+      "source": "FHWA CMF Clearinghouse (cmid 1037, export 2025-11-10)",
+      "notes": "European urban evidence (single study). Offset cycle track design that maintains cyclist priority at junctions, in contrast to standard pulled-back designs."
+    },
+    {
+      "id": "raised_bike_crossing",
+      "name": "Raised bicycle crossing / vehicle speed-reducing measure at side road",
+      "description": "Raised crossing surface or other speed-reducing geometry where vehicles enter/leave the side road.",
+      "cmf": 0.49,
+      "cmf_ci_low": 0.3025,
+      "cmf_ci_high": 0.6775,
+      "applies_to": "bike",
+      "preconditions": {},
+      "direction": "helpful",
+      "cmf_clearinghouse_id": 1042,
+      "studied_amf": 0.49,
+      "studied_amf_ci_low": 0.3025,
+      "studied_amf_ci_high": 0.6775,
+      "se_method": "unadjusted",
+      "n_studies": 1,
+      "studies": [
+        {
+          "citation": "J.P. Schepers, J.P., Kroeze, P.A., Sweers, W., and Wust, J.C., \"Road Factors and Bicycle-Motor Vehicle Crashes at Unsignalized Priority Intersections.\" Accident Analysis and Prevention, Vol. 43, Issue 3, Elsevier Ltd., (2011) pp. 853-861.",
+          "amf": 0.49,
+          "se": 0.114,
+          "se_method": "unadjusted",
+          "qual_rating": 3
+        }
+      ],
+      "source": "FHWA CMF Clearinghouse (cmid 1042, export 2025-11-10)",
+      "notes": "Single-study European evidence. Effect operates via vehicle speed reduction at the conflict point."
+    },
+    {
+      "id": "install_bike_lane_generic",
+      "name": "Install conventional (painted) bike lane",
+      "description": "Standard on-street bike lane separated by paint only.",
+      "cmf": 0.5548,
+      "cmf_ci_low": 0.07,
+      "cmf_ci_high": 1.0395,
+      "applies_to": "bike",
+      "preconditions": {
+        "bike_facility": 0
+      },
+      "direction": "helpful",
+      "cmf_clearinghouse_id": 543,
+      "studied_amf": 0.5548,
+      "studied_amf_ci_low": 0.07,
+      "studied_amf_ci_high": 1.0395,
+      "se_method": "across_study",
+      "n_studies": 4,
+      "studies": [
+        {
+          "citation": "Avelar, R., B. Kutela, and X. Li. &quot;Developing Crash Modification Factors for Bicycle Treatments at Intersections.&quot; Report No. FHWA-HRT-23-020. Federal Highway Administration. McVean, VA (2023).",
+          "amf": 0.274,
+          "se": null,
+          "se_method": "none",
+          "qual_rating": 3
+        },
+        {
+          "citation": "Avelar, R., B. Kutela, and X. Li. &quot;Developing Crash Modification Factors for Bicycle Treatments at Intersections.&quot; Report No. FHWA-HRT-23-020. Federal Highway Administration. McVean, VA (2023).",
+          "amf": 1.4314,
+          "se": 0.3586,
+          "se_method": "unadjusted",
+          "qual_rating": 3
+        },
+        {
+          "citation": "Avelar, R., B. Kutela, and X. Li. &quot;Developing Crash Modification Factors for Bicycle Treatments at Intersections.&quot; Report No. FHWA-HRT-23-020. Federal Highway Administration. McVean, VA (2023).",
+          "amf": 0.1639,
+          "se": null,
+          "se_method": "none",
+          "qual_rating": 3
+        },
+        {
+          "citation": "Avelar, R., B. Kutela, and X. Li. &quot;Developing Crash Modification Factors for Bicycle Treatments at Intersections.&quot; Report No. FHWA-HRT-23-020. Federal Highway Administration. McVean, VA (2023).",
+          "amf": 0.3498,
+          "se": null,
+          "se_method": "none",
+          "qual_rating": 3
+        }
+      ],
+      "source": "FHWA CMF Clearinghouse (cmid 543, export 2025-11-10)",
+      "notes": "WARNING: studies show extreme heterogeneity (AMF range 0.16 to 1.43 across 4 studies). The averaged estimate masks substantial context-dependence — context where painted lanes help vs. hurt is not yet well characterised. Treat as low-confidence even though the mean is helpful."
+    },
+    {
+      "id": "prohibit_right_turn_on_red",
+      "name": "Prohibit right-turn-on-red",
+      "description": "Sign and enforce 'No turn on red' at the intersection.",
+      "cmf": 0.5817,
+      "cmf_ci_low": 0.5378,
+      "cmf_ci_high": 0.6335,
+      "applies_to": "bike",
+      "preconditions": {
+        "is_signalized": 1
+      },
+      "direction": "anti_treatment_inverted_to_prevention",
+      "cmf_clearinghouse_id": 114,
+      "studied_amf": 1.719,
+      "studied_amf_ci_low": 1.5784,
+      "studied_amf_ci_high": 1.8596,
+      "se_method": "unadjusted",
+      "n_studies": 8,
+      "studies": [
+        {
+          "citation": "Preusser, D. F., Leaf, W. A., DeBartolo, K. B., Blomberg, R. D., and Levy, M. M., \"The Effect of Right-Turn-on-Red on Pedestrian and Bicyclist Accidents.\" Journal of Safety Research, Vol. 13, No. 2, Oxford, N.Y., Pergamon Press, (1982) pp. 45-55.",
+          "amf": 1.81,
+          "se": 0.88,
+          "se_method": "adjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Preusser, D. F., Leaf, W. A., DeBartolo, K. B., Blomberg, R. D., and Levy, M. M., \"The Effect of Right-Turn-on-Red on Pedestrian and Bicyclist Accidents.\" Journal of Safety Research, Vol. 13, No. 2, Oxford, N.Y., Pergamon Press, (1982) pp. 45-55.",
+          "amf": 1.82,
+          "se": 0.31,
+          "se_method": "adjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Preusser, D. F., Leaf, W. A., DeBartolo, K. B., Blomberg, R. D., and Levy, M. M., \"The Effect of Right-Turn-on-Red on Pedestrian and Bicyclist Accidents.\" Journal of Safety Research, Vol. 13, No. 2, Oxford, N.Y., Pergamon Press, (1982) pp. 45-55.",
+          "amf": 1.73,
+          "se": 0.52,
+          "se_method": "adjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Preusser, D. F., Leaf, W. A., DeBartolo, K. B., Blomberg, R. D., and Levy, M. M., \"The Effect of Right-Turn-on-Red on Pedestrian and Bicyclist Accidents.\" Journal of Safety Research, Vol. 13, No. 2, Oxford, N.Y., Pergamon Press, (1982) pp. 45-55.",
+          "amf": 1.8,
+          "se": 0.52,
+          "se_method": "adjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Preusser, D. F., Leaf, W. A., DeBartolo, K. B., Blomberg, R. D., and Levy, M. M., \"The Effect of Right-Turn-on-Red on Pedestrian and Bicyclist Accidents.\" Journal of Safety Research, Vol. 13, No. 2, Oxford, N.Y., Pergamon Press, (1982) pp. 45-55.",
+          "amf": 1.82,
+          "se": 0.31,
+          "se_method": "adjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Preusser, D. F., Leaf, W. A., DeBartolo, K. B., Blomberg, R. D., and Levy, M. M., \"The Effect of Right-Turn-on-Red on Pedestrian and Bicyclist Accidents.\" Journal of Safety Research, Vol. 13, No. 2, Oxford, N.Y., Pergamon Press, (1982) pp. 45-55.",
+          "amf": 1.73,
+          "se": 0.52,
+          "se_method": "adjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Preusser, D. F., Leaf, W. A., DeBartolo, K. B., Blomberg, R. D., and Levy, M. M., \"The Effect of Right-Turn-on-Red on Pedestrian and Bicyclist Accidents.\" Journal of Safety Research, Vol. 13, No. 2, Oxford, N.Y., Pergamon Press, (1982) pp. 45-55.",
+          "amf": 1.8,
+          "se": 0.52,
+          "se_method": "adjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "American Association of State Highway and Transportation Officials. Highway Safety Manual. Washington, DC, 2010.",
+          "amf": 1.69,
+          "se": 0.1,
+          "se_method": "unadjusted",
+          "qual_rating": -3
+        }
+      ],
+      "source": "FHWA CMF Clearinghouse (cmid 114, export 2025-11-10)",
+      "notes": "Clearinghouse cmid 114 measures the *permit* direction: permitting RTOR increases bike crashes ~77% across 8 studies. The recommended action is the inverse (prohibition), implied by inverting the AMF."
+    },
+    {
+      "id": "convert_yield_to_signalized",
+      "name": "Convert yield/stop control to signalized",
+      "description": "Install a full signal at a previously yield- or stop-controlled intersection.",
+      "cmf": 1.044,
+      "cmf_ci_low": 0.641,
+      "cmf_ci_high": 1.447,
+      "applies_to": "bike",
+      "preconditions": {
+        "is_signalized": 0
+      },
+      "direction": "anti_indication",
+      "cmf_clearinghouse_id": 1421,
+      "studied_amf": 1.044,
+      "studied_amf_ci_low": 0.641,
+      "studied_amf_ci_high": 1.447,
+      "se_method": "across_study",
+      "n_studies": 10,
+      "studies": [
+        {
+          "citation": "Jensen, S. U. \"Safety Effects of Intersection Signalization: a Before-After Study.\" TRB 89th Annual Meeting Compendium of  Papers CD-ROM. Washington, D.C. 2010.",
+          "amf": 0.7,
+          "se": null,
+          "se_method": "none",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S. U. \"Safety Effects of Intersection Signalization: a Before-After Study.\" TRB 89th Annual Meeting Compendium of  Papers CD-ROM. Washington, D.C. 2010.",
+          "amf": 0.86,
+          "se": null,
+          "se_method": "none",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S. U. \"Safety Effects of Intersection Signalization: a Before-After Study.\" TRB 89th Annual Meeting Compendium of  Papers CD-ROM. Washington, D.C. 2010.",
+          "amf": 0.59,
+          "se": null,
+          "se_method": "none",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S. U. \"Safety Effects of Intersection Signalization: a Before-After Study.\" TRB 89th Annual Meeting Compendium of  Papers CD-ROM. Washington, D.C. 2010.",
+          "amf": 3.21,
+          "se": null,
+          "se_method": "none",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S. U. \"Safety Effects of Intersection Signalization: a Before-After Study.\" TRB 89th Annual Meeting Compendium of  Papers CD-ROM. Washington, D.C. 2010.",
+          "amf": 0.81,
+          "se": null,
+          "se_method": "none",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S. U. \"Safety Effects of Intersection Signalization: a Before-After Study.\" TRB 89th Annual Meeting Compendium of  Papers CD-ROM. Washington, D.C. 2010.",
+          "amf": 1.04,
+          "se": null,
+          "se_method": "none",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S. U. \"Safety Effects of Intersection Signalization: a Before-After Study.\" TRB 89th Annual Meeting Compendium of  Papers CD-ROM. Washington, D.C. 2010.",
+          "amf": 0.7,
+          "se": null,
+          "se_method": "none",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S. U. \"Safety Effects of Intersection Signalization: a Before-After Study.\" TRB 89th Annual Meeting Compendium of  Papers CD-ROM. Washington, D.C. 2010.",
+          "amf": 0.8,
+          "se": 0.08,
+          "se_method": "unadjusted",
+          "qual_rating": 3
+        },
+        {
+          "citation": "Jensen, S. U. \"Safety Effects of Intersection Signalization: a Before-After Study.\" TRB 89th Annual Meeting Compendium of  Papers CD-ROM. Washington, D.C. 2010.",
+          "amf": 1.03,
+          "se": 0.13,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S. U. \"Safety Effects of Intersection Signalization: a Before-After Study.\" TRB 89th Annual Meeting Compendium of  Papers CD-ROM. Washington, D.C. 2010.",
+          "amf": 0.7,
+          "se": 0.09,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        }
+      ],
+      "source": "FHWA CMF Clearinghouse (cmid 1421, export 2025-11-10)",
+      "notes": "10 urban studies. Mean effect on bike crashes is essentially zero (AMF ~1.04). Strong vehicle-KSI evidence does not transfer to bike-KSI here. List in the library so SDOT can see the bike-evidence honestly."
+    },
+    {
+      "id": "bike_lane_at_signalized_intersection",
+      "name": "Install bike lane through a signalized intersection",
+      "description": "Continue a painted bike lane through the conflict zone at a signalized intersection.",
+      "cmf": 1.0762,
+      "cmf_ci_low": 0.7835,
+      "cmf_ci_high": 1.369,
+      "applies_to": "bike",
+      "preconditions": {
+        "bike_facility": 0,
+        "is_signalized": 1
+      },
+      "direction": "anti_indication",
+      "cmf_clearinghouse_id": 872,
+      "studied_amf": 1.0762,
+      "studied_amf_ci_low": 0.7835,
+      "studied_amf_ci_high": 1.369,
+      "se_method": "across_study",
+      "n_studies": 8,
+      "studies": [
+        {
+          "citation": "Turner, S. A., Wood, G., Hughes, T., and Singh, R., \"Safety Performance Functions for Bicycle Crashes in New Zealand and Australia.\" Presented at the 90th Annual Meeting of the Transportation Research Board, Paper #11-3156, Washington, D.C., (2011).",
+          "amf": 1.37,
+          "se": null,
+          "se_method": "none",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Turner, S. A., Wood, G., Hughes, T., and Singh, R., \"Safety Performance Functions for Bicycle Crashes in New Zealand and Australia.\" Presented at the 90th Annual Meeting of the Transportation Research Board, Paper #11-3156, Washington, D.C., (2011).",
+          "amf": 0.8,
+          "se": null,
+          "se_method": "none",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Turner, S. A., Wood, G., Hughes, T., and Singh, R., \"Safety Performance Functions for Bicycle Crashes in New Zealand and Australia.\" Presented at the 90th Annual Meeting of the Transportation Research Board, Paper #11-3156, Washington, D.C., (2011).",
+          "amf": 0.63,
+          "se": null,
+          "se_method": "none",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Turner, S. A., Wood, G., Hughes, T., and Singh, R., \"Safety Performance Functions for Bicycle Crashes in New Zealand and Australia.\" Presented at the 90th Annual Meeting of the Transportation Research Board, Paper #11-3156, Washington, D.C., (2011).",
+          "amf": 1.33,
+          "se": null,
+          "se_method": "none",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Turner, S. A., Wood, G., Hughes, T., and Singh, R., \"Safety Performance Functions for Bicycle Crashes in New Zealand and Australia.\" Presented at the 90th Annual Meeting of the Transportation Research Board, Paper #11-3156, Washington, D.C., (2011).",
+          "amf": 1.01,
+          "se": null,
+          "se_method": "none",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Turner, S. A., Wood, G., Hughes, T., and Singh, R., \"Safety Performance Functions for Bicycle Crashes in New Zealand and Australia.\" Presented at the 90th Annual Meeting of the Transportation Research Board, Paper #11-3156, Washington, D.C., (2011).",
+          "amf": 2.03,
+          "se": null,
+          "se_method": "none",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Turner, S. A., Wood, G., Hughes, T., and Singh, R., \"Safety Performance Functions for Bicycle Crashes in New Zealand and Australia.\" Presented at the 90th Annual Meeting of the Transportation Research Board, Paper #11-3156, Washington, D.C., (2011).",
+          "amf": 0.42,
+          "se": null,
+          "se_method": "none",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Turner, S. A., Wood, G., Hughes, T., and Singh, R., \"Safety Performance Functions for Bicycle Crashes in New Zealand and Australia.\" Presented at the 90th Annual Meeting of the Transportation Research Board, Paper #11-3156, Washington, D.C., (2011).",
+          "amf": 1.02,
+          "se": null,
+          "se_method": "none",
+          "qual_rating": 2
+        }
+      ],
+      "source": "FHWA CMF Clearinghouse (cmid 872, export 2025-11-10)",
+      "notes": "8 studies. Mean AMF ~1.08 — installing bike lanes at signalized intersections, on average, does not reduce observed bike crashes. Likely interpretation: facility raises bike exposure proportionally to risk reduction. This is why bike-volume (Strava Metro) is the critical missing covariate."
+    },
+    {
+      "id": "convert_to_roundabout_single_lane",
+      "name": "Convert intersection to single-lane roundabout (NOT recommended for bike-KSI)",
+      "description": "Replace a conventional intersection with a single-lane modern roundabout.",
+      "cmf": 1.4034,
+      "cmf_ci_low": 1.2489,
+      "cmf_ci_high": 1.5578,
+      "applies_to": "bike",
+      "preconditions": {},
+      "direction": "anti_indication",
+      "cmf_clearinghouse_id": 1283,
+      "studied_amf": 1.4034,
+      "studied_amf_ci_low": 1.2489,
+      "studied_amf_ci_high": 1.5578,
+      "se_method": "unadjusted",
+      "n_studies": 23,
+      "studies": [
+        {
+          "citation": "Jensen, S.U. \"Safe roundabouts for cyclists\". Accident Analysis and Prevention, Vol. 105, (2017) pp. 30-37.",
+          "amf": 2.73,
+          "se": 0.638,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S.U. \"Safe roundabouts for cyclists\". Accident Analysis and Prevention, Vol. 105, (2017) pp. 30-37.",
+          "amf": 1.88,
+          "se": 0.446,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S.U. \"Safe roundabouts for cyclists\". Accident Analysis and Prevention, Vol. 105, (2017) pp. 30-37.",
+          "amf": 2.24,
+          "se": 9.084,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S.U. \"Safe roundabouts for cyclists\". Accident Analysis and Prevention, Vol. 105, (2017) pp. 30-37.",
+          "amf": 2.03,
+          "se": 0.291,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S.U. \"Safe roundabouts for cyclists\". Accident Analysis and Prevention, Vol. 105, (2017) pp. 30-37.",
+          "amf": 0.71,
+          "se": 0.362,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S.U. \"Safe roundabouts for cyclists\". Accident Analysis and Prevention, Vol. 105, (2017) pp. 30-37.",
+          "amf": 0.56,
+          "se": 0.209,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S.U. \"Safe roundabouts for cyclists\". Accident Analysis and Prevention, Vol. 105, (2017) pp. 30-37.",
+          "amf": 2.02,
+          "se": 1.78,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S.U. \"Safe roundabouts for cyclists\". Accident Analysis and Prevention, Vol. 105, (2017) pp. 30-37.",
+          "amf": 2.33,
+          "se": 0.423,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S.U. \"Safe roundabouts for cyclists\". Accident Analysis and Prevention, Vol. 105, (2017) pp. 30-37.",
+          "amf": 1.48,
+          "se": 0.462,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S.U. \"Safe roundabouts for cyclists\". Accident Analysis and Prevention, Vol. 105, (2017) pp. 30-37.",
+          "amf": 0.36,
+          "se": 0.773,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S.U. \"Safe roundabouts for cyclists\". Accident Analysis and Prevention, Vol. 105, (2017) pp. 30-37.",
+          "amf": 1.98,
+          "se": 0.293,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S.U. \"Safe roundabouts for cyclists\". Accident Analysis and Prevention, Vol. 105, (2017) pp. 30-37.",
+          "amf": 2.67,
+          "se": 0.673,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S.U. \"Safe roundabouts for cyclists\". Accident Analysis and Prevention, Vol. 105, (2017) pp. 30-37.",
+          "amf": 3.39,
+          "se": 1.2,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S.U. \"Safe roundabouts for cyclists\". Accident Analysis and Prevention, Vol. 105, (2017) pp. 30-37.",
+          "amf": 2.89,
+          "se": 0.582,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S.U. \"Safe roundabouts for cyclists\". Accident Analysis and Prevention, Vol. 105, (2017) pp. 30-37.",
+          "amf": 0.53,
+          "se": 0.4,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S.U. \"Safe roundabouts for cyclists\". Accident Analysis and Prevention, Vol. 105, (2017) pp. 30-37.",
+          "amf": 0.5,
+          "se": 0.344,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S.U. \"Safe roundabouts for cyclists\". Accident Analysis and Prevention, Vol. 105, (2017) pp. 30-37.",
+          "amf": 2.33,
+          "se": 0.423,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S.U. \"Safe roundabouts for cyclists\". Accident Analysis and Prevention, Vol. 105, (2017) pp. 30-37.",
+          "amf": 2.62,
+          "se": 1.827,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S.U. \"Safe roundabouts for cyclists\". Accident Analysis and Prevention, Vol. 105, (2017) pp. 30-37.",
+          "amf": 1.2,
+          "se": 0.5,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S.U. \"Safe roundabouts for cyclists\". Accident Analysis and Prevention, Vol. 105, (2017) pp. 30-37.",
+          "amf": 1.53,
+          "se": 0.51,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S.U. \"Safe roundabouts for cyclists\". Accident Analysis and Prevention, Vol. 105, (2017) pp. 30-37.",
+          "amf": 1.11,
+          "se": 1.643,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S.U. \"Safe roundabouts for cyclists\". Accident Analysis and Prevention, Vol. 105, (2017) pp. 30-37.",
+          "amf": 1.11,
+          "se": 1.643,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Jensen, S.U. \"Safe roundabouts for cyclists\". Accident Analysis and Prevention, Vol. 105, (2017) pp. 30-37.",
+          "amf": 1.48,
+          "se": 0.462,
+          "se_method": "unadjusted",
+          "qual_rating": 2
+        }
+      ],
+      "source": "FHWA CMF Clearinghouse (cmid 1283, export 2025-11-10)",
+      "notes": "ANTI-INDICATION for bike-KSI. 25 studies, mean AMF ~1.59 — single-lane roundabouts INCREASE bike-intersection crashes ~59% relative to the conventional intersection they replace. This is the well-documented bike-roundabout paradox: roundabouts are safer for cars and pedestrians but more dangerous for cyclists due to entry/exit conflict geometry. The 'cmf' field below is the studied AMF as-measured; do NOT mis-read this as a recommendation. Surfaced in the library so SDOT planners considering a roundabout retrofit see the bike-specific evidence."
+    },
+    {
+      "id": "lpi_signal_timing",
+      "name": "Modify signal phasing (implement a leading pedestrian interval)",
+      "description": "Gives pedestrians a 3-7 second head start when entering the crosswalk.",
+      "cmf": 0.7754,
+      "cmf_ci_low": 0.6628,
+      "cmf_ci_high": 0.8879,
+      "applies_to": "ped",
+      "preconditions": {
+        "is_signalized": 1
+      },
+      "direction": "helpful",
+      "cmf_clearinghouse_id": 328,
+      "studied_amf": 0.7754,
+      "studied_amf_ci_low": 0.6628,
+      "studied_amf_ci_high": 0.8879,
+      "se_method": "across_study",
+      "n_studies": 8,
+      "studies": [
+        {
+          "citation": "Institute of Transportation Engineers, \"Toolbox of Countermeasures and Their Potential Effectiveness to Make Intersections Safer.\" Briefing Sheet 8, ITE, FHWA, (2004)",
+          "amf": 0.95,
+          "se": null,
+          "se_method": "none",
+          "qual_rating": -2
+        },
+        {
+          "citation": "Fayish, A.C. and F. Gross, \"Safety Effectiveness of Leading Pedestrian\r\nIntervals Evaluated by a Before–After Study with Comparison Groups.\" Transportation Research Record: Journal of the Transportation Research Board, No. 2198, Transportation Research Board of the National Academies, Washington, D.C., 2010, pp. 15–22.\r\nDOI: 10.3141/2198-03",
+          "amf": 0.413,
+          "se": 0.064,
+          "se_method": "unadjusted",
+          "qual_rating": 4
+        },
+        {
+          "citation": "Goughnour, E., D. Carter, C. Lyon, B. Persaud, B. Lan, P. Chun, I. Hamilton, and K. Signor. \"Safety Evaluation of Protected Left-Turn Phasing and Leading Pedestrian Intervals on Pedestrian Safety.\" Report No. FHWA-HRT-18-044. Federal Highway Administration. (October 2018)",
+          "amf": 0.81,
+          "se": 0.07,
+          "se_method": "unadjusted",
+          "qual_rating": 5
+        },
+        {
+          "citation": "Goughnour, E., D. Carter, C. Lyon, B. Persaud, B. Lan, P. Chun, I. Hamilton, and K. Signor. \"Safety Evaluation of Protected Left-Turn Phasing and Leading Pedestrian Intervals on Pedestrian Safety.\" Report No. FHWA-HRT-18-044. Federal Highway Administration. (October 2018)",
+          "amf": 0.81,
+          "se": 0.08,
+          "se_method": "unadjusted",
+          "qual_rating": 5
+        },
+        {
+          "citation": "Goughnour, E., D. Carter, C. Lyon, B. Persaud, B. Lan, P. Chun, I. Hamilton, and K. Signor. \"Safety Evaluation of Protected Left-Turn Phasing and Leading Pedestrian Intervals on Pedestrian Safety.\" Report No. FHWA-HRT-18-044. Federal Highway Administration. (October 2018)",
+          "amf": 0.9,
+          "se": 0.19,
+          "se_method": "unadjusted",
+          "qual_rating": 4
+        },
+        {
+          "citation": "Goughnour, E., D. Carter, C. Lyon, B. Persaud, B. Lan, P. Chun, I. Hamilton, and K. Signor. \"Safety Evaluation of Protected Left-Turn Phasing and Leading Pedestrian Intervals on Pedestrian Safety.\" Report No. FHWA-HRT-18-044. Federal Highway Administration. (October 2018)",
+          "amf": 0.91,
+          "se": 0.062,
+          "se_method": "unadjusted",
+          "qual_rating": 4
+        },
+        {
+          "citation": "Goughnour, E., D. Carter, C. Lyon, B. Persaud, B. Lan, P. Chun, I. Hamilton, and K. Signor. \"Safety Evaluation of Protected Left-Turn Phasing and Leading Pedestrian Intervals on Pedestrian Safety.\" Report No. FHWA-HRT-18-044. Federal Highway Administration. (October 2018)",
+          "amf": 0.54,
+          "se": 0.38,
+          "se_method": "unadjusted",
+          "qual_rating": 3
+        },
+        {
+          "citation": "Goughnour, E., D. Carter, C. Lyon, B. Persaud, B. Lan, P. Chun, I. Hamilton, and K. Signor. \"Safety Evaluation of Protected Left-Turn Phasing and Leading Pedestrian Intervals on Pedestrian Safety.\" Report No. FHWA-HRT-18-044. Federal Highway Administration. (October 2018)",
+          "amf": 0.87,
+          "se": 0.05,
+          "se_method": "unadjusted",
+          "qual_rating": 5
+        }
+      ],
+      "source": "FHWA CMF Clearinghouse (cmid 328, export 2025-11-10)",
+      "notes": "Leading Pedestrian Interval (LPI). Gives pedestrians a 3-7 second head start when entering the crosswalk. Proven to reduce pedestrian-vehicle crashes by increasing visibility and establishing pedestrian right-of-way."
+    },
+    {
+      "id": "road_diet",
+      "name": "Road diet (Convert 4-lane undivided road to 2-lanes plus turning lane)",
+      "description": "Convert 4-lane undivided to 3-lane (2 through lanes + center turn lane).",
+      "cmf": 0.5436,
+      "cmf_ci_low": 0.4518,
+      "cmf_ci_high": 0.6353,
+      "applies_to": "vehicle",
+      "preconditions": {},
+      "direction": "helpful",
+      "cmf_clearinghouse_id": 151,
+      "studied_amf": 0.5436,
+      "studied_amf_ci_low": 0.4518,
+      "studied_amf_ci_high": 0.6353,
+      "se_method": "unadjusted",
+      "n_studies": 4,
+      "studies": [
+        {
+          "citation": "Lim, L., and Fontaine, M. D. \" Development of Road Diet Segment and Intersection Crash Modification Factors\". Transportation Research Record 1–12, Transportation Research Board, Washington, D.C., (2022).",
+          "amf": 0.65,
+          "se": 0.1,
+          "se_method": "unadjusted",
+          "qual_rating": 4
+        },
+        {
+          "citation": "Lim, L., and Fontaine, M. D. \" Development of Road Diet Segment and Intersection Crash Modification Factors\". Transportation Research Record 1–12, Transportation Research Board, Washington, D.C., (2022).",
+          "amf": 0.54,
+          "se": 0.12,
+          "se_method": "unadjusted",
+          "qual_rating": 3
+        },
+        {
+          "citation": "Lim, L., and Fontaine, M. D. \" Development of Road Diet Segment and Intersection Crash Modification Factors\". Transportation Research Record 1–12, Transportation Research Board, Washington, D.C., (2022).",
+          "amf": 0.53,
+          "se": 0.11,
+          "se_method": "unadjusted",
+          "qual_rating": 4
+        },
+        {
+          "citation": "Lim, L., and Fontaine, M. D. \" Development of Road Diet Segment and Intersection Crash Modification Factors\". Transportation Research Record 1–12, Transportation Research Board, Washington, D.C., (2022).",
+          "amf": 0.41,
+          "se": 0.12,
+          "se_method": "unadjusted",
+          "qual_rating": 3
+        }
+      ],
+      "source": "FHWA CMF Clearinghouse (cmid 151, export 2025-11-10)",
+      "notes": "Convert 4-lane undivided to 3-lane (2 through lanes + center turn lane). Reduces vehicle conflict points, lowers speeds, and provides space for pedestrian refuge islands or bike lanes."
+    },
+    {
+      "id": "prohibit_right_turn_on_red_vehicle",
+      "name": "Prohibit right-turn-on-red",
+      "description": "Sign and enforce 'No turn on red' at the intersection.",
+      "cmf": 0.9244,
+      "cmf_ci_low": 0.9107,
+      "cmf_ci_high": 0.9385,
+      "applies_to": "vehicle",
+      "preconditions": {
+        "is_signalized": 1
+      },
+      "direction": "anti_treatment_inverted_to_prevention",
+      "cmf_clearinghouse_id": 114,
+      "studied_amf": 1.0818,
+      "studied_amf_ci_low": 1.0655,
+      "studied_amf_ci_high": 1.0981,
+      "se_method": "unadjusted",
+      "n_studies": 16,
+      "studies": [
+        {
+          "citation": "Preusser, D. F., Leaf, W. A., DeBartolo, K. B., Blomberg, R. D., and Levy, M. M., \"The Effect of Right-Turn-on-Red on Pedestrian and Bicyclist Accidents.\" Journal of Safety Research, Vol. 13, No. 2, Oxford, N.Y., Pergamon Press, (1982) pp. 45-55.",
+          "amf": 1.43,
+          "se": 0.24,
+          "se_method": "adjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Preusser, D. F., Leaf, W. A., DeBartolo, K. B., Blomberg, R. D., and Levy, M. M., \"The Effect of Right-Turn-on-Red on Pedestrian and Bicyclist Accidents.\" Journal of Safety Research, Vol. 13, No. 2, Oxford, N.Y., Pergamon Press, (1982) pp. 45-55.",
+          "amf": 2.08,
+          "se": 0.51,
+          "se_method": "adjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Preusser, D. F., Leaf, W. A., DeBartolo, K. B., Blomberg, R. D., and Levy, M. M., \"The Effect of Right-Turn-on-Red on Pedestrian and Bicyclist Accidents.\" Journal of Safety Research, Vol. 13, No. 2, Oxford, N.Y., Pergamon Press, (1982) pp. 45-55.",
+          "amf": 1.57,
+          "se": 0.31,
+          "se_method": "adjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Preusser, D. F., Leaf, W. A., DeBartolo, K. B., Blomberg, R. D., and Levy, M. M., \"The Effect of Right-Turn-on-Red on Pedestrian and Bicyclist Accidents.\" Journal of Safety Research, Vol. 13, No. 2, Oxford, N.Y., Pergamon Press, (1982) pp. 45-55.",
+          "amf": 1.81,
+          "se": 0.88,
+          "se_method": "adjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Preusser, D. F., Leaf, W. A., DeBartolo, K. B., Blomberg, R. D., and Levy, M. M., \"The Effect of Right-Turn-on-Red on Pedestrian and Bicyclist Accidents.\" Journal of Safety Research, Vol. 13, No. 2, Oxford, N.Y., Pergamon Press, (1982) pp. 45-55.",
+          "amf": 1.82,
+          "se": 0.31,
+          "se_method": "adjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Preusser, D. F., Leaf, W. A., DeBartolo, K. B., Blomberg, R. D., and Levy, M. M., \"The Effect of Right-Turn-on-Red on Pedestrian and Bicyclist Accidents.\" Journal of Safety Research, Vol. 13, No. 2, Oxford, N.Y., Pergamon Press, (1982) pp. 45-55.",
+          "amf": 1.73,
+          "se": 0.52,
+          "se_method": "adjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Preusser, D. F., Leaf, W. A., DeBartolo, K. B., Blomberg, R. D., and Levy, M. M., \"The Effect of Right-Turn-on-Red on Pedestrian and Bicyclist Accidents.\" Journal of Safety Research, Vol. 13, No. 2, Oxford, N.Y., Pergamon Press, (1982) pp. 45-55.",
+          "amf": 1.8,
+          "se": 0.52,
+          "se_method": "adjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Preusser, D. F., Leaf, W. A., DeBartolo, K. B., Blomberg, R. D., and Levy, M. M., \"The Effect of Right-Turn-on-Red on Pedestrian and Bicyclist Accidents.\" Journal of Safety Research, Vol. 13, No. 2, Oxford, N.Y., Pergamon Press, (1982) pp. 45-55.",
+          "amf": 1.43,
+          "se": 0.24,
+          "se_method": "adjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Preusser, D. F., Leaf, W. A., DeBartolo, K. B., Blomberg, R. D., and Levy, M. M., \"The Effect of Right-Turn-on-Red on Pedestrian and Bicyclist Accidents.\" Journal of Safety Research, Vol. 13, No. 2, Oxford, N.Y., Pergamon Press, (1982) pp. 45-55.",
+          "amf": 2.07,
+          "se": 0.51,
+          "se_method": "adjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Preusser, D. F., Leaf, W. A., DeBartolo, K. B., Blomberg, R. D., and Levy, M. M., \"The Effect of Right-Turn-on-Red on Pedestrian and Bicyclist Accidents.\" Journal of Safety Research, Vol. 13, No. 2, Oxford, N.Y., Pergamon Press, (1982) pp. 45-55.",
+          "amf": 1.57,
+          "se": 0.31,
+          "se_method": "adjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Preusser, D. F., Leaf, W. A., DeBartolo, K. B., Blomberg, R. D., and Levy, M. M., \"The Effect of Right-Turn-on-Red on Pedestrian and Bicyclist Accidents.\" Journal of Safety Research, Vol. 13, No. 2, Oxford, N.Y., Pergamon Press, (1982) pp. 45-55.",
+          "amf": 1.81,
+          "se": 0.88,
+          "se_method": "adjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Preusser, D. F., Leaf, W. A., DeBartolo, K. B., Blomberg, R. D., and Levy, M. M., \"The Effect of Right-Turn-on-Red on Pedestrian and Bicyclist Accidents.\" Journal of Safety Research, Vol. 13, No. 2, Oxford, N.Y., Pergamon Press, (1982) pp. 45-55.",
+          "amf": 1.82,
+          "se": 0.31,
+          "se_method": "adjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Preusser, D. F., Leaf, W. A., DeBartolo, K. B., Blomberg, R. D., and Levy, M. M., \"The Effect of Right-Turn-on-Red on Pedestrian and Bicyclist Accidents.\" Journal of Safety Research, Vol. 13, No. 2, Oxford, N.Y., Pergamon Press, (1982) pp. 45-55.",
+          "amf": 1.73,
+          "se": 0.52,
+          "se_method": "adjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "Preusser, D. F., Leaf, W. A., DeBartolo, K. B., Blomberg, R. D., and Levy, M. M., \"The Effect of Right-Turn-on-Red on Pedestrian and Bicyclist Accidents.\" Journal of Safety Research, Vol. 13, No. 2, Oxford, N.Y., Pergamon Press, (1982) pp. 45-55.",
+          "amf": 1.8,
+          "se": 0.52,
+          "se_method": "adjusted",
+          "qual_rating": 2
+        },
+        {
+          "citation": "American Association of State Highway and Transportation Officials. Highway Safety Manual. Washington, DC, 2010.",
+          "amf": 1.69,
+          "se": 0.1,
+          "se_method": "unadjusted",
+          "qual_rating": -3
+        },
+        {
+          "citation": "Clark, J. E., Maghsoodloo, S., and Brown, D. B., \"Public Good Relative to Right-Turn-on-Red in South Carolina and Alabama.\" Transportation Research Record 926, Washington, D.C., Transportation Research Board, National Research Council, (1983) pp. 24-31.",
+          "amf": 1.07,
+          "se": 0.01,
+          "se_method": "unadjusted",
+          "qual_rating": 1
+        }
+      ],
+      "source": "FHWA CMF Clearinghouse (cmid 114, export 2025-11-10)",
+      "notes": ""
+    }
+  ]
+}

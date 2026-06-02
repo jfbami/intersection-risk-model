@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "notes": "Per-treatment evidence commentary that the CMF library ingester merges into each entry by id. Kept separate from pipeline/build_cmf_library.py so domain experts can edit the prose without touching Python source.",
+  "by_id": {
+    "cycle_track_at_intersection": "Clearinghouse evidence: 4 studies measuring 'install cycle tracks, bike lanes, or on-street cycling' at urban intersections.",
+    "offset_cycle_track_with_priority": "European urban evidence (single study). Offset cycle track design that maintains cyclist priority at junctions, in contrast to standard pulled-back designs.",
+    "raised_bike_crossing": "Single-study European evidence. Effect operates via vehicle speed reduction at the conflict point.",
+    "install_bike_lane_generic": "WARNING: studies show extreme heterogeneity (AMF range 0.16 to 1.43 across 4 studies). The averaged estimate masks substantial context-dependence — context where painted lanes help vs. hurt is not yet well characterised. Treat as low-confidence even though the mean is helpful.",
+    "prohibit_right_turn_on_red": "Clearinghouse cmid 114 measures the *permit* direction: permitting RTOR increases bike crashes ~77% across 8 studies. The recommended action is the inverse (prohibition), implied by inverting the AMF.",
+    "convert_yield_to_signalized": "10 urban studies. Mean effect on bike crashes is essentially zero (AMF ~1.04). Strong vehicle-KSI evidence does not transfer to bike-KSI here. List in the library so SDOT can see the bike-evidence honestly.",
+    "bike_lane_at_signalized_intersection": "8 studies. Mean AMF ~1.08 — installing bike lanes at signalized intersections, on average, does not reduce observed bike crashes. Likely interpretation: facility raises bike exposure proportionally to risk reduction. This is why bike-volume (Strava Metro) is the critical missing covariate.",
+    "convert_to_roundabout_single_lane": "ANTI-INDICATION for bike-KSI. 25 studies, mean AMF ~1.59 — single-lane roundabouts INCREASE bike-intersection crashes ~59% relative to the conventional intersection they replace. This is the well-documented bike-roundabout paradox: roundabouts are safer for cars and pedestrians but more dangerous for cyclists due to entry/exit conflict geometry. The 'cmf' field below is the studied AMF as-measured; do NOT mis-read this as a recommendation. Surfaced in the library so SDOT planners considering a roundabout retrofit see the bike-specific evidence.",
+    "lpi_signal_timing": "Leading Pedestrian Interval (LPI). Gives pedestrians a 3-7 second head start when entering the crosswalk. Proven to reduce pedestrian-vehicle crashes by increasing visibility and establishing pedestrian right-of-way.",
+    "road_diet": "Convert 4-lane undivided to 3-lane (2 through lanes + center turn lane). Reduces vehicle conflict points, lowers speeds, and provides space for pedestrian refuge islands or bike lanes."
+  }
+}

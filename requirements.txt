@@ -1,0 +1,11 @@
+geopandas
+pandas
+shapely
+scipy
+pyarrow
+requests
+statsmodels
+fastapi
+uvicorn[standard]
+osmnx
+networkx
