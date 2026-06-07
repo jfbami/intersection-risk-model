@@ -216,8 +216,3 @@ frontend/
 experiments/                One off model sketches (e.g. hierarchical NB)
 ```
 
-## Project background
-
-This is a portfolio and civic tech project. The aim is to demonstrate the HSM standard methodology, a Safety Performance Function plus CMFs, on  Seattle data, end to end
-
-Pull requests, issue reports, and suggestions are welcome.
