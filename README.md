@@ -172,7 +172,7 @@ The rank correlation is modest because 17 bike KSI events across 346 sites in 6 
 
 ##the CMF layer
 
-The model is descriptive. It tells you where crashes happen and what correlates with them, but its coefficients are observational, not causal. To answer "what should we do?", the app uses the canonical HSM Part C two stage method:
+The model is descriptive. It tells you where crashes happen and what correlates with them, but its coefficients are observational, not causal. To answer "what should we do?, I used the canonical HSM Part C two stage method!:
 
 ```
 bike_KSI_prevented_per_year(site, treatment) =
