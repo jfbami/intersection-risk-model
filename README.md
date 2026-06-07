@@ -6,16 +6,16 @@ Built on Seattle's own crash records (SDOT, 2018 to 2023) and the AASHTO Highway
 
 ## See it in action
 
-### 1. Map overview
+### 1. Map 
 ![Map overview: intersections colored by risk tier](docs/screenshots/01_map_overview.png)
 
-### 2. Vision Zero scorecard
+### 2. scorecard
 ![Scorecard: totals for crashes, injuries, KSI, ped and bike](docs/screenshots/02_scorecard.png)
 
-### 3. Drill in panel
+### 3. panel
 ![Drill in panel: predicted vs actual, top contributors, recommended treatments](docs/screenshots/03_drill_in.png)
 
-## What this project is, in plain English
+## What this project is
 
 Seattle has a Vision Zero commitment: eliminate traffic deaths and serious injuries. Of the city's 1,720 reported crashes in Capitol Hill from 2018 to 2023, 16 left a cyclist killed or seriously injured ("KSI"). With limited budget for safety upgrades, the question becomes: which intersections deserve attention first, and what should we actually build there?
 
@@ -238,6 +238,6 @@ experiments/                One off model sketches (e.g. hierarchical NB)
 
 ## Project background
 
-This is a portfolio and civic tech project. The aim is to demonstrate the HSM standard methodology, a Safety Performance Function plus CMFs, on real Seattle data, end to end, with an honest accounting of what the model can and cannot say.
+This is a portfolio and civic tech project. The aim is to demonstrate the HSM standard methodology, a Safety Performance Function plus CMFs, on  Seattle data, end to end
 
 Pull requests, issue reports, and suggestions are welcome.
