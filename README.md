@@ -31,9 +31,9 @@ A FastAPI backend serves the scored intersections. A Next.js and Mapbox frontend
 | | |
 |---|---|
 | **Scope** | 346 arterial intersections in Capitol Hill, Seattle |
-| **Crash window** | 6 years, 2018 to 2023 |
+| **Crash window** |2018 to 2023 |
 | **Crashes observed** | 1,720 total, 169 bike, 16 bike KSI |
-| **Model family** | Negative Binomial regression (HSM Chapter 12 Safety Performance Function) |
+| **Model family** | Negative Binomial regression |
 | **Calibration vs. observed** | Predicted total 1,772.7 vs. actual 1,720, within 3.1% (HSM threshold ±15%) |
 | **Treatment library** | 8 curated CMFs from FHWA Clearinghouse, 2025-11-10 export |
 | **Stack** | Python, statsmodels, FastAPI, Next.js, Mapbox |
