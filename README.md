@@ -170,7 +170,7 @@ The rank correlation is modest because 17 bike KSI events across 346 sites in 6 
 
 </details>
 
-## From "where is risk?" to "what should we build?": the CMF layer
+##the CMF layer
 
 The model is descriptive. It tells you where crashes happen and what correlates with them, but its coefficients are observational, not causal. To answer "what should we do?", the app uses the canonical HSM Part C two stage method:
 
@@ -182,26 +182,6 @@ bike_KSI_prevented_per_year(site, treatment) =
 The model supplies the site baseline. Published Crash Modification Factors supply the causal treatment effect multiplier. CMFs come from before and after studies with comparison groups, peer reviewed by FHWA and rated 1 to 5 stars in the [CMF Clearinghouse](https://www.cmfclearinghouse.org/).
 
 [`pipeline/build_cmf_library.py`](pipeline/build_cmf_library.py) ingests a direct Clearinghouse CSV export, filters to bike involved, intersection related, approved, non rural studies, and aggregates per treatment. It uses variance weighted averaging only when every study reports a standard error; otherwise a simple mean with across study variance. This avoids over weighting whichever paper happened to report SEs.
-
-### Current library (Clearinghouse export 2025-11-10)
-
-| Treatment | Studies | CMF (90% CI) | Direction | Applies when |
-|---|---|---|---|---|
-| Install cycle track or protected bike lane | 4 | 0.43 (0.14 to 0.71) | helpful | `bike_facility = 0` |
-| Raised bicycle crossing | 1 | 0.49 (0.30 to 0.68) | helpful | any |
-| Offset cycle track w/ cyclist priority | 1 | 0.55 (0.28 to 0.82) | helpful | `bike_facility = 0` |
-| Install painted bike lane | 4 | 0.56 (0.07 to 1.04) | helpful | `bike_facility = 0` |
-| Prohibit right turn on red | 8 | 0.58 (0.54 to 0.63) | helpful (prevention) | `is_signalized = 1` |
-| Bike lane at signalized intersection | 8 | 1.08 (0.78 to 1.37) | anti indication | `bike_facility = 0`, `is_signalized = 1` |
-| Convert yield to signalized | 10 | 1.04 (0.64 to 1.45) | anti indication | `is_signalized = 0` |
-| Convert to single lane roundabout | 23 | 1.40 (1.25 to 1.56) | anti indication | any |
-
-What the evidence actually says:
-
-* Cycle tracks and raised crossings are the clear winners. Strong, consistent reductions across multiple studies.
-* Prohibiting right turn on red has 8 consistent studies showing permitting it raises bike crashes about 77%. Prohibition is recommended with high confidence.
-* Roundabouts increase bike crashes by about 40% across 23 studies. This is the well documented bike roundabout paradox. Safer for cars and pedestrians, more dangerous for cyclists due to entry and exit conflict geometry. They appear in the library as an explicit anti indication so planners considering them see the bike specific evidence.
-* Bike lanes at signalized intersections show no net effect (CMF about 1.08). The likely explanation is that the facility raises cyclist exposure roughly as much as it reduces per cyclist risk. This is exactly why bike volume data is the next big data acquisition.
 
 ### How recommendations rank in the app
 
