@@ -4,7 +4,7 @@ An interactive map and statistical model that scores Capitol Hill's intersection
 
 Built on Seattle's own crash records (SDOT, 2018 to 2023) and the AASHTO Highway Safety Manual methodology that state DOTs use to prioritize safety projects.
 
-## See it in action
+
 
 ### 1. Map 
 ![Map overview: intersections colored by risk tier](docs/screenshots/01_map_overview.png)
