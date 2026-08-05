@@ -1,0 +1,1807 @@
+{
+  "experiment": "E1",
+  "question": "Volume functional form for the ped and vehicle NB2 SPFs",
+  "reason": "README.md:125-140 argues for log(AADT) on functional-form theory alone: raw AADT under a log link implies mu ~ exp(beta*AADT), which the README calls 'not physical' and claims gives 'astronomical predictions' at a 50,000-AADT site. No alternative was ever fit.",
+  "n_rows": 346,
+  "shared_predictors": "is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class)",
+  "specs": {
+    "a_log_aadt": "is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + log_aadt",
+    "b_raw_aadt": "is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + max_aadt",
+    "c_sqrt_aadt": "is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + sqrt_aadt",
+    "d_no_volume": "is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class)"
+  },
+  "aadt_distribution": {
+    "min": 1013.0,
+    "max": 41808.0,
+    "mean": 10021.973988439306,
+    "median": 8051.5,
+    "sd": 5883.135124164365,
+    "q05": 2748.75,
+    "q25": 5528.0,
+    "q75": 14339.25,
+    "q95": 20443.0,
+    "q99": 22541.0,
+    "n_above_20000": 27,
+    "n_above_25000": 2,
+    "n_above_30000": 1,
+    "n_above_40000": 1,
+    "n_above_50000": 0
+  },
+  "reference_row": {
+    "is_signalized": 0,
+    "legs_cat": 4,
+    "num_legs": 4,
+    "max_speed_limit": 25.0,
+    "bike_facility": 0,
+    "arterial_class": 2,
+    "offset": 1.791759469228055
+  },
+  "modes": {
+    "ped": {
+      "a_log_aadt": {
+        "label": "a_log_aadt",
+        "predictors": "is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + log_aadt",
+        "insample": {
+          "formula": "ped_total ~ is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + log_aadt",
+          "target": "ped_total",
+          "predictors": "is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + log_aadt",
+          "ok": true,
+          "converged": true,
+          "best_method": "bfgs",
+          "optimizer_attempts": [
+            {
+              "method": "newton",
+              "converged": false,
+              "flagged_by_statsmodels": true,
+              "llf": -346.40174419030956,
+              "se_finite": true
+            },
+            {
+              "method": "bfgs",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -346.4017037397952,
+              "se_finite": true
+            },
+            {
+              "method": "lbfgs",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -346.40454724617325,
+              "se_finite": true
+            },
+            {
+              "method": "nm",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -346.4103527232516,
+              "se_finite": true
+            }
+          ],
+          "any_method_diverged": false,
+          "llf": -346.4017037397952,
+          "aic": 716.8034074795904,
+          "bic": 762.9606727802832,
+          "n_params": 12,
+          "n_obs": 346,
+          "alpha": 0.3049040992261984,
+          "params": {
+            "Intercept": -2.654951296277977,
+            "C(legs_cat, Treatment(reference=4))[T.2]": -0.7457437667008772,
+            "C(legs_cat, Treatment(reference=4))[T.3]": -1.706410200775734,
+            "C(legs_cat, Treatment(reference=4))[T.5]": -0.365818265788165,
+            "C(arterial_class)[T.2]": 0.5574751528482607,
+            "C(arterial_class)[T.3]": 0.012807062302323426,
+            "C(arterial_class)[T.5]": 0.8543250114488021,
+            "is_signalized": 1.096063855026307,
+            "max_speed_limit": -0.07640676908280888,
+            "bike_facility": -0.6253971765990678,
+            "log_aadt": 0.22299351660951786
+          },
+          "bse": {
+            "Intercept": 3.0052567856206807,
+            "C(legs_cat, Treatment(reference=4))[T.2]": 0.3227976774632,
+            "C(legs_cat, Treatment(reference=4))[T.3]": 0.2548006564862421,
+            "C(legs_cat, Treatment(reference=4))[T.5]": 0.3430546971516196,
+            "C(arterial_class)[T.2]": 0.20668387380657144,
+            "C(arterial_class)[T.3]": 0.2910624239196597,
+            "C(arterial_class)[T.5]": 0.7143826114631204,
+            "is_signalized": 0.1590809296393677,
+            "max_speed_limit": 0.10624910706045301,
+            "bike_facility": 0.21919949289660884,
+            "log_aadt": 0.14303930689129482
+          },
+          "pvalues": {
+            "Intercept": 0.37700087978266306,
+            "C(legs_cat, Treatment(reference=4))[T.2]": 0.02087424322812185,
+            "C(legs_cat, Treatment(reference=4))[T.3]": 2.1268335069914956e-11,
+            "C(legs_cat, Treatment(reference=4))[T.5]": 0.2862629661549302,
+            "C(arterial_class)[T.2]": 0.006991773221753505,
+            "C(arterial_class)[T.3]": 0.9649035394204282,
+            "C(arterial_class)[T.5]": 0.2317384007169322,
+            "is_signalized": 5.580163440263956e-12,
+            "max_speed_limit": 0.4720617016754569,
+            "bike_facility": 0.004329555234188911,
+            "log_aadt": 0.11900426130330363
+          },
+          "insample_mae": 0.6976384018634686,
+          "insample_rmse": 1.0501470264776611,
+          "sum_pred": 267.77163117569916,
+          "sum_actual": 266.0,
+          "naive_production_fit": {
+            "ok": true,
+            "method_used": "bfgs(200) retry",
+            "converged": true,
+            "llf": -346.4017044344532,
+            "aic": 716.8034088689064,
+            "bic": 762.9606741695991,
+            "would_pipeline_sys_exit": false
+          }
+        },
+        "cv_stratified": {
+          "stratified": true,
+          "seed": 0,
+          "n_splits": 5,
+          "fold_mae": [
+            0.6706893142446192,
+            0.6677333100199984,
+            0.6612718618918905,
+            0.8547033966793444,
+            0.7245596162957322
+          ],
+          "fold_rmse": [
+            0.9853903971955829,
+            0.9172837503284766,
+            0.9858886428128966,
+            1.3398391143202295,
+            1.116613990016425
+          ],
+          "fold_methods": [
+            "bfgs",
+            "bfgs",
+            "bfgs",
+            "bfgs",
+            "bfgs"
+          ],
+          "all_folds_converged": true,
+          "n_folds_converged": 5,
+          "n_folds_completed": 5,
+          "degenerate_columns": [],
+          "fold_errors": [],
+          "cv_mae_mean": 0.715791499826317,
+          "cv_mae_sd": 0.08168473331341415,
+          "cv_rmse_mean": 1.069003178934722,
+          "cv_rmse_sd": 0.16773252638464994,
+          "pooled_oof_mae": 0.7156611466887977,
+          "pooled_oof_rmse": 1.0792190006405058,
+          "pooled_oof_spearman": 0.5619694113844383,
+          "pooled_oof_spearman_p": 3.3993201145834604e-30,
+          "n_oof_rows": 346
+        },
+        "cv_kfold": {
+          "stratified": false,
+          "seed": 0,
+          "n_splits": 5,
+          "fold_mae": [
+            0.8074850509425582,
+            0.6576613027719326,
+            0.776142396498735,
+            0.7368182662174394,
+            0.6562723729296143
+          ],
+          "fold_rmse": [
+            1.2779548409701087,
+            0.9507310289459686,
+            1.1965154282730035,
+            1.0721876884119415,
+            0.9867930337885253
+          ],
+          "fold_methods": [
+            "bfgs",
+            "bfgs",
+            "bfgs",
+            "bfgs",
+            "bfgs"
+          ],
+          "all_folds_converged": true,
+          "n_folds_converged": 5,
+          "n_folds_completed": 5,
+          "degenerate_columns": [],
+          "fold_errors": [],
+          "cv_mae_mean": 0.7268758778720559,
+          "cv_mae_sd": 0.06855543749981018,
+          "cv_rmse_mean": 1.0968364040779095,
+          "cv_rmse_sd": 0.13856738362420745,
+          "pooled_oof_mae": 0.7271088523606989,
+          "pooled_oof_rmse": 1.1043593414070367,
+          "pooled_oof_spearman": 0.5414657318221292,
+          "pooled_oof_spearman_p": 9.49236664955385e-28,
+          "n_oof_rows": 346
+        },
+        "repeated_cv": {
+          "n_seeds_ok": 10,
+          "seeds": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "n_seeds_with_nonconverged_fold": 0,
+          "oof_mae_mean": 0.7231810110360041,
+          "oof_mae_sd": 0.009543480679308809,
+          "oof_rmse_mean": 1.0929903072525258,
+          "oof_rmse_sd": 0.016031863606248732,
+          "oof_spearman_mean": 0.5539665663780932,
+          "oof_spearman_sd": 0.010404587001801097,
+          "oof_mae_per_seed": [
+            0.7156611466887977,
+            0.7066880396868633,
+            0.7276805638915474,
+            0.7304591167092571,
+            0.7104051790938698,
+            0.725412044290778,
+            0.7361876614755956,
+            0.7243823555852001,
+            0.722864613724293,
+            0.7320693892138385
+          ]
+        },
+        "volume_term": {
+          "name": "log_aadt",
+          "beta": 0.22299351660951786,
+          "se": 0.14303930689129482,
+          "p": 0.11900426130330363,
+          "ci95_lo": -0.05735837548237191,
+          "ci95_hi": 0.5033454087014076
+        }
+      },
+      "b_raw_aadt": {
+        "label": "b_raw_aadt",
+        "predictors": "is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + max_aadt",
+        "insample": {
+          "formula": "ped_total ~ is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + max_aadt",
+          "target": "ped_total",
+          "predictors": "is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + max_aadt",
+          "ok": true,
+          "converged": true,
+          "best_method": "nm",
+          "optimizer_attempts": [
+            {
+              "method": "newton",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -347.26642651035866,
+              "se_finite": true
+            },
+            {
+              "method": "bfgs",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -347.26642651035866,
+              "se_finite": true
+            },
+            {
+              "method": "lbfgs",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -347.2664263240359,
+              "se_finite": true
+            },
+            {
+              "method": "nm",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -347.2664025537607,
+              "se_finite": true
+            }
+          ],
+          "any_method_diverged": false,
+          "llf": -347.2664025537607,
+          "aic": 718.5328051075214,
+          "bic": 764.6900704082141,
+          "n_params": 12,
+          "n_obs": 346,
+          "alpha": 0.30716105437726604,
+          "params": {
+            "Intercept": -0.6895283289885732,
+            "C(legs_cat, Treatment(reference=4))[T.2]": -0.7437187168761458,
+            "C(legs_cat, Treatment(reference=4))[T.3]": -1.7070374632331804,
+            "C(legs_cat, Treatment(reference=4))[T.5]": -0.4288453070884441,
+            "C(arterial_class)[T.2]": 0.512363117857279,
+            "C(arterial_class)[T.3]": -0.07199928847751925,
+            "C(arterial_class)[T.5]": 0.8063984474559406,
+            "is_signalized": 1.1165809865511138,
+            "max_speed_limit": -0.07780276031204719,
+            "bike_facility": -0.630069309222882,
+            "max_aadt": 1.2858903723750962e-05
+          },
+          "bse": {
+            "Intercept": 2.6652149175014577,
+            "C(legs_cat, Treatment(reference=4))[T.2]": 0.3226595297216108,
+            "C(legs_cat, Treatment(reference=4))[T.3]": 0.25477202454766523,
+            "C(legs_cat, Treatment(reference=4))[T.5]": 0.3419987982287564,
+            "C(arterial_class)[T.2]": 0.21245827481737498,
+            "C(arterial_class)[T.3]": 0.2941729078764334,
+            "C(arterial_class)[T.5]": 0.7133668625004023,
+            "is_signalized": 0.15989678817310726,
+            "max_speed_limit": 0.10587953675540376,
+            "bike_facility": 0.21948574374774996,
+            "max_aadt": 1.4904397424246673e-05
+          },
+          "pvalues": {
+            "Intercept": 0.7958559408872403,
+            "C(legs_cat, Treatment(reference=4))[T.2]": 0.021168569457257303,
+            "C(legs_cat, Treatment(reference=4))[T.3]": 2.0805653314165428e-11,
+            "C(legs_cat, Treatment(reference=4))[T.5]": 0.20986452248707366,
+            "C(arterial_class)[T.2]": 0.01588295352974836,
+            "C(arterial_class)[T.3]": 0.8066487754870566,
+            "C(arterial_class)[T.5]": 0.25830266844853134,
+            "is_signalized": 2.8866312385051905e-12,
+            "max_speed_limit": 0.46244705911263706,
+            "bike_facility": 0.004096136914755691,
+            "max_aadt": 0.38826995975586065
+          },
+          "insample_mae": 0.6984336185231439,
+          "insample_rmse": 1.0495921352749695,
+          "sum_pred": 267.5226483426776,
+          "sum_actual": 266.0,
+          "naive_production_fit": {
+            "ok": true,
+            "method_used": "bfgs(200) retry",
+            "converged": false,
+            "llf": -404.250872123618,
+            "aic": 832.501744247236,
+            "bic": 878.6590095479287,
+            "would_pipeline_sys_exit": true
+          }
+        },
+        "cv_stratified": {
+          "stratified": true,
+          "seed": 0,
+          "n_splits": 5,
+          "fold_mae": [
+            0.672149314497442,
+            0.6680792741881283,
+            0.6598434376127711,
+            0.8513382595227256,
+            0.7242532836771483
+          ],
+          "fold_rmse": [
+            0.9912094881162441,
+            0.9125148576766746,
+            0.9894695997805841,
+            1.3364455002680313,
+            1.1179302859282434
+          ],
+          "fold_methods": [
+            "newton",
+            "newton",
+            "newton",
+            "newton",
+            "newton"
+          ],
+          "all_folds_converged": true,
+          "n_folds_converged": 5,
+          "n_folds_completed": 5,
+          "degenerate_columns": [],
+          "fold_errors": [],
+          "cv_mae_mean": 0.7151327138996431,
+          "cv_mae_sd": 0.08023970079818392,
+          "cv_rmse_mean": 1.0695139463539554,
+          "cv_rmse_sd": 0.16642114938951727,
+          "pooled_oof_mae": 0.715008484421602,
+          "pooled_oof_rmse": 1.0795769885321347,
+          "pooled_oof_spearman": 0.5597923887311951,
+          "pooled_oof_spearman_p": 6.29791929582223e-30,
+          "n_oof_rows": 346
+        },
+        "cv_kfold": {
+          "stratified": false,
+          "seed": 0,
+          "n_splits": 5,
+          "fold_mae": [
+            0.8044075877439243,
+            0.6620243130746979,
+            0.7766923421063763,
+            0.7429584030267545,
+            0.6619438144401817
+          ],
+          "fold_rmse": [
+            1.2769897695786345,
+            0.9603250088516466,
+            1.1915722961068256,
+            1.0769966605143437,
+            0.9980594083438029
+          ],
+          "fold_methods": [
+            "newton",
+            "newton",
+            "newton",
+            "newton",
+            "newton"
+          ],
+          "all_folds_converged": true,
+          "n_folds_converged": 5,
+          "n_folds_completed": 5,
+          "degenerate_columns": [],
+          "fold_errors": [],
+          "cv_mae_mean": 0.7296052920783869,
+          "cv_mae_sd": 0.06545254687262878,
+          "cv_rmse_mean": 1.1007886286790507,
+          "cv_rmse_sd": 0.13241780023924998,
+          "pooled_oof_mae": 0.7298214836843567,
+          "pooled_oof_rmse": 1.107670316476416,
+          "pooled_oof_spearman": 0.5362335701277681,
+          "pooled_oof_spearman_p": 3.758919237061223e-27,
+          "n_oof_rows": 346
+        },
+        "repeated_cv": {
+          "n_seeds_ok": 10,
+          "seeds": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "n_seeds_with_nonconverged_fold": 0,
+          "oof_mae_mean": 0.7250481000046619,
+          "oof_mae_sd": 0.011616160026372696,
+          "oof_rmse_mean": 1.0954482745477374,
+          "oof_rmse_sd": 0.01877754490357365,
+          "oof_spearman_mean": 0.5482222991485874,
+          "oof_spearman_sd": 0.01196780690482048,
+          "oof_mae_per_seed": [
+            0.715008484421602,
+            0.7051641358857453,
+            0.7307731796605167,
+            0.7360070958353115,
+            0.7129088064291053,
+            0.727176909688523,
+            0.7416050923399958,
+            0.724319892523619,
+            0.7212995181089924,
+            0.7362178851532082
+          ]
+        },
+        "volume_term": {
+          "name": "max_aadt",
+          "beta": 1.2858903723750962e-05,
+          "se": 1.4904397424246673e-05,
+          "p": 0.38826995975586065,
+          "ci95_lo": -1.6353178669465244e-05,
+          "ci95_hi": 4.207098611696717e-05
+        }
+      },
+      "c_sqrt_aadt": {
+        "label": "c_sqrt_aadt",
+        "predictors": "is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + sqrt_aadt",
+        "insample": {
+          "formula": "ped_total ~ is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + sqrt_aadt",
+          "target": "ped_total",
+          "predictors": "is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + sqrt_aadt",
+          "ok": true,
+          "converged": true,
+          "best_method": "nm",
+          "optimizer_attempts": [
+            {
+              "method": "newton",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -346.87524087597774,
+              "se_finite": true
+            },
+            {
+              "method": "bfgs",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -346.87524087597774,
+              "se_finite": true
+            },
+            {
+              "method": "lbfgs",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -346.8752413263,
+              "se_finite": true
+            },
+            {
+              "method": "nm",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -346.87521911543445,
+              "se_finite": true
+            }
+          ],
+          "any_method_diverged": false,
+          "llf": -346.87521911543445,
+          "aic": 717.7504382308689,
+          "bic": 763.9077035315615,
+          "n_params": 12,
+          "n_obs": 346,
+          "alpha": 0.30582787669310724,
+          "params": {
+            "Intercept": -0.969280004297598,
+            "C(legs_cat, Treatment(reference=4))[T.2]": -0.7416803778029801,
+            "C(legs_cat, Treatment(reference=4))[T.3]": -1.7072528831124831,
+            "C(legs_cat, Treatment(reference=4))[T.5]": -0.4022164416313984,
+            "C(arterial_class)[T.2]": 0.542367777432821,
+            "C(arterial_class)[T.3]": -0.02124485205105013,
+            "C(arterial_class)[T.5]": 0.8322572138924035,
+            "is_signalized": 1.103413322881886,
+            "max_speed_limit": -0.07709552912593014,
+            "bike_facility": -0.6296518493081511,
+            "sqrt_aadt": 0.003799605712101459
+          },
+          "bse": {
+            "Intercept": 2.6920647446520887,
+            "C(legs_cat, Treatment(reference=4))[T.2]": 0.3227081152114368,
+            "C(legs_cat, Treatment(reference=4))[T.3]": 0.25478072220422704,
+            "C(legs_cat, Treatment(reference=4))[T.5]": 0.3420184200897932,
+            "C(arterial_class)[T.2]": 0.21064713275351074,
+            "C(arterial_class)[T.3]": 0.29435068096445965,
+            "C(arterial_class)[T.5]": 0.7143443515047286,
+            "is_signalized": 0.1597490995445235,
+            "max_speed_limit": 0.10622973810628321,
+            "bike_facility": 0.2192684320429738,
+            "sqrt_aadt": 0.003082650980125843
+          },
+          "pvalues": {
+            "Intercept": 0.7188091614458828,
+            "C(legs_cat, Treatment(reference=4))[T.2]": 0.021544664659049757,
+            "C(legs_cat, Treatment(reference=4))[T.3]": 2.071801549240452e-11,
+            "C(legs_cat, Treatment(reference=4))[T.5]": 0.2395916284597741,
+            "C(arterial_class)[T.2]": 0.010030695691943738,
+            "C(arterial_class)[T.3]": 0.9424623925921484,
+            "C(arterial_class)[T.5]": 0.24399290277131125,
+            "is_signalized": 4.944361931413878e-12,
+            "max_speed_limit": 0.4679961032297787,
+            "bike_facility": 0.004083958920768148,
+            "sqrt_aadt": 0.21773349945522846
+          },
+          "insample_mae": 0.6971628185882458,
+          "insample_rmse": 1.0497410645917453,
+          "sum_pred": 267.62692221250893,
+          "sum_actual": 266.0,
+          "naive_production_fit": {
+            "ok": true,
+            "method_used": "bfgs(200) retry",
+            "converged": true,
+            "llf": -346.8752193211777,
+            "aic": 717.7504386423554,
+            "bic": 763.9077039430481,
+            "would_pipeline_sys_exit": false
+          }
+        },
+        "cv_stratified": {
+          "stratified": true,
+          "seed": 0,
+          "n_splits": 5,
+          "fold_mae": [
+            0.6678208333207292,
+            0.6679647726640455,
+            0.6600232844313947,
+            0.8526820193580945,
+            0.725242494698282
+          ],
+          "fold_rmse": [
+            0.9862537662965473,
+            0.9127451931571761,
+            0.9863702892844294,
+            1.3387578444174204,
+            1.1187609178015658
+          ],
+          "fold_methods": [
+            "bfgs",
+            "newton",
+            "newton",
+            "bfgs",
+            "newton"
+          ],
+          "all_folds_converged": true,
+          "n_folds_converged": 5,
+          "n_folds_completed": 5,
+          "degenerate_columns": [],
+          "fold_errors": [],
+          "cv_mae_mean": 0.7147466808945092,
+          "cv_mae_sd": 0.0814271943719168,
+          "cv_rmse_mean": 1.068577602191428,
+          "cv_rmse_sd": 0.16832611533283945,
+          "pooled_oof_mae": 0.7146110570575908,
+          "pooled_oof_rmse": 1.0788747003367762,
+          "pooled_oof_spearman": 0.56082273032713,
+          "pooled_oof_spearman_p": 4.7064825657979695e-30,
+          "n_oof_rows": 346
+        },
+        "cv_kfold": {
+          "stratified": false,
+          "seed": 0,
+          "n_splits": 5,
+          "fold_mae": [
+            0.8055086438431089,
+            0.6586834081844604,
+            0.7771638929831809,
+            0.7378084649520799,
+            0.6563392550120523
+          ],
+          "fold_rmse": [
+            1.2767544699974875,
+            0.9535336825165913,
+            1.1950991565008948,
+            1.0743849548868512,
+            0.990593732195338
+          ],
+          "fold_methods": [
+            "bfgs",
+            "bfgs",
+            "bfgs",
+            "lbfgs",
+            "newton"
+          ],
+          "all_folds_converged": true,
+          "n_folds_converged": 5,
+          "n_folds_completed": 5,
+          "degenerate_columns": [],
+          "fold_errors": [],
+          "cv_mae_mean": 0.7271007329949765,
+          "cv_mae_sd": 0.06792807426939532,
+          "cv_rmse_mean": 1.0980731992194326,
+          "cv_rmse_sd": 0.136332015272715,
+          "pooled_oof_mae": 0.7273273454540751,
+          "pooled_oof_rmse": 1.1053584573992155,
+          "pooled_oof_spearman": 0.5396575546808785,
+          "pooled_oof_spearman_p": 1.5314785450673192e-27,
+          "n_oof_rows": 346
+        },
+        "repeated_cv": {
+          "n_seeds_ok": 10,
+          "seeds": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "n_seeds_with_nonconverged_fold": 0,
+          "oof_mae_mean": 0.7233733718240158,
+          "oof_mae_sd": 0.010650715199259923,
+          "oof_rmse_mean": 1.0938322835192036,
+          "oof_rmse_sd": 0.017320678700265105,
+          "oof_spearman_mean": 0.5511037311636992,
+          "oof_spearman_sd": 0.011238560598079126,
+          "oof_mae_per_seed": [
+            0.7146110570575908,
+            0.7052034953789786,
+            0.7287662075920964,
+            0.7325757849308017,
+            0.7105344995671031,
+            0.7247901880691152,
+            0.7380912197177874,
+            0.7236158456459805,
+            0.721526761490425,
+            0.7340186587902793
+          ]
+        },
+        "volume_term": {
+          "name": "sqrt_aadt",
+          "beta": 0.003799605712101459,
+          "se": 0.003082650980125843,
+          "p": 0.21773349945522846,
+          "ci95_lo": -0.0022422792335099087,
+          "ci95_hi": 0.009841490657712827
+        }
+      },
+      "d_no_volume": {
+        "label": "d_no_volume",
+        "predictors": "is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class)",
+        "insample": {
+          "formula": "ped_total ~ is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class)",
+          "target": "ped_total",
+          "predictors": "is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class)",
+          "ok": true,
+          "converged": true,
+          "best_method": "nm",
+          "optimizer_attempts": [
+            {
+              "method": "newton",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -347.6354812647768,
+              "se_finite": true
+            },
+            {
+              "method": "bfgs",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -347.6354812647768,
+              "se_finite": true
+            },
+            {
+              "method": "lbfgs",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -347.6356289739942,
+              "se_finite": true
+            },
+            {
+              "method": "nm",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -347.6354812400649,
+              "se_finite": true
+            }
+          ],
+          "any_method_diverged": false,
+          "llf": -347.6354812400649,
+          "aic": 717.2709624801298,
+          "bic": 759.5817890057648,
+          "n_params": 11,
+          "n_obs": 346,
+          "alpha": 0.30932531958196346,
+          "params": {
+            "Intercept": -0.476232869121845,
+            "C(legs_cat, Treatment(reference=4))[T.2]": -0.7573741748086192,
+            "C(legs_cat, Treatment(reference=4))[T.3]": -1.7039263692748383,
+            "C(legs_cat, Treatment(reference=4))[T.5]": -0.43292554259333504,
+            "C(arterial_class)[T.2]": 0.4308570584428543,
+            "C(arterial_class)[T.3]": -0.18734556565969215,
+            "C(arterial_class)[T.5]": 0.7392481735983172,
+            "is_signalized": 1.146784286396797,
+            "max_speed_limit": -0.07876544129291915,
+            "bike_facility": -0.6191275308925881
+          },
+          "bse": {
+            "Intercept": 2.6322273760234305,
+            "C(legs_cat, Treatment(reference=4))[T.2]": 0.32203119771334027,
+            "C(legs_cat, Treatment(reference=4))[T.3]": 0.2547312401423533,
+            "C(legs_cat, Treatment(reference=4))[T.5]": 0.34355103174703927,
+            "C(arterial_class)[T.2]": 0.1900508718195479,
+            "C(arterial_class)[T.3]": 0.2621434359158928,
+            "C(arterial_class)[T.5]": 0.7063411173564479,
+            "is_signalized": 0.1563988893222728,
+            "max_speed_limit": 0.10500682143711283,
+            "bike_facility": 0.21904090432427561
+          },
+          "pvalues": {
+            "Intercept": 0.8564273010128987,
+            "C(legs_cat, Treatment(reference=4))[T.2]": 0.01867951057842301,
+            "C(legs_cat, Treatment(reference=4))[T.3]": 2.2452539062573508e-11,
+            "C(legs_cat, Treatment(reference=4))[T.5]": 0.20761556052706953,
+            "C(arterial_class)[T.2]": 0.023386454944451157,
+            "C(arterial_class)[T.3]": 0.4748141197883734,
+            "C(arterial_class)[T.5]": 0.2952896151363338,
+            "is_signalized": 2.2601245139326802e-13,
+            "max_speed_limit": 0.45319548585611524,
+            "bike_facility": 0.004705409956719708
+          },
+          "insample_mae": 0.7007132245870703,
+          "insample_rmse": 1.0500470682015413,
+          "sum_pred": 267.4916314568892,
+          "sum_actual": 266.0,
+          "naive_production_fit": {
+            "ok": true,
+            "method_used": "bfgs(200) retry",
+            "converged": true,
+            "llf": -347.63548133337395,
+            "aic": 717.2709626667479,
+            "bic": 759.5817891923829,
+            "would_pipeline_sys_exit": false
+          }
+        },
+        "cv_stratified": {
+          "stratified": true,
+          "seed": 0,
+          "n_splits": 5,
+          "fold_mae": [
+            0.6670794363125901,
+            0.669751748109458,
+            0.6607756615422306,
+            0.8542690652338492,
+            0.7183429049263843
+          ],
+          "fold_rmse": [
+            0.9611751674226027,
+            0.9183190566653703,
+            0.9926542193194331,
+            1.3298517068312923,
+            1.1162293434668238
+          ],
+          "fold_methods": [
+            "newton",
+            "newton",
+            "newton",
+            "newton",
+            "newton"
+          ],
+          "all_folds_converged": true,
+          "n_folds_converged": 5,
+          "n_folds_completed": 5,
+          "degenerate_columns": [],
+          "fold_errors": [],
+          "cv_mae_mean": 0.7140437632249025,
+          "cv_mae_sd": 0.0816800759136806,
+          "cv_rmse_mean": 1.0636458987411044,
+          "cv_rmse_sd": 0.1660500762360078,
+          "pooled_oof_mae": 0.7139080281760228,
+          "pooled_oof_rmse": 1.073656034815006,
+          "pooled_oof_spearman": 0.5532860778923726,
+          "pooled_oof_spearman_p": 3.8718321750940723e-29,
+          "n_oof_rows": 346
+        },
+        "cv_kfold": {
+          "stratified": false,
+          "seed": 0,
+          "n_splits": 5,
+          "fold_mae": [
+            0.8047136682063339,
+            0.6677216113100414,
+            0.7712493563212913,
+            0.7490747003439694,
+            0.6563751290696028
+          ],
+          "fold_rmse": [
+            1.280765486637783,
+            0.9670136067294389,
+            1.1822400472832137,
+            1.0805947466375279,
+            0.96523189298344
+          ],
+          "fold_methods": [
+            "newton",
+            "newton",
+            "newton",
+            "newton",
+            "newton"
+          ],
+          "all_folds_converged": true,
+          "n_folds_converged": 5,
+          "n_folds_completed": 5,
+          "degenerate_columns": [],
+          "fold_errors": [],
+          "cv_mae_mean": 0.7298268930502477,
+          "cv_mae_sd": 0.06508946783895646,
+          "cv_rmse_mean": 1.0951691560542807,
+          "cv_rmse_sd": 0.13742933510753924,
+          "pooled_oof_mae": 0.730043328816595,
+          "pooled_oof_rmse": 1.1026040693456445,
+          "pooled_oof_spearman": 0.5358133297980973,
+          "pooled_oof_spearman_p": 4.193893000894902e-27,
+          "n_oof_rows": 346
+        },
+        "repeated_cv": {
+          "n_seeds_ok": 10,
+          "seeds": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "n_seeds_with_nonconverged_fold": 0,
+          "oof_mae_mean": 0.7221630431451278,
+          "oof_mae_sd": 0.008746372891813153,
+          "oof_rmse_mean": 1.0855498588291363,
+          "oof_rmse_sd": 0.0133886128450324,
+          "oof_spearman_mean": 0.5510660568070203,
+          "oof_spearman_sd": 0.01154480566879144,
+          "oof_mae_per_seed": [
+            0.7139080281760228,
+            0.7042386160299899,
+            0.7240881805082053,
+            0.7287177498861598,
+            0.7136435132119189,
+            0.7266422312429495,
+            0.7325356336946961,
+            0.726946254846268,
+            0.7235057586926763,
+            0.7274044651623914
+          ]
+        }
+      }
+    },
+    "vehicle": {
+      "a_log_aadt": {
+        "label": "a_log_aadt",
+        "predictors": "is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + log_aadt",
+        "insample": {
+          "formula": "vehicle_only_total ~ is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + log_aadt",
+          "target": "vehicle_only_total",
+          "predictors": "is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + log_aadt",
+          "ok": true,
+          "converged": true,
+          "best_method": "newton",
+          "optimizer_attempts": [
+            {
+              "method": "newton",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -745.2022378801938,
+              "se_finite": true
+            },
+            {
+              "method": "bfgs",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -745.2022378801938,
+              "se_finite": true
+            },
+            {
+              "method": "lbfgs",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -745.2022452387234,
+              "se_finite": true
+            },
+            {
+              "method": "nm",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -745.2022378859444,
+              "se_finite": true
+            }
+          ],
+          "any_method_diverged": false,
+          "llf": -745.2022378801938,
+          "aic": 1514.4044757603876,
+          "bic": 1560.5617410610803,
+          "n_params": 12,
+          "n_obs": 346,
+          "alpha": 0.6585373973886571,
+          "params": {
+            "Intercept": -0.5477292802087248,
+            "C(legs_cat, Treatment(reference=4))[T.2]": -0.5456949365196234,
+            "C(legs_cat, Treatment(reference=4))[T.3]": -1.2626659421412756,
+            "C(legs_cat, Treatment(reference=4))[T.5]": 0.26334677662753203,
+            "C(arterial_class)[T.2]": 0.19589883412402112,
+            "C(arterial_class)[T.3]": 0.09924338894965003,
+            "C(arterial_class)[T.5]": 0.8674428101700878,
+            "is_signalized": 0.985009805093074,
+            "max_speed_limit": -0.09316392199008973,
+            "bike_facility": -0.30572068625729415,
+            "log_aadt": 0.22636731662017512
+          },
+          "bse": {
+            "Intercept": 1.7013120791321092,
+            "C(legs_cat, Treatment(reference=4))[T.2]": 0.23361875884745106,
+            "C(legs_cat, Treatment(reference=4))[T.3]": 0.145570698897645,
+            "C(legs_cat, Treatment(reference=4))[T.5]": 0.2659975929116639,
+            "C(arterial_class)[T.2]": 0.15415540931988914,
+            "C(arterial_class)[T.3]": 0.21169902475598493,
+            "C(arterial_class)[T.5]": 0.43211540110177993,
+            "is_signalized": 0.12167078916096018,
+            "max_speed_limit": 0.05372362764939436,
+            "bike_facility": 0.15182645772727132,
+            "log_aadt": 0.10659785109868776
+          },
+          "pvalues": {
+            "Intercept": 0.7474941998881779,
+            "C(legs_cat, Treatment(reference=4))[T.2]": 0.019499828662026934,
+            "C(legs_cat, Treatment(reference=4))[T.3]": 4.175605713938972e-18,
+            "C(legs_cat, Treatment(reference=4))[T.5]": 0.32215728811224675,
+            "C(arterial_class)[T.2]": 0.2038041024213304,
+            "C(arterial_class)[T.3]": 0.6392163611653021,
+            "C(arterial_class)[T.5]": 0.04470355480057869,
+            "is_signalized": 5.69375322504478e-16,
+            "max_speed_limit": 0.08289446632495076,
+            "bike_facility": 0.04404951803826988,
+            "log_aadt": 0.033706651861364276
+          },
+          "insample_mae": 2.7639186724199396,
+          "insample_rmse": 4.293653824469974,
+          "sum_pred": 1282.7834776127993,
+          "sum_actual": 1295.0,
+          "naive_production_fit": {
+            "ok": true,
+            "method_used": "bfgs(200) retry",
+            "converged": true,
+            "llf": -745.2022378610164,
+            "aic": 1514.4044757220329,
+            "bic": 1560.5617410227255,
+            "would_pipeline_sys_exit": false
+          }
+        },
+        "cv_stratified": {
+          "stratified": true,
+          "seed": 0,
+          "n_splits": 5,
+          "fold_mae": [
+            2.8637238046696765,
+            3.0010984344829934,
+            2.6437711166149387,
+            3.0490207870664134,
+            2.976702863345828
+          ],
+          "fold_rmse": [
+            4.459549721773649,
+            4.221526803079523,
+            3.7955199967171898,
+            5.664396940828928,
+            4.356255054881555
+          ],
+          "fold_methods": [
+            "newton",
+            "newton",
+            "newton",
+            "newton",
+            "newton"
+          ],
+          "all_folds_converged": true,
+          "n_folds_converged": 5,
+          "n_folds_completed": 5,
+          "degenerate_columns": [],
+          "fold_errors": [],
+          "cv_mae_mean": 2.90686340123597,
+          "cv_mae_sd": 0.16205330089512507,
+          "cv_rmse_mean": 4.499449703456168,
+          "cv_rmse_sd": 0.698562265006579,
+          "pooled_oof_mae": 2.9067387203210386,
+          "pooled_oof_rmse": 4.542386772710123,
+          "pooled_oof_spearman": 0.5800350711846641,
+          "pooled_oof_spearman_p": 1.701244099264827e-32,
+          "n_oof_rows": 346
+        },
+        "cv_kfold": {
+          "stratified": false,
+          "seed": 0,
+          "n_splits": 5,
+          "fold_mae": [
+            2.666553499984501,
+            2.8362897582715347,
+            3.046187990689362,
+            3.182617729283209,
+            2.702085607193425
+          ],
+          "fold_rmse": [
+            4.9691183203704705,
+            4.0059864085466925,
+            4.384177701596383,
+            4.786308401820337,
+            4.128491941203361
+          ],
+          "fold_methods": [
+            "newton",
+            "newton",
+            "newton",
+            "newton",
+            "newton"
+          ],
+          "all_folds_converged": true,
+          "n_folds_converged": 5,
+          "n_folds_completed": 5,
+          "degenerate_columns": [],
+          "fold_errors": [],
+          "cv_mae_mean": 2.8867469170844062,
+          "cv_mae_sd": 0.22253755786593263,
+          "cv_rmse_mean": 4.454816554707448,
+          "cv_rmse_sd": 0.41452359761434,
+          "pooled_oof_mae": 2.886110519925158,
+          "pooled_oof_rmse": 4.471740715820745,
+          "pooled_oof_spearman": 0.579463476261628,
+          "pooled_oof_spearman_p": 2.021899111035315e-32,
+          "n_oof_rows": 346
+        },
+        "repeated_cv": {
+          "n_seeds_ok": 10,
+          "seeds": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "n_seeds_with_nonconverged_fold": 0,
+          "oof_mae_mean": 2.8945541130635113,
+          "oof_mae_sd": 0.01982830347386318,
+          "oof_rmse_mean": 4.506925715306834,
+          "oof_rmse_sd": 0.040943709140496214,
+          "oof_spearman_mean": 0.574777194251791,
+          "oof_spearman_sd": 0.005746970828471792,
+          "oof_mae_per_seed": [
+            2.9067387203210386,
+            2.927903396220223,
+            2.8905119699337196,
+            2.8690753018676145,
+            2.875510398756389,
+            2.8905633210209434,
+            2.9058827673903713,
+            2.9134609053115477,
+            2.867479955032355,
+            2.898414394780911
+          ]
+        },
+        "volume_term": {
+          "name": "log_aadt",
+          "beta": 0.22636731662017512,
+          "se": 0.10659785109868776,
+          "p": 0.033706651861364276,
+          "ci95_lo": 0.017439365989386668,
+          "ci95_hi": 0.43529526725096357
+        }
+      },
+      "b_raw_aadt": {
+        "label": "b_raw_aadt",
+        "predictors": "is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + max_aadt",
+        "insample": {
+          "formula": "vehicle_only_total ~ is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + max_aadt",
+          "target": "vehicle_only_total",
+          "predictors": "is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + max_aadt",
+          "ok": true,
+          "converged": true,
+          "best_method": "newton",
+          "optimizer_attempts": [
+            {
+              "method": "newton",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -745.8095343002132,
+              "se_finite": true
+            },
+            {
+              "method": "bfgs",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -745.8095343002132,
+              "se_finite": true
+            },
+            {
+              "method": "lbfgs",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -745.8095399579889,
+              "se_finite": true
+            },
+            {
+              "method": "nm",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -745.8164738338769,
+              "se_finite": true
+            }
+          ],
+          "any_method_diverged": false,
+          "llf": -745.8095343002132,
+          "aic": 1515.6190686004263,
+          "bic": 1561.776333901119,
+          "n_params": 12,
+          "n_obs": 346,
+          "alpha": 0.6594998563726732,
+          "params": {
+            "Intercept": 1.3496857360852255,
+            "C(legs_cat, Treatment(reference=4))[T.2]": -0.5351011841829585,
+            "C(legs_cat, Treatment(reference=4))[T.3]": -1.2642316190528415,
+            "C(legs_cat, Treatment(reference=4))[T.5]": 0.19219379293002709,
+            "C(arterial_class)[T.2]": 0.18454987315783966,
+            "C(arterial_class)[T.3]": 0.05601817659403754,
+            "C(arterial_class)[T.5]": 0.8577109685428752,
+            "is_signalized": 0.9877031060520451,
+            "max_speed_limit": -0.09438040478736466,
+            "bike_facility": -0.32111818063325515,
+            "max_aadt": 1.9821957451031258e-05
+          },
+          "bse": {
+            "Intercept": 1.366905171578459,
+            "C(legs_cat, Treatment(reference=4))[T.2]": 0.2341659142409605,
+            "C(legs_cat, Treatment(reference=4))[T.3]": 0.14552137368937781,
+            "C(legs_cat, Treatment(reference=4))[T.5]": 0.26819715590285015,
+            "C(arterial_class)[T.2]": 0.15570343645581863,
+            "C(arterial_class)[T.3]": 0.20869746061816674,
+            "C(arterial_class)[T.5]": 0.43225826947201307,
+            "is_signalized": 0.12269432867451399,
+            "max_speed_limit": 0.05389592061425159,
+            "bike_facility": 0.15259729387152826,
+            "max_aadt": 1.1097924928426137e-05
+          },
+          "pvalues": {
+            "Intercept": 0.32344530464086974,
+            "C(legs_cat, Treatment(reference=4))[T.2]": 0.022304798515065425,
+            "C(legs_cat, Treatment(reference=4))[T.3]": 3.701735515354543e-18,
+            "C(legs_cat, Treatment(reference=4))[T.5]": 0.47361240430170937,
+            "C(arterial_class)[T.2]": 0.23591258683754057,
+            "C(arterial_class)[T.3]": 0.7883775060290106,
+            "C(arterial_class)[T.5]": 0.047227333361838174,
+            "is_signalized": 8.271820285892815e-16,
+            "max_speed_limit": 0.0799182753177871,
+            "bike_facility": 0.03534789023031387,
+            "max_aadt": 0.07408374302160868
+          },
+          "insample_mae": 2.758463575000333,
+          "insample_rmse": 4.272516628384715,
+          "sum_pred": 1280.1531971360744,
+          "sum_actual": 1295.0,
+          "naive_production_fit": {
+            "ok": true,
+            "method_used": "bfgs(200) retry",
+            "converged": true,
+            "llf": -745.80953426204,
+            "aic": 1515.61906852408,
+            "bic": 1561.7763338247726,
+            "would_pipeline_sys_exit": false
+          }
+        },
+        "cv_stratified": {
+          "stratified": true,
+          "seed": 0,
+          "n_splits": 5,
+          "fold_mae": [
+            2.882309795284465,
+            2.9816560455205163,
+            2.6506404452468817,
+            3.091842412770624,
+            2.957778829859434
+          ],
+          "fold_rmse": [
+            4.4712014812531224,
+            4.138269271691135,
+            3.838447699195521,
+            5.773315445042129,
+            4.348469019980207
+          ],
+          "fold_methods": [
+            "newton",
+            "newton",
+            "newton",
+            "newton",
+            "newton"
+          ],
+          "all_folds_converged": true,
+          "n_folds_converged": 5,
+          "n_folds_completed": 5,
+          "degenerate_columns": [],
+          "fold_errors": [],
+          "cv_mae_mean": 2.9128455057363842,
+          "cv_mae_sd": 0.1646797726567095,
+          "cv_rmse_mean": 4.513940583432423,
+          "cv_rmse_sd": 0.7437492995527774,
+          "pooled_oof_mae": 2.9127572522379683,
+          "pooled_oof_rmse": 4.562433686327514,
+          "pooled_oof_spearman": 0.5779782029764428,
+          "pooled_oof_spearman_p": 3.161827347334537e-32,
+          "n_oof_rows": 346
+        },
+        "cv_kfold": {
+          "stratified": false,
+          "seed": 0,
+          "n_splits": 5,
+          "fold_mae": [
+            2.650396059816355,
+            2.8585335280613307,
+            3.0253423788221534,
+            3.223717930137381,
+            2.659233650641312
+          ],
+          "fold_rmse": [
+            4.94090252194696,
+            4.040271609515331,
+            4.36046976472966,
+            4.799626117373344,
+            4.011004110273118
+          ],
+          "fold_methods": [
+            "newton",
+            "newton",
+            "newton",
+            "newton",
+            "newton"
+          ],
+          "all_folds_converged": true,
+          "n_folds_converged": 5,
+          "n_folds_completed": 5,
+          "degenerate_columns": [],
+          "fold_errors": [],
+          "cv_mae_mean": 2.8834447094957065,
+          "cv_mae_sd": 0.2455217160642667,
+          "cv_rmse_mean": 4.430454824767682,
+          "cv_rmse_sd": 0.4271779625703293,
+          "pooled_oof_mae": 2.8827711584850726,
+          "pooled_oof_rmse": 4.448406258476974,
+          "pooled_oof_spearman": 0.5736426383227721,
+          "pooled_oof_spearman_p": 1.1511195978506679e-31,
+          "n_oof_rows": 346
+        },
+        "repeated_cv": {
+          "n_seeds_ok": 10,
+          "seeds": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "n_seeds_with_nonconverged_fold": 0,
+          "oof_mae_mean": 2.8950920420116995,
+          "oof_mae_sd": 0.024095393145464963,
+          "oof_rmse_mean": 4.501323036040139,
+          "oof_rmse_sd": 0.047589201761523856,
+          "oof_spearman_mean": 0.5704533481181047,
+          "oof_spearman_sd": 0.0048999035099159954,
+          "oof_mae_per_seed": [
+            2.9127572522379683,
+            2.9362286541586844,
+            2.873358327529952,
+            2.8610288607323597,
+            2.888469521920896,
+            2.8843915412511594,
+            2.9113443107399166,
+            2.9061474075342755,
+            2.866696625293869,
+            2.9104979187179127
+          ]
+        },
+        "volume_term": {
+          "name": "max_aadt",
+          "beta": 1.9821957451031258e-05,
+          "se": 1.1097924928426137e-05,
+          "p": 0.07408374302160868,
+          "ci95_lo": -1.9295758833865486e-06,
+          "ci95_hi": 4.157349078544907e-05
+        }
+      },
+      "c_sqrt_aadt": {
+        "label": "c_sqrt_aadt",
+        "predictors": "is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + sqrt_aadt",
+        "insample": {
+          "formula": "vehicle_only_total ~ is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + sqrt_aadt",
+          "target": "vehicle_only_total",
+          "predictors": "is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + sqrt_aadt",
+          "ok": true,
+          "converged": true,
+          "best_method": "newton",
+          "optimizer_attempts": [
+            {
+              "method": "newton",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -745.5163812736168,
+              "se_finite": true
+            },
+            {
+              "method": "bfgs",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -745.5163812736168,
+              "se_finite": true
+            },
+            {
+              "method": "lbfgs",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -745.5163826430531,
+              "se_finite": true
+            },
+            {
+              "method": "nm",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -745.5163813168326,
+              "se_finite": true
+            }
+          ],
+          "any_method_diverged": false,
+          "llf": -745.5163812736168,
+          "aic": 1515.0327625472337,
+          "bic": 1561.1900278479263,
+          "n_params": 12,
+          "n_obs": 346,
+          "alpha": 0.658938549066412,
+          "params": {
+            "Intercept": 1.082811813652948,
+            "C(legs_cat, Treatment(reference=4))[T.2]": -0.537229081420843,
+            "C(legs_cat, Treatment(reference=4))[T.3]": -1.2634305048663266,
+            "C(legs_cat, Treatment(reference=4))[T.5]": 0.22726856760563416,
+            "C(arterial_class)[T.2]": 0.1955833388193318,
+            "C(arterial_class)[T.3]": 0.08384506936114582,
+            "C(arterial_class)[T.5]": 0.8618443807287386,
+            "is_signalized": 0.983532705993926,
+            "max_speed_limit": -0.09368515394866414,
+            "bike_facility": -0.3150563733341509,
+            "sqrt_aadt": 0.004532207450696497
+          },
+          "bse": {
+            "Intercept": 1.3855893512205033,
+            "C(legs_cat, Treatment(reference=4))[T.2]": 0.23395165032972728,
+            "C(legs_cat, Treatment(reference=4))[T.3]": 0.14554357340425342,
+            "C(legs_cat, Treatment(reference=4))[T.5]": 0.2664182472798713,
+            "C(arterial_class)[T.2]": 0.1558395750517048,
+            "C(arterial_class)[T.3]": 0.21173570479372328,
+            "C(arterial_class)[T.5]": 0.4321315856340947,
+            "is_signalized": 0.12247332555696985,
+            "max_speed_limit": 0.05384797419290853,
+            "bike_facility": 0.15217853264434936,
+            "sqrt_aadt": 0.002315207922512647
+          },
+          "pvalues": {
+            "Intercept": 0.4345196210479122,
+            "C(legs_cat, Treatment(reference=4))[T.2]": 0.021657291545571025,
+            "C(legs_cat, Treatment(reference=4))[T.3]": 3.9309315920777265e-18,
+            "C(legs_cat, Treatment(reference=4))[T.5]": 0.39363057447643,
+            "C(arterial_class)[T.2]": 0.20946787676436696,
+            "C(arterial_class)[T.3]": 0.6921129362884912,
+            "C(arterial_class)[T.5]": 0.04610806885443339,
+            "is_signalized": 9.700733141104031e-16,
+            "max_speed_limit": 0.08189267966099562,
+            "bike_facility": 0.038423547943081234,
+            "sqrt_aadt": 0.05027917780750933
+          },
+          "insample_mae": 2.7622443086320416,
+          "insample_rmse": 4.281299307967943,
+          "sum_pred": 1281.2560774873405,
+          "sum_actual": 1295.0,
+          "naive_production_fit": {
+            "ok": true,
+            "method_used": "bfgs(200) retry",
+            "converged": true,
+            "llf": -745.5163812606402,
+            "aic": 1515.0327625212803,
+            "bic": 1561.190027821973,
+            "would_pipeline_sys_exit": false
+          }
+        },
+        "cv_stratified": {
+          "stratified": true,
+          "seed": 0,
+          "n_splits": 5,
+          "fold_mae": [
+            2.8763564278483944,
+            3.011736359077107,
+            2.6517684376907793,
+            3.065807681869515,
+            2.9641268329731805
+          ],
+          "fold_rmse": [
+            4.46699455499498,
+            4.194959334368875,
+            3.8178600234657756,
+            5.700640269818794,
+            4.349416574033554
+          ],
+          "fold_methods": [
+            "newton",
+            "newton",
+            "newton",
+            "lbfgs",
+            "newton"
+          ],
+          "all_folds_converged": true,
+          "n_folds_converged": 5,
+          "n_folds_completed": 5,
+          "degenerate_columns": [],
+          "fold_errors": [],
+          "cv_mae_mean": 2.9139591478917954,
+          "cv_mae_sd": 0.16224448372376205,
+          "cv_rmse_mean": 4.505974151336396,
+          "cv_rmse_sd": 0.7112468080666793,
+          "pooled_oof_mae": 2.913850469510167,
+          "pooled_oof_rmse": 4.550419777224516,
+          "pooled_oof_spearman": 0.5785813315222087,
+          "pooled_oof_spearman_p": 2.637589065441749e-32,
+          "n_oof_rows": 346
+        },
+        "cv_kfold": {
+          "stratified": false,
+          "seed": 0,
+          "n_splits": 5,
+          "fold_mae": [
+            2.660562059665866,
+            2.850661236799425,
+            3.0390563769145373,
+            3.1999069644709603,
+            2.686617477156723
+          ],
+          "fold_rmse": [
+            4.942900409801149,
+            4.0274582815198645,
+            4.372105319088865,
+            4.786415723143347,
+            4.076458819050243
+          ],
+          "fold_methods": [
+            "newton",
+            "newton",
+            "newton",
+            "newton",
+            "newton"
+          ],
+          "all_folds_converged": true,
+          "n_folds_converged": 5,
+          "n_folds_completed": 5,
+          "degenerate_columns": [],
+          "fold_errors": [],
+          "cv_mae_mean": 2.887360823001502,
+          "cv_mae_sd": 0.23118123907627283,
+          "cv_rmse_mean": 4.441067710520694,
+          "cv_rmse_sd": 0.4122710039583259,
+          "pooled_oof_mae": 2.8867053352461967,
+          "pooled_oof_rmse": 4.457832845518179,
+          "pooled_oof_spearman": 0.5783477470748022,
+          "pooled_oof_spearman_p": 2.82955462605815e-32,
+          "n_oof_rows": 346
+        },
+        "repeated_cv": {
+          "n_seeds_ok": 10,
+          "seeds": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "n_seeds_with_nonconverged_fold": 0,
+          "oof_mae_mean": 2.8964210926800176,
+          "oof_mae_sd": 0.021933231868867854,
+          "oof_rmse_mean": 4.5024315539577175,
+          "oof_rmse_sd": 0.0445695773687791,
+          "oof_spearman_mean": 0.5724992965113567,
+          "oof_spearman_sd": 0.005344832633458281,
+          "oof_mae_per_seed": [
+            2.913850469510167,
+            2.9330853261582197,
+            2.8831936204601765,
+            2.8651776264442392,
+            2.8820363234079327,
+            2.889613499357332,
+            2.9089633249186115,
+            2.9130763061344074,
+            2.8690722073270756,
+            2.9061422230820164
+          ]
+        },
+        "volume_term": {
+          "name": "sqrt_aadt",
+          "beta": 0.004532207450696497,
+          "se": 0.002315207922512647,
+          "p": 0.05027917780750933,
+          "ci95_lo": -5.516729943080487e-06,
+          "ci95_hi": 0.009069931631336075
+        }
+      },
+      "d_no_volume": {
+        "label": "d_no_volume",
+        "predictors": "is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class)",
+        "insample": {
+          "formula": "vehicle_only_total ~ is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class)",
+          "target": "vehicle_only_total",
+          "predictors": "is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class)",
+          "ok": true,
+          "converged": true,
+          "best_method": "newton",
+          "optimizer_attempts": [
+            {
+              "method": "newton",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -747.4278859967546,
+              "se_finite": true
+            },
+            {
+              "method": "bfgs",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -747.4278859967546,
+              "se_finite": true
+            },
+            {
+              "method": "lbfgs",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -747.4278860554963,
+              "se_finite": true
+            },
+            {
+              "method": "nm",
+              "converged": true,
+              "flagged_by_statsmodels": false,
+              "llf": -747.668358289278,
+              "se_finite": true
+            }
+          ],
+          "any_method_diverged": false,
+          "llf": -747.4278859967546,
+          "aic": 1516.8557719935093,
+          "bic": 1559.1665985191441,
+          "n_params": 11,
+          "n_obs": 346,
+          "alpha": 0.6750014471065082,
+          "params": {
+            "Intercept": 1.6683259785967488,
+            "C(legs_cat, Treatment(reference=4))[T.2]": -0.5737910273446254,
+            "C(legs_cat, Treatment(reference=4))[T.3]": -1.261956131080696,
+            "C(legs_cat, Treatment(reference=4))[T.5]": 0.2635600199158123,
+            "C(arterial_class)[T.2]": 0.08199397803435199,
+            "C(arterial_class)[T.3]": -0.1163897924653415,
+            "C(arterial_class)[T.5]": 0.776439750890288,
+            "is_signalized": 1.0491363183889335,
+            "max_speed_limit": -0.09646416527102245,
+            "bike_facility": -0.2859560286580512
+          },
+          "bse": {
+            "Intercept": 1.3648565200419498,
+            "C(legs_cat, Treatment(reference=4))[T.2]": 0.23504737646025328,
+            "C(legs_cat, Treatment(reference=4))[T.3]": 0.1460827792061905,
+            "C(legs_cat, Treatment(reference=4))[T.5]": 0.2675859095190068,
+            "C(arterial_class)[T.2]": 0.14523501262967015,
+            "C(arterial_class)[T.3]": 0.1861786383601951,
+            "C(arterial_class)[T.5]": 0.43453748015602023,
+            "is_signalized": 0.11910236123498989,
+            "max_speed_limit": 0.05425654856384874,
+            "bike_facility": 0.15183978592155986
+          },
+          "pvalues": {
+            "Intercept": 0.221577068051788,
+            "C(legs_cat, Treatment(reference=4))[T.2]": 0.014639688384493177,
+            "C(legs_cat, Treatment(reference=4))[T.3]": 5.688751195321854e-18,
+            "C(legs_cat, Treatment(reference=4))[T.5]": 0.32464628485556757,
+            "C(arterial_class)[T.2]": 0.5723726135807352,
+            "C(arterial_class)[T.3]": 0.5318718505965723,
+            "C(arterial_class)[T.5]": 0.07396677529841661,
+            "is_signalized": 1.2661168869067368e-18,
+            "max_speed_limit": 0.07541589762293212,
+            "bike_facility": 0.0596631490069553
+          },
+          "insample_mae": 2.7889223576272184,
+          "insample_rmse": 4.37716189979934,
+          "sum_pred": 1288.0061860674018,
+          "sum_actual": 1295.0,
+          "naive_production_fit": {
+            "ok": true,
+            "method_used": "bfgs(200) retry",
+            "converged": true,
+            "llf": -747.4278860147874,
+            "aic": 1516.8557720295748,
+            "bic": 1559.1665985552097,
+            "would_pipeline_sys_exit": false
+          }
+        },
+        "cv_stratified": {
+          "stratified": true,
+          "seed": 0,
+          "n_splits": 5,
+          "fold_mae": [
+            2.9233400556279756,
+            2.831303527159705,
+            2.5866092153753555,
+            3.1244996552818436,
+            2.9731355575531353
+          ],
+          "fold_rmse": [
+            4.4835224432132295,
+            4.108945744772516,
+            3.7599369457152454,
+            5.875790491459619,
+            4.386269445210495
+          ],
+          "fold_methods": [
+            "newton",
+            "newton",
+            "newton",
+            "newton",
+            "newton"
+          ],
+          "all_folds_converged": true,
+          "n_folds_converged": 5,
+          "n_folds_completed": 5,
+          "degenerate_columns": [],
+          "fold_errors": [],
+          "cv_mae_mean": 2.887777602199603,
+          "cv_mae_sd": 0.1990475555146204,
+          "cv_rmse_mean": 4.522893014074221,
+          "cv_rmse_sd": 0.8068460091217653,
+          "pooled_oof_mae": 2.8878803838569103,
+          "pooled_oof_rmse": 4.579828771830695,
+          "pooled_oof_spearman": 0.5793093224453454,
+          "pooled_oof_spearman_p": 2.1181616659617712e-32,
+          "n_oof_rows": 346
+        },
+        "cv_kfold": {
+          "stratified": false,
+          "seed": 0,
+          "n_splits": 5,
+          "fold_mae": [
+            2.6602916891230555,
+            2.9546489262356874,
+            3.0088109352068484,
+            3.2156576320260655,
+            2.7884505535695947
+          ],
+          "fold_rmse": [
+            5.119951717222029,
+            4.253300325803044,
+            4.346129597280332,
+            4.792622110154184,
+            4.3238406656966415
+          ],
+          "fold_methods": [
+            "newton",
+            "newton",
+            "newton",
+            "newton",
+            "newton"
+          ],
+          "all_folds_converged": true,
+          "n_folds_converged": 5,
+          "n_folds_completed": 5,
+          "degenerate_columns": [],
+          "fold_errors": [],
+          "cv_mae_mean": 2.92557194723225,
+          "cv_mae_sd": 0.21277910863837662,
+          "cv_rmse_mean": 4.567168883231245,
+          "cv_rmse_sd": 0.37515945870028555,
+          "pooled_oof_mae": 2.9248052412839582,
+          "pooled_oof_rmse": 4.5811328726442255,
+          "pooled_oof_spearman": 0.5718613973050899,
+          "pooled_oof_spearman_p": 1.946587201895704e-31,
+          "n_oof_rows": 346
+        },
+        "repeated_cv": {
+          "n_seeds_ok": 10,
+          "seeds": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "n_seeds_with_nonconverged_fold": 0,
+          "oof_mae_mean": 2.8959752280761655,
+          "oof_mae_sd": 0.027578229902864144,
+          "oof_rmse_mean": 4.55488699041835,
+          "oof_rmse_sd": 0.04974959445137879,
+          "oof_spearman_mean": 0.5707416610424426,
+          "oof_spearman_sd": 0.007387902212366719,
+          "oof_mae_per_seed": [
+            2.8878803838569103,
+            2.913426516716298,
+            2.8803339074016994,
+            2.8951106833922666,
+            2.905804382667628,
+            2.8834615101563745,
+            2.9574947909104705,
+            2.908196825858614,
+            2.8636586807596394,
+            2.8643845990417556
+          ]
+        }
+      }
+    }
+  }
+}

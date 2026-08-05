@@ -1,0 +1,2950 @@
+{
+  "experiment": "E4 pooled all-crash + share scaling vs three per-mode NB models",
+  "run_at": "2026-08-05T05:15:39Z",
+  "env": {
+    "python": "3.13.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3"
+  },
+  "n_sites": 346,
+  "counts": {
+    "total_crashes": 1720,
+    "bike_total": 169,
+    "ped_total": 266,
+    "vehicle_only_total": 1295,
+    "bike_ksi_total": 16,
+    "ped_ksi_total": 32,
+    "vehicle_only_ksi_total": 25,
+    "ksi_total": 71,
+    "sum_of_three_mode_targets": 1730,
+    "mode_sum_minus_total": 10,
+    "sum_of_three_mode_ksi": 73,
+    "mode_ksi_sum_minus_ksi_total": 2
+  },
+  "formulas": {
+    "pooled_arm1": "total_crashes ~ is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + log_aadt",
+    "pooled_v2_legs_sensitivity": "total_crashes ~ is_signalized + num_legs + max_speed_limit + bike_facility + C(arterial_class) + log_aadt",
+    "permode_bike": "bike_total ~ is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + log_bike_centrality",
+    "permode_ped": "ped_total ~ is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + log_aadt",
+    "permode_vehicle": "vehicle_only_total ~ is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + log_aadt"
+  },
+  "fits": {
+    "pooled": {
+      "tag": "pooled_total_crashes_full",
+      "formula": "total_crashes ~ is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + log_aadt",
+      "n_rows": 346,
+      "method": "bfgs",
+      "converged": true,
+      "attempts": [
+        {
+          "method": "newton (statsmodels default)",
+          "raised": false,
+          "mle_converged": false,
+          "convergence_warnings": [
+            "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+          ],
+          "iterations": -1
+        },
+        {
+          "method": "bfgs maxiter=200",
+          "raised": false,
+          "mle_converged": true,
+          "convergence_warnings": [],
+          "iterations": -1
+        }
+      ],
+      "retry_used": true,
+      "error": null,
+      "converged_under_production_ladder": true,
+      "rescued_by_out_of_production_method": false,
+      "llf": -810.9986669086156,
+      "aic": 1645.9973338172313,
+      "bic": 1692.154599117924,
+      "alpha": 0.49724482237751094,
+      "n_params_incl_alpha": 12,
+      "df_model": 10
+    },
+    "permode_bike": {
+      "tag": "permode_bike_full",
+      "formula": "bike_total ~ is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + log_bike_centrality",
+      "n_rows": 346,
+      "method": "bfgs",
+      "converged": true,
+      "attempts": [
+        {
+          "method": "newton (statsmodels default)",
+          "raised": false,
+          "mle_converged": false,
+          "convergence_warnings": [
+            "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+          ],
+          "iterations": -1
+        },
+        {
+          "method": "bfgs maxiter=200",
+          "raised": false,
+          "mle_converged": true,
+          "convergence_warnings": [],
+          "iterations": -1
+        }
+      ],
+      "retry_used": true,
+      "error": null,
+      "converged_under_production_ladder": true,
+      "rescued_by_out_of_production_method": false,
+      "llf": -275.6564470776231,
+      "aic": 575.3128941552462,
+      "bic": 621.470159455939,
+      "alpha": 1.2381950605728138,
+      "n_params_incl_alpha": 12,
+      "df_model": 10
+    },
+    "permode_ped": {
+      "tag": "permode_ped_full",
+      "formula": "ped_total ~ is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + log_aadt",
+      "n_rows": 346,
+      "method": "bfgs",
+      "converged": true,
+      "attempts": [
+        {
+          "method": "newton (statsmodels default)",
+          "raised": false,
+          "mle_converged": false,
+          "convergence_warnings": [
+            "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+          ],
+          "iterations": -1
+        },
+        {
+          "method": "bfgs maxiter=200",
+          "raised": false,
+          "mle_converged": true,
+          "convergence_warnings": [],
+          "iterations": -1
+        }
+      ],
+      "retry_used": true,
+      "error": null,
+      "converged_under_production_ladder": true,
+      "rescued_by_out_of_production_method": false,
+      "llf": -346.4017044344532,
+      "aic": 716.8034088689064,
+      "bic": 762.9606741695991,
+      "alpha": 0.3049278342239912,
+      "n_params_incl_alpha": 12,
+      "df_model": 10
+    },
+    "permode_vehicle": {
+      "tag": "permode_vehicle_full",
+      "formula": "vehicle_only_total ~ is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + log_aadt",
+      "n_rows": 346,
+      "method": "bfgs",
+      "converged": true,
+      "attempts": [
+        {
+          "method": "newton (statsmodels default)",
+          "raised": false,
+          "mle_converged": false,
+          "convergence_warnings": [
+            "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+          ],
+          "iterations": -1
+        },
+        {
+          "method": "bfgs maxiter=200",
+          "raised": false,
+          "mle_converged": true,
+          "convergence_warnings": [],
+          "iterations": -1
+        }
+      ],
+      "retry_used": true,
+      "error": null,
+      "converged_under_production_ladder": true,
+      "rescued_by_out_of_production_method": false,
+      "llf": -745.2022378610164,
+      "aic": 1514.4044757220329,
+      "bic": 1560.5617410227255,
+      "alpha": 0.6585386174605015,
+      "n_params_incl_alpha": 12,
+      "df_model": 10
+    },
+    "pooled_v2_legs_sensitivity": {
+      "tag": "pooled_v2_legs_sensitivity_full",
+      "formula": "total_crashes ~ is_signalized + num_legs + max_speed_limit + bike_facility + C(arterial_class) + log_aadt",
+      "n_rows": 346,
+      "method": "bfgs",
+      "converged": true,
+      "attempts": [
+        {
+          "method": "newton (statsmodels default)",
+          "raised": false,
+          "mle_converged": false,
+          "convergence_warnings": [
+            "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+          ],
+          "iterations": -1
+        },
+        {
+          "method": "bfgs maxiter=200",
+          "raised": false,
+          "mle_converged": true,
+          "convergence_warnings": [],
+          "iterations": -1
+        }
+      ],
+      "retry_used": true,
+      "error": null,
+      "converged_under_production_ladder": true,
+      "rescued_by_out_of_production_method": false,
+      "llf": -835.036032497987,
+      "aic": 1690.072064995974,
+      "bic": 1728.5364527465513,
+      "alpha": 0.6401147207668648,
+      "n_params_incl_alpha": 10,
+      "df_model": 8
+    }
+  },
+  "sanity": {
+    "max_abs_predict_minus_exp_linpred_plus_offset": 0.0,
+    "max_abs_predict_minus_manual_Xbeta_offset": 0.0,
+    "note": "fittedvalues on a statsmodels discrete NB is the linear predictor WITHOUT the offset; predict(df, offset=...) is on the response scale."
+  },
+  "part_A_in_sample": {
+    "bike": {
+      "arm1_pooled_scaled": {
+        "mae": 0.592858870329381,
+        "rmse": 1.0618974676518018,
+        "spearman": 0.4251824805678798,
+        "sum_pred": 167.59521130355233,
+        "sum_actual": 169.0,
+        "calibration_pct": -0.8312359150577915,
+        "share_used": 0.09825581395348837,
+        "alpha_borrowed_pooled": 0.49724482237751094,
+        "alpha_refit_given_mu": 1.3889572895650169,
+        "nb_logscore_alpha_borrowed": -0.8233762776882546,
+        "nb_logscore_alpha_refit": -0.8057467904763688,
+        "coverage90_alpha_borrowed": 95.37572254335261,
+        "coverage90_alpha_refit": 97.10982658959537
+      },
+      "arm2_permode": {
+        "mae": 0.5773510967191097,
+        "rmse": 1.0457866554298887,
+        "spearman": 0.4254217079590119,
+        "sum_pred": 166.68516751458472,
+        "sum_actual": 169.0,
+        "calibration_pct": -1.3697233641510536,
+        "alpha": 1.2381950605728138,
+        "nb_logscore": -0.7966949337503558,
+        "coverage90": 96.53179190751445
+      }
+    },
+    "ped": {
+      "arm1_pooled_scaled": {
+        "mae": 0.7161235859168926,
+        "rmse": 1.06447649601313,
+        "spearman": 0.569550033641234,
+        "sum_pred": 263.7889124659463,
+        "sum_actual": 266.0,
+        "calibration_pct": -0.8312359150577885,
+        "share_used": 0.15465116279069768,
+        "alpha_borrowed_pooled": 0.49724482237751094,
+        "alpha_refit_given_mu": 0.3449336739800325,
+        "nb_logscore_alpha_borrowed": -1.0178418822387905,
+        "nb_logscore_alpha_refit": -1.0160712174161666,
+        "coverage90_alpha_borrowed": 97.6878612716763,
+        "coverage90_alpha_refit": 97.39884393063583
+      },
+      "arm2_permode": {
+        "mae": 0.6976343611116456,
+        "rmse": 1.0501461327718902,
+        "spearman": 0.5903696588131214,
+        "sum_pred": 267.77275721806166,
+        "sum_actual": 266.0,
+        "calibration_pct": 0.6664500819780662,
+        "alpha": 0.3049278342239912,
+        "nb_logscore": -1.0011609954752982,
+        "coverage90": 97.10982658959537
+      }
+    },
+    "vehicle": {
+      "arm1_pooled_scaled": {
+        "mae": 2.7700344661842267,
+        "rmse": 4.319677007659505,
+        "spearman": 0.6130444434103659,
+        "sum_pred": 1284.2354949000016,
+        "sum_actual": 1295.0,
+        "calibration_pct": -0.8312359150577884,
+        "share_used": 0.752906976744186,
+        "alpha_borrowed_pooled": 0.49724482237751094,
+        "alpha_refit_given_mu": 0.6616275202086995,
+        "nb_logscore_alpha_borrowed": -2.163584950452381,
+        "nb_logscore_alpha_refit": -2.1563738470497764,
+        "coverage90_alpha_borrowed": 93.0635838150289,
+        "coverage90_alpha_refit": 94.79768786127167
+      },
+      "arm2_permode": {
+        "mae": 2.7639200377660567,
+        "rmse": 4.2936579312944,
+        "spearman": 0.6089949906282015,
+        "sum_pred": 1282.7857509991086,
+        "sum_actual": 1295.0,
+        "calibration_pct": -0.9431852510340861,
+        "alpha": 0.6585386174605015,
+        "nb_logscore": -2.153763693239932,
+        "coverage90": 94.79768786127167
+      }
+    }
+  },
+  "cv": {
+    "n_splits": 5,
+    "shuffle": true,
+    "random_state": 0,
+    "splitter": "sklearn.model_selection.KFold",
+    "fold_summary": [
+      {
+        "fold": 0,
+        "n_train": 276,
+        "n_test": 70,
+        "pooled_converged": true,
+        "pooled_alpha": 0.5075957999257459,
+        "train_total_crashes": 1391,
+        "test_bike_ksi": 3,
+        "train_bike_ksi_share_of_total": 0.009345794392523364,
+        "train_bike_ksi_share_of_bike": 0.09923664122137404,
+        "bike_converged": true,
+        "bike_alpha": 1.099380946881988,
+        "train_share_bike": 0.09417685118619698,
+        "ped_converged": true,
+        "ped_alpha": 0.1790155583923489,
+        "train_share_ped": 0.1509705248023005,
+        "vehicle_converged": true,
+        "vehicle_alpha": 0.6614248305875917,
+        "train_share_vehicle": 0.7598849748382459
+      },
+      {
+        "fold": 1,
+        "n_train": 277,
+        "n_test": 69,
+        "pooled_converged": true,
+        "pooled_alpha": 0.47077107749151625,
+        "train_total_crashes": 1460,
+        "test_bike_ksi": 3,
+        "train_bike_ksi_share_of_total": 0.008904109589041096,
+        "train_bike_ksi_share_of_bike": 0.09154929577464789,
+        "bike_converged": true,
+        "bike_alpha": 1.4486441581732823,
+        "train_share_bike": 0.09726027397260274,
+        "ped_converged": true,
+        "ped_alpha": 0.3046360131722444,
+        "train_share_ped": 0.14931506849315068,
+        "vehicle_converged": true,
+        "vehicle_alpha": 0.5904756512291246,
+        "train_share_vehicle": 0.7595890410958904
+      },
+      {
+        "fold": 2,
+        "n_train": 277,
+        "n_test": 69,
+        "pooled_converged": true,
+        "pooled_alpha": 0.5125709232503891,
+        "train_total_crashes": 1324,
+        "test_bike_ksi": 6,
+        "train_bike_ksi_share_of_total": 0.0075528700906344415,
+        "train_bike_ksi_share_of_bike": 0.08064516129032258,
+        "bike_converged": true,
+        "bike_alpha": 1.137468086245148,
+        "train_share_bike": 0.09365558912386707,
+        "ped_converged": true,
+        "ped_alpha": 0.3691000140296275,
+        "train_share_ped": 0.14954682779456194,
+        "vehicle_converged": true,
+        "vehicle_alpha": 0.6808609988691742,
+        "train_share_vehicle": 0.7613293051359517
+      },
+      {
+        "fold": 3,
+        "n_train": 277,
+        "n_test": 69,
+        "pooled_converged": true,
+        "pooled_alpha": 0.491114986227443,
+        "train_total_crashes": 1342,
+        "test_bike_ksi": 4,
+        "train_bike_ksi_share_of_total": 0.00894187779433681,
+        "train_bike_ksi_share_of_bike": 0.09022556390977443,
+        "bike_converged": true,
+        "bike_alpha": 1.2114286675004724,
+        "train_share_bike": 0.09910581222056632,
+        "ped_converged": true,
+        "ped_alpha": 0.2804557979405053,
+        "train_share_ped": 0.16244411326378538,
+        "vehicle_converged": true,
+        "vehicle_alpha": 0.6663986186728224,
+        "train_share_vehicle": 0.7444113263785395
+      },
+      {
+        "fold": 4,
+        "n_train": 277,
+        "n_test": 69,
+        "pooled_converged": true,
+        "pooled_alpha": 0.4717744567129335,
+        "train_total_crashes": 1363,
+        "test_bike_ksi": 0,
+        "train_bike_ksi_share_of_total": 0.01173881144534116,
+        "train_bike_ksi_share_of_bike": 0.1095890410958904,
+        "bike_converged": true,
+        "bike_alpha": 1.1444654538086394,
+        "train_share_bike": 0.10711665443873808,
+        "ped_converged": true,
+        "ped_alpha": 0.31767935537519715,
+        "train_share_ped": 0.16140865737344093,
+        "vehicle_converged": true,
+        "vehicle_alpha": 0.6537182769432681,
+        "train_share_vehicle": 0.7388114453411592
+      }
+    ],
+    "all_fits_converged": true,
+    "n_cv_fits": 25,
+    "non_converged_fits": []
+  },
+  "part_A_cv": {
+    "bike": {
+      "arm1_pooled_scaled": {
+        "fold_agg": {
+          "mae": {
+            "mean": 0.601050964535842,
+            "sd": 0.11209661140603248,
+            "per_fold": [
+              0.6713971060296923,
+              0.44910754272152226,
+              0.7178478209653724,
+              0.646563011140882,
+              0.5203393418217406
+            ],
+            "n_finite_folds": 5
+          },
+          "rmse": {
+            "mean": 1.0302017349115964,
+            "sd": 0.34220658254461117,
+            "per_fold": [
+              1.1362189816495076,
+              0.6601578378369272,
+              1.5220421360207121,
+              1.0781477332961527,
+              0.7544419857546829
+            ],
+            "n_finite_folds": 5
+          },
+          "spearman": {
+            "mean": 0.40541389730518124,
+            "sd": 0.08963201625895593,
+            "per_fold": [
+              0.3773732019160074,
+              0.4903588584609072,
+              0.4894926677783615,
+              0.39461458316941256,
+              0.27523017520121773
+            ],
+            "n_finite_folds": 5
+          },
+          "calibration_pct": {
+            "mean": 6.382623302146142,
+            "sd": 34.40672093593615,
+            "per_fold": [
+              -20.343312035686427,
+              23.095035505658394,
+              -22.395069133141448,
+              -7.094057062245815,
+              58.650519236146
+            ],
+            "n_finite_folds": 5
+          },
+          "nb_logscore": {
+            "mean": -0.832528466821023,
+            "sd": 0.11000818119111684,
+            "per_fold": [
+              -0.9089838929308656,
+              -0.6747925693458645,
+              -0.9260402238389135,
+              -0.8929782178080702,
+              -0.7598474301814011
+            ],
+            "n_finite_folds": 5
+          }
+        },
+        "pooled_oof": {
+          "mae": 0.6012542770835119,
+          "rmse": 1.0748920578609242,
+          "spearman": 0.4014233279993551,
+          "sum_pred": 168.36317878495836,
+          "sum_actual": 169.0,
+          "calibration_pct": -0.3768172870068849,
+          "nb_logscore_alpha_borrowed": -0.8327494362606468,
+          "alpha_refit_on_oof": 1.481823900030704,
+          "nb_logscore_alpha_refit_oof": -0.8123151009694869
+        }
+      },
+      "arm2_permode": {
+        "fold_agg": {
+          "mae": {
+            "mean": 0.594509511128837,
+            "sd": 0.10673358483896023,
+            "per_fold": [
+              0.6136357487231827,
+              0.4607716262402339,
+              0.7523737956620663,
+              0.5999023529890737,
+              0.5458640320296282
+            ],
+            "n_finite_folds": 5
+          },
+          "rmse": {
+            "mean": 1.0498128973445904,
+            "sd": 0.3134014657245724,
+            "per_fold": [
+              1.086826810221958,
+              0.6956847957705622,
+              1.5397936619073878,
+              1.037819506761457,
+              0.8889397120615866
+            ],
+            "n_finite_folds": 5
+          },
+          "spearman": {
+            "mean": 0.38200102496601634,
+            "sd": 0.09835650588345515,
+            "per_fold": [
+              0.3787069439987013,
+              0.5045597324970876,
+              0.4175945439612643,
+              0.3767075883861441,
+              0.2324363159868842
+            ],
+            "n_finite_folds": 5
+          },
+          "calibration_pct": {
+            "mean": 4.175484724311798,
+            "sd": 36.44468532109365,
+            "per_fold": [
+              -29.377695717672918,
+              24.684038017006394,
+              -20.45621484137819,
+              -11.986139459132605,
+              58.01343562273631
+            ],
+            "n_finite_folds": 5
+          },
+          "nb_logscore": {
+            "mean": -0.830023454530419,
+            "sd": 0.08528024846795706,
+            "per_fold": [
+              -0.8754642619595177,
+              -0.702624834322115,
+              -0.9284868556270774,
+              -0.8437291339737419,
+              -0.7998121867696433
+            ],
+            "n_finite_folds": 5
+          }
+        },
+        "pooled_oof": {
+          "mae": 0.5945647892721733,
+          "rmse": 1.0865932880068618,
+          "spearman": 0.3916617870848085,
+          "sum_pred": 164.32394920119742,
+          "sum_actual": 169.0,
+          "calibration_pct": -2.7668939637885073,
+          "nb_logscore": -0.8301547863437979
+        }
+      },
+      "delta_pooled_oof": {
+        "mae_arm2_minus_arm1": -0.006689487811338601,
+        "rmse_arm2_minus_arm1": 0.011701230145937602,
+        "spearman_arm2_minus_arm1": -0.009761540914546618,
+        "mae_pct_change": -1.1125888108084856,
+        "rmse_pct_change": 1.0885958325176848
+      },
+      "bootstrap_spearman": {
+        "n_boot_requested": 2000,
+        "n_boot_used": 2000,
+        "n_degenerate_resamples": 0,
+        "arm1_pooled": {
+          "point_mean": 0.39946978592182975,
+          "ci_lo": 0.30730039165638334,
+          "ci_hi": 0.4873858727067504
+        },
+        "arm2_permode": {
+          "point_mean": 0.38964376967406994,
+          "ci_lo": 0.2956154404858751,
+          "ci_hi": 0.47605160060455387
+        },
+        "diff_arm2_minus_arm1": {
+          "point_mean": -0.009826016247759863,
+          "ci_lo": -0.04269003010874426,
+          "ci_hi": 0.022440289215158175
+        },
+        "p_diff_gt_0": 0.2695
+      }
+    },
+    "ped": {
+      "arm1_pooled_scaled": {
+        "fold_agg": {
+          "mae": {
+            "mean": 0.7286968904846598,
+            "sd": 0.060572814961320866,
+            "per_fold": [
+              0.8167609710312549,
+              0.6869745738969261,
+              0.7594909033213373,
+              0.7151988485949798,
+              0.6650591555788008
+            ],
+            "n_finite_folds": 5
+          },
+          "rmse": {
+            "mean": 1.079229780396338,
+            "sd": 0.15973678628661775,
+            "per_fold": [
+              1.2964543694798025,
+              0.978217124665712,
+              1.2041415590227789,
+              0.9587392459252035,
+              0.9585966028881924
+            ],
+            "n_finite_folds": 5
+          },
+          "spearman": {
+            "mean": 0.5539369893441481,
+            "sd": 0.08991071407129919,
+            "per_fold": [
+              0.46393897229309544,
+              0.4890043761571617,
+              0.6913316659542792,
+              0.54046978350528,
+              0.5849401488109245
+            ],
+            "n_finite_folds": 5
+          },
+          "calibration_pct": {
+            "mean": 1.739172923498136,
+            "sd": 16.658910353126387,
+            "per_fold": [
+              -13.350549351796307,
+              6.29949809071384,
+              -17.99573837479722,
+              14.211441130246675,
+              19.531213123123692
+            ],
+            "n_finite_folds": 5
+          },
+          "nb_logscore": {
+            "mean": -1.0289749988367087,
+            "sd": 0.08813316466668422,
+            "per_fold": [
+              -1.0908351289908054,
+              -1.0156187749039725,
+              -1.1451692653826533,
+              -0.9459540487607876,
+              -0.947297776145326
+            ],
+            "n_finite_folds": 5
+          }
+        },
+        "pooled_oof": {
+          "mae": 0.7289514109486673,
+          "rmse": 1.0893034883368817,
+          "spearman": 0.5536277918089937,
+          "sum_pred": 265.1161991308299,
+          "sum_actual": 266.0,
+          "calibration_pct": -0.3322559658534218,
+          "nb_logscore_alpha_borrowed": -1.0291537853400443,
+          "alpha_refit_on_oof": 0.4061257297048759,
+          "nb_logscore_alpha_refit_oof": -1.0286554634277036
+        }
+      },
+      "arm2_permode": {
+        "fold_agg": {
+          "mae": {
+            "mean": 0.7268790853763939,
+            "sd": 0.06854719686837515,
+            "per_fold": [
+              0.8074860381398714,
+              0.6576782273273827,
+              0.7761408552645566,
+              0.7368044149614978,
+              0.6562858911886608
+            ],
+            "n_finite_folds": 5
+          },
+          "rmse": {
+            "mean": 1.096844490940126,
+            "sd": 0.1385573492686041,
+            "per_fold": [
+              1.2779559542348604,
+              0.9507548777375242,
+              1.1965175485107913,
+              1.072175728760955,
+              0.9868183454564984
+            ],
+            "n_finite_folds": 5
+          },
+          "spearman": {
+            "mean": 0.5381255591667115,
+            "sd": 0.07176315091898511,
+            "per_fold": [
+              0.4721588184958668,
+              0.5229944857139618,
+              0.6404288206870978,
+              0.4759067224639468,
+              0.5791389484726844
+            ],
+            "n_finite_folds": 5
+          },
+          "calibration_pct": {
+            "mean": 1.5687942014592113,
+            "sd": 12.462618595701043,
+            "per_fold": [
+              -11.57630786392625,
+              4.932154627412736,
+              -11.29010231688497,
+              10.104236297586262,
+              15.673990263108282
+            ],
+            "n_finite_folds": 5
+          },
+          "nb_logscore": {
+            "mean": -1.0547564286526283,
+            "sd": 0.08193818798278757,
+            "per_fold": [
+              -1.1117943361567968,
+              -1.0336349220837562,
+              -1.1595056548384908,
+              -1.0182630591934683,
+              -0.9505841709906298
+            ],
+            "n_finite_folds": 5
+          }
+        },
+        "pooled_oof": {
+          "mae": 0.7271120534479645,
+          "rmse": 1.1043663494127343,
+          "spearman": 0.5414657318221292,
+          "sum_pred": 266.26750118574887,
+          "sum_actual": 266.0,
+          "calibration_pct": 0.10056435554468791,
+          "nb_logscore": -1.054921278096282
+        }
+      },
+      "delta_pooled_oof": {
+        "mae_arm2_minus_arm1": -0.001839357500702854,
+        "rmse_arm2_minus_arm1": 0.01506286107585253,
+        "spearman_arm2_minus_arm1": -0.012162059986864482,
+        "mae_pct_change": -0.252329232521697,
+        "rmse_pct_change": 1.382797469863067
+      },
+      "bootstrap_spearman": {
+        "n_boot_requested": 2000,
+        "n_boot_used": 2000,
+        "n_degenerate_resamples": 0,
+        "arm1_pooled": {
+          "point_mean": 0.5525419889529999,
+          "ci_lo": 0.4741746236596792,
+          "ci_hi": 0.6234239401113821
+        },
+        "arm2_permode": {
+          "point_mean": 0.5402770134227556,
+          "ci_lo": 0.46559635746976674,
+          "ci_hi": 0.6122797670451594
+        },
+        "diff_arm2_minus_arm1": {
+          "point_mean": -0.012264975530244233,
+          "ci_lo": -0.04186835252245283,
+          "ci_hi": 0.015886628368483542
+        },
+        "p_diff_gt_0": 0.201
+      }
+    },
+    "vehicle": {
+      "arm1_pooled_scaled": {
+        "fold_agg": {
+          "mae": {
+            "mean": 2.872017828983463,
+            "sd": 0.20819044673422363,
+            "per_fold": [
+              2.6231845422631657,
+              2.837660750079401,
+              3.0262858700006547,
+              3.1341725971831362,
+              2.7387853853909565
+            ],
+            "n_finite_folds": 5
+          },
+          "rmse": {
+            "mean": 4.446723277751762,
+            "sd": 0.3939557654910717,
+            "per_fold": [
+              4.891467573910964,
+              3.9697158303559896,
+              4.36989535341812,
+              4.8042688365562585,
+              4.198268794517477
+            ],
+            "n_finite_folds": 5
+          },
+          "spearman": {
+            "mean": 0.6036052153527744,
+            "sd": 0.049622688272777694,
+            "per_fold": [
+              0.6660723069603128,
+              0.5798900708216033,
+              0.6454905993137274,
+              0.5770619660467475,
+              0.5495111336214816
+            ],
+            "n_finite_folds": 5
+          },
+          "calibration_pct": {
+            "mean": 2.6693875620290126,
+            "sd": 21.935285101297197,
+            "per_fold": [
+              2.620133708853008,
+              39.5515162860037,
+              -1.085768682682234,
+              -15.127277692202018,
+              -12.611665809827391
+            ],
+            "n_finite_folds": 5
+          },
+          "nb_logscore": {
+            "mean": -2.207867209670174,
+            "sd": 0.17953923502174,
+            "per_fold": [
+              -1.9854275330833424,
+              -2.053226986096562,
+              -2.2620334462657503,
+              -2.353933444705807,
+              -2.3847146381994087
+            ],
+            "n_finite_folds": 5
+          }
+        },
+        "pooled_oof": {
+          "mae": 2.87129865763456,
+          "rmse": 4.461967411155542,
+          "spearman": 0.5895056267877313,
+          "sum_pred": 1290.587242898518,
+          "sum_actual": 1295.0,
+          "calibration_pct": -0.34075344412987874,
+          "nb_logscore_alpha_borrowed": -2.207224320431484,
+          "alpha_refit_on_oof": 0.7359169701859289,
+          "nb_logscore_alpha_refit_oof": -2.190668396245216
+        }
+      },
+      "arm2_permode": {
+        "fold_agg": {
+          "mae": {
+            "mean": 2.886746546432402,
+            "sd": 0.222538774064673,
+            "per_fold": [
+              2.6665449390935945,
+              2.836294000431551,
+              3.046183918831258,
+              3.1826203679133833,
+              2.702089505892224
+            ],
+            "n_finite_folds": 5
+          },
+          "rmse": {
+            "mean": 4.454822501948053,
+            "sd": 0.414525450308573,
+            "per_fold": [
+              4.969124369105941,
+              4.005985860652006,
+              4.384178619417967,
+              4.786319634461952,
+              4.128504026102397
+            ],
+            "n_finite_folds": 5
+          },
+          "spearman": {
+            "mean": 0.5945203213437139,
+            "sd": 0.05292292055085767,
+            "per_fold": [
+              0.6683934585614559,
+              0.5737894226702066,
+              0.6307153680981705,
+              0.5526512174510081,
+              0.5470521399377288
+            ],
+            "n_finite_folds": 5
+          },
+          "calibration_pct": {
+            "mean": 2.7065962365226253,
+            "sd": 21.485311117354456,
+            "per_fold": [
+              3.1986760888297243,
+              39.132118015490484,
+              -3.0247906830878866,
+              -13.257190052924543,
+              -12.51583218569465
+            ],
+            "n_finite_folds": 5
+          },
+          "nb_logscore": {
+            "mean": -2.1963038109431468,
+            "sd": 0.17103337379345507,
+            "per_fold": [
+              -1.9905058532197095,
+              -2.033799373407483,
+              -2.2743972472293295,
+              -2.34587838314177,
+              -2.3369381977174397
+            ],
+            "n_finite_folds": 5
+          }
+        },
+        "pooled_oof": {
+          "mae": 2.886110125601943,
+          "rmse": 4.471746779852342,
+          "spearman": 0.579463476261628,
+          "sum_pred": 1291.4305600883074,
+          "sum_actual": 1295.0,
+          "calibration_pct": -0.275632425613328,
+          "nb_logscore": -2.195709019157819
+        }
+      },
+      "delta_pooled_oof": {
+        "mae_arm2_minus_arm1": 0.014811467967382974,
+        "rmse_arm2_minus_arm1": 0.009779368696800184,
+        "spearman_arm2_minus_arm1": -0.010042150526103355,
+        "mae_pct_change": 0.515845606238154,
+        "rmse_pct_change": 0.2191716746373
+      },
+      "bootstrap_spearman": {
+        "n_boot_requested": 2000,
+        "n_boot_used": 2000,
+        "n_degenerate_resamples": 0,
+        "arm1_pooled": {
+          "point_mean": 0.5902128022858333,
+          "ci_lo": 0.5231344790393821,
+          "ci_hi": 0.6540795402739363
+        },
+        "arm2_permode": {
+          "point_mean": 0.580259057325449,
+          "ci_lo": 0.5117103118032488,
+          "ci_hi": 0.6431207855146229
+        },
+        "diff_arm2_minus_arm1": {
+          "point_mean": -0.009953744960384146,
+          "ci_lo": -0.02125310756441465,
+          "ci_hi": 0.0015163652339972413
+        },
+        "p_diff_gt_0": 0.047
+      }
+    }
+  },
+  "part_B_in_sample": {
+    "share_v2_bike_ksi_over_total_crashes": 0.009302325581395349,
+    "share_v3_bike_ksi_over_bike_total": 0.09467455621301775,
+    "arm1_v2_route": {
+      "mae": 0.08410449596208855,
+      "rmse": 0.21729457687880013,
+      "spearman": 0.221830420578147,
+      "sum_pred": 15.867002253590755,
+      "sum_actual": 16.0,
+      "calibration_pct": -0.8312359150577819,
+      "alpha_used": 0.49724482237751094,
+      "coverage90": 99.13294797687861,
+      "nb_logscore": -0.16534593555719762
+    },
+    "arm2_v3_route": {
+      "mae": 0.08305791408248508,
+      "rmse": 0.21662883922160792,
+      "spearman": 0.22811706340128188,
+      "sum_pred": 15.78084426173583,
+      "sum_actual": 16.0,
+      "calibration_pct": -1.3697233641510653,
+      "alpha_used": 1.2381950605728138,
+      "coverage90": 99.13294797687861,
+      "nb_logscore": -0.16424087242418475
+    },
+    "bootstrap_spearman": {
+      "n_boot_requested": 2000,
+      "n_boot_used": 2000,
+      "n_degenerate_resamples": 0,
+      "arm1_pooled": {
+        "point_mean": 0.22075691695222124,
+        "ci_lo": 0.12896099355055626,
+        "ci_hi": 0.30423129530230447
+      },
+      "arm2_permode": {
+        "point_mean": 0.2270353313901754,
+        "ci_lo": 0.12822621976298845,
+        "ci_hi": 0.31720173820720043
+      },
+      "diff_arm2_minus_arm1": {
+        "point_mean": 0.006278414437954137,
+        "ci_lo": -0.016308370250151277,
+        "ci_hi": 0.03144770975065232
+      },
+      "p_diff_gt_0": 0.699
+    },
+    "topk_capture_arm1": {
+      "10": {
+        "k": 10,
+        "events_captured": 2.0,
+        "events_total": 16.0,
+        "pct_captured": 12.5,
+        "pct_captured_if_random": 2.8901734104046244
+      },
+      "20": {
+        "k": 20,
+        "events_captured": 5.0,
+        "events_total": 16.0,
+        "pct_captured": 31.25,
+        "pct_captured_if_random": 5.780346820809249
+      },
+      "50": {
+        "k": 50,
+        "events_captured": 7.0,
+        "events_total": 16.0,
+        "pct_captured": 43.75,
+        "pct_captured_if_random": 14.450867052023122
+      },
+      "100": {
+        "k": 100,
+        "events_captured": 14.0,
+        "events_total": 16.0,
+        "pct_captured": 87.5,
+        "pct_captured_if_random": 28.901734104046245
+      }
+    },
+    "topk_capture_arm2": {
+      "10": {
+        "k": 10,
+        "events_captured": 2.0,
+        "events_total": 16.0,
+        "pct_captured": 12.5,
+        "pct_captured_if_random": 2.8901734104046244
+      },
+      "20": {
+        "k": 20,
+        "events_captured": 5.0,
+        "events_total": 16.0,
+        "pct_captured": 31.25,
+        "pct_captured_if_random": 5.780346820809249
+      },
+      "50": {
+        "k": 50,
+        "events_captured": 10.0,
+        "events_total": 16.0,
+        "pct_captured": 62.5,
+        "pct_captured_if_random": 14.450867052023122
+      },
+      "100": {
+        "k": 100,
+        "events_captured": 13.0,
+        "events_total": 16.0,
+        "pct_captured": 81.25,
+        "pct_captured_if_random": 28.901734104046245
+      }
+    }
+  },
+  "part_B_cv": {
+    "arm1_v2_route": {
+      "fold_agg": {
+        "mae": {
+          "mean": 0.08493360837023577,
+          "sd": 0.020423196819447664,
+          "per_fold": [
+            0.08152535590702399,
+            0.0803249104570153,
+            0.11458357220615303,
+            0.09027967570613864,
+            0.057954527574847876
+          ],
+          "n_finite_folds": 5
+        },
+        "rmse": {
+          "mean": 0.20837492946977515,
+          "sd": 0.07653299095765241,
+          "per_fold": [
+            0.2046456305656758,
+            0.2573490925688309,
+            0.2762544589008318,
+            0.22256096148872997,
+            0.08106450382480723
+          ],
+          "n_finite_folds": 5
+        },
+        "spearman": {
+          "mean": 0.2381373521960377,
+          "sd": 0.14009688181421406,
+          "per_fold": [
+            0.0401493492868468,
+            0.23773218677524846,
+            0.3383514841991322,
+            0.33631638852292345,
+            null
+          ],
+          "n_finite_folds": 4
+        },
+        "calibration_pct": {
+          "mean": -19.016871378319184,
+          "sd": 25.652017225671386,
+          "per_fold": [
+            0.1282540823687099,
+            1.4233743250847177,
+            -53.06153374988393,
+            -24.557580170846236,
+            null
+          ],
+          "n_finite_folds": 4
+        },
+        "coverage90": {
+          "mean": 98.55900621118012,
+          "sd": 1.4390053151532491,
+          "per_fold": [
+            97.14285714285714,
+            98.55072463768117,
+            97.10144927536231,
+            100.0,
+            100.0
+          ],
+          "n_finite_folds": 5
+        },
+        "nb_logscore": {
+          "mean": -0.16862782050654426,
+          "sd": 0.07772280966133509,
+          "per_fold": [
+            -0.1868363240329039,
+            -0.14646080343955376,
+            -0.27152004250833267,
+            -0.18184934493137034,
+            -0.05647258762056072
+          ],
+          "n_finite_folds": 5
+        }
+      },
+      "pooled_oof": {
+        "mae": 0.08492375792959066,
+        "rmse": 0.21928966149892165,
+        "spearman": 0.2043419873827287,
+        "sum_pred": 15.879416023061221,
+        "sum_actual": 16.0,
+        "calibration_pct": -0.7536498558673665,
+        "coverage90": 98.55491329479769,
+        "nb_logscore": -0.1686804462392794
+      }
+    },
+    "arm2_v3_route": {
+      "fold_agg": {
+        "mae": {
+          "mean": 0.08411831553103191,
+          "sd": 0.021798445451377133,
+          "per_fold": [
+            0.07598469430144623,
+            0.08245641835245043,
+            0.11770729347385461,
+            0.08672136856019876,
+            0.0577218029672096
+          ],
+          "n_finite_folds": 5
+        },
+        "rmse": {
+          "mean": 0.2124549713462974,
+          "sd": 0.07200306457852797,
+          "per_fold": [
+            0.2026564062816197,
+            0.2625850099812654,
+            0.2806854298391261,
+            0.21973897332069203,
+            0.09660903730878372
+          ],
+          "n_finite_folds": 5
+        },
+        "spearman": {
+          "mean": 0.2009627648947551,
+          "sd": 0.13375927420819853,
+          "per_fold": [
+            0.015709103040158302,
+            0.2121979230060417,
+            0.24275994714302865,
+            0.3331840863897917,
+            null
+          ],
+          "n_finite_folds": 4
+        },
+        "calibration_pct": {
+          "mean": -22.22856454342118,
+          "sd": 23.5479354441321,
+          "per_fold": [
+            -11.227943217634657,
+            2.732622873167223,
+            -51.88883962180134,
+            -28.530098207415953,
+            null
+          ],
+          "n_finite_folds": 4
+        },
+        "coverage90": {
+          "mean": 98.55900621118012,
+          "sd": 1.4390053151532491,
+          "per_fold": [
+            97.14285714285714,
+            98.55072463768117,
+            97.10144927536231,
+            100.0,
+            100.0
+          ],
+          "n_finite_folds": 5
+        },
+        "nb_logscore": {
+          "mean": -0.17617354859973597,
+          "sd": 0.08899425684945945,
+          "per_fold": [
+            -0.1913807280114223,
+            -0.15380120608633538,
+            -0.30182916843618934,
+            -0.18072017719102249,
+            -0.05313646327371031
+          ],
+          "n_finite_folds": 5
+        }
+      },
+      "pooled_oof": {
+        "mae": 0.08409480795522387,
+        "rmse": 0.2219480231514791,
+        "spearman": 0.16814816424371398,
+        "sum_pred": 15.47341048879872,
+        "sum_actual": 16.0,
+        "calibration_pct": -3.2911844450079997,
+        "coverage90": 98.55491329479769,
+        "nb_logscore": -0.17621749998531888
+      }
+    },
+    "delta_pooled_oof": {
+      "mae_arm2_minus_arm1": -0.0008289499743667911,
+      "rmse_arm2_minus_arm1": 0.0026583616525574505,
+      "spearman_arm2_minus_arm1": -0.03619382313901473
+    },
+    "bootstrap_spearman": {
+      "n_boot_requested": 2000,
+      "n_boot_used": 2000,
+      "n_degenerate_resamples": 0,
+      "arm1_pooled": {
+        "point_mean": 0.20346710928721212,
+        "ci_lo": 0.11964913751071822,
+        "ci_hi": 0.2838990791235589
+      },
+      "arm2_permode": {
+        "point_mean": 0.16779885305545053,
+        "ci_lo": 0.06926366311149797,
+        "ci_hi": 0.25721737470795647
+      },
+      "diff_arm2_minus_arm1": {
+        "point_mean": -0.03566825623176152,
+        "ci_lo": -0.0764475295952983,
+        "ci_hi": -0.0011004946923206026
+      },
+      "p_diff_gt_0": 0.021
+    },
+    "topk_capture_arm1": {
+      "10": {
+        "k": 10,
+        "events_captured": 1.0,
+        "events_total": 16.0,
+        "pct_captured": 6.25,
+        "pct_captured_if_random": 2.8901734104046244
+      },
+      "20": {
+        "k": 20,
+        "events_captured": 2.0,
+        "events_total": 16.0,
+        "pct_captured": 12.5,
+        "pct_captured_if_random": 5.780346820809249
+      },
+      "50": {
+        "k": 50,
+        "events_captured": 6.0,
+        "events_total": 16.0,
+        "pct_captured": 37.5,
+        "pct_captured_if_random": 14.450867052023122
+      },
+      "100": {
+        "k": 100,
+        "events_captured": 14.0,
+        "events_total": 16.0,
+        "pct_captured": 87.5,
+        "pct_captured_if_random": 28.901734104046245
+      }
+    },
+    "topk_capture_arm2": {
+      "10": {
+        "k": 10,
+        "events_captured": 0.0,
+        "events_total": 16.0,
+        "pct_captured": 0.0,
+        "pct_captured_if_random": 2.8901734104046244
+      },
+      "20": {
+        "k": 20,
+        "events_captured": 3.0,
+        "events_total": 16.0,
+        "pct_captured": 18.75,
+        "pct_captured_if_random": 5.780346820809249
+      },
+      "50": {
+        "k": 50,
+        "events_captured": 6.0,
+        "events_total": 16.0,
+        "pct_captured": 37.5,
+        "pct_captured_if_random": 14.450867052023122
+      },
+      "100": {
+        "k": 100,
+        "events_captured": 12.0,
+        "events_total": 16.0,
+        "pct_captured": 75.0,
+        "pct_captured_if_random": 28.901734104046245
+      }
+    },
+    "n_bike_ksi_events": 16,
+    "n_sites_with_any_bike_ksi": 15
+  },
+  "arm_1b_true_v2_oof": {
+    "spec": "total_crashes ~ is_signalized + num_legs + max_speed_limit + bike_facility + C(arterial_class) + log_aadt",
+    "bike": {
+      "mae": 0.6380442538320056,
+      "rmse": 1.1378559742877694,
+      "spearman": 0.3819587606467602,
+      "sum_pred": 181.43622257753788,
+      "sum_actual": 169.0,
+      "calibration_pct": 7.358711584341939,
+      "nb_logscore": -0.8473216070226447,
+      "boot_vs_arm2_permode": {
+        "n_boot_requested": 2000,
+        "n_boot_used": 2000,
+        "n_degenerate_resamples": 0,
+        "arm1_pooled": {
+          "point_mean": 0.38011314132234975,
+          "ci_lo": 0.286679536054066,
+          "ci_hi": 0.46911876251242346
+        },
+        "arm2_permode": {
+          "point_mean": 0.38964376967406994,
+          "ci_lo": 0.2956154404858751,
+          "ci_hi": 0.47605160060455387
+        },
+        "diff_arm2_minus_arm1": {
+          "point_mean": 0.009530628351720192,
+          "ci_lo": -0.028385171071459703,
+          "ci_hi": 0.051309766421895275
+        },
+        "p_diff_gt_0": 0.6705
+      }
+    },
+    "ped": {
+      "mae": 0.8010405984239477,
+      "rmse": 1.2679985370285485,
+      "spearman": 0.5223822941781349,
+      "sum_pred": 285.03709649180234,
+      "sum_actual": 266.0,
+      "calibration_pct": 7.156803192406897,
+      "nb_logscore": -1.0771134750301483,
+      "boot_vs_arm2_permode": {
+        "n_boot_requested": 2000,
+        "n_boot_used": 2000,
+        "n_degenerate_resamples": 0,
+        "arm1_pooled": {
+          "point_mean": 0.5220158409954215,
+          "ci_lo": 0.4424578578158278,
+          "ci_hi": 0.5969883951292582
+        },
+        "arm2_permode": {
+          "point_mean": 0.5402770134227556,
+          "ci_lo": 0.46559635746976674,
+          "ci_hi": 0.6122797670451594
+        },
+        "diff_arm2_minus_arm1": {
+          "point_mean": 0.0182611724273341,
+          "ci_lo": -0.02745158576015837,
+          "ci_hi": 0.06186856013645077
+        },
+        "p_diff_gt_0": 0.7995
+      }
+    },
+    "vehicle": {
+      "mae": 3.082369440960388,
+      "rmse": 5.142233739979974,
+      "spearman": 0.5393085415458311,
+      "sum_pred": 1387.9585643904277,
+      "sum_actual": 1295.0,
+      "calibration_pct": 7.178267520496346,
+      "nb_logscore": -2.2475635229647732,
+      "boot_vs_arm2_permode": {
+        "n_boot_requested": 2000,
+        "n_boot_used": 2000,
+        "n_degenerate_resamples": 0,
+        "arm1_pooled": {
+          "point_mean": 0.5403217254081464,
+          "ci_lo": 0.46301507623938454,
+          "ci_hi": 0.6153943357770142
+        },
+        "arm2_permode": {
+          "point_mean": 0.580259057325449,
+          "ci_lo": 0.5117103118032488,
+          "ci_hi": 0.6431207855146229
+        },
+        "diff_arm2_minus_arm1": {
+          "point_mean": 0.03993733191730274,
+          "ci_lo": -0.0047054318179093335,
+          "ci_hi": 0.08768939264369209
+        },
+        "p_diff_gt_0": 0.9615
+      }
+    },
+    "bike_ksi": {
+      "mae": 0.08667611706022775,
+      "rmse": 0.21815385525473865,
+      "spearman": 0.17972239661954062,
+      "sum_pred": 17.1686106821382,
+      "sum_actual": 16.0,
+      "calibration_pct": 7.303816763363757,
+      "coverage90": 98.55491329479769,
+      "boot_vs_arm2_permode": {
+        "n_boot_requested": 2000,
+        "n_boot_used": 2000,
+        "n_degenerate_resamples": 0,
+        "arm1_pooled": {
+          "point_mean": 0.17902114743052988,
+          "ci_lo": 0.08160053608398114,
+          "ci_hi": 0.2697551045721662
+        },
+        "arm2_permode": {
+          "point_mean": 0.16779885305545053,
+          "ci_lo": 0.06926366311149797,
+          "ci_hi": 0.25721737470795647
+        },
+        "diff_arm2_minus_arm1": {
+          "point_mean": -0.011222294375079326,
+          "ci_lo": -0.04686163344839652,
+          "ci_hi": 0.023961041147747712
+        },
+        "p_diff_gt_0": 0.273
+      }
+    }
+  },
+  "part_C": {
+    "arm1_n_models": 1,
+    "arm1_n_params_incl_alpha": 12,
+    "arm2_n_models": 3,
+    "arm2_n_params_per_model": {
+      "bike": 12,
+      "ped": 12,
+      "vehicle": 12
+    },
+    "arm2_n_params_total": 36,
+    "arm1_aic": 1645.9973338172313,
+    "arm1_bic": 1692.154599117924,
+    "arm1_llf": -810.9986669086156,
+    "arm2_aic_sum_NOT_COMPARABLE": 2806.520778746186,
+    "arm2_bic_sum_NOT_COMPARABLE": 2944.9925746482636,
+    "arm2_llf_sum_NOT_COMPARABLE": -1367.260389373093,
+    "comparability_note": "Summing AIC/BIC across the three per-mode fits and comparing to the pooled fit's AIC is NOT defensible: the likelihoods are over different random variables (total_crashes, 1720 events, vs the three mode targets, 1730 events including double-counted bike+ped crashes). Information criteria are only comparable across models of the SAME data. The numbers are recorded for completeness and must not be used as a verdict.",
+    "legitimate_same_target_comparison": {
+      "bike": {
+        "arm1_nb_logscore_alpha_borrowed": -0.8233762776882546,
+        "arm1_nb_logscore_alpha_refit": -0.8057467904763688,
+        "arm2_nb_logscore": -0.7966949337503558,
+        "arm1_effective_free_params": 1,
+        "arm2_free_params": 12
+      },
+      "ped": {
+        "arm1_nb_logscore_alpha_borrowed": -1.0178418822387905,
+        "arm1_nb_logscore_alpha_refit": -1.0160712174161666,
+        "arm2_nb_logscore": -1.0011609954752982,
+        "arm1_effective_free_params": 1,
+        "arm2_free_params": 12
+      },
+      "vehicle": {
+        "arm1_nb_logscore_alpha_borrowed": -2.163584950452381,
+        "arm1_nb_logscore_alpha_refit": -2.1563738470497764,
+        "arm2_nb_logscore": -2.153763693239932,
+        "arm1_effective_free_params": 1,
+        "arm2_free_params": 12
+      }
+    }
+  },
+  "part_D": {
+    "spearman_arm1_vs_arm2_prior_ranking": 0.9600523513069656,
+    "spearman_arm1_vs_arm2_eb_ranking": 0.962109391776523,
+    "kendall_note": "prior ranking is a monotone function of the underlying crash prediction; the KSI share is a positive constant and does not affect ranks",
+    "rank_shift_stats": {
+      "mean": 21.161849710982658,
+      "median": 16.0,
+      "p90": 46.0,
+      "max": 121.0
+    },
+    "eb_rank_shift_stats": {
+      "mean": 20.416184971098264,
+      "median": 15.0,
+      "p90": 45.25,
+      "max": 120.0
+    },
+    "top10_overlap_prior": 4,
+    "top20_overlap_prior": 12,
+    "top50_overlap_prior": 42,
+    "top10_overlap_eb": 7,
+    "top20_overlap_eb": 16,
+    "top50_overlap_eb": 44,
+    "largest_10_rank_shifts_prior": [
+      {
+        "intersection_id": "035bd7c03c9d",
+        "bike_total": 0,
+        "bike_ksi_total": 0,
+        "total_crashes": 1,
+        "mu_ksi_arm1": 0.04943285666110519,
+        "mu_ksi_arm2": 0.01902652623544792,
+        "rank_arm1": 98.0,
+        "rank_arm2": 219.0,
+        "rank_shift": 121.0,
+        "eb_rank_arm1": 99.0,
+        "eb_rank_arm2": 219.0,
+        "eb_rank_shift": 120.0
+      },
+      {
+        "intersection_id": "78f6e60e1693",
+        "bike_total": 0,
+        "bike_ksi_total": 0,
+        "total_crashes": 2,
+        "mu_ksi_arm1": 0.04790790279697104,
+        "mu_ksi_arm2": 0.0250701508552798,
+        "rank_arm1": 101.0,
+        "rank_arm2": 195.0,
+        "rank_shift": 94.0,
+        "eb_rank_arm1": 102.0,
+        "eb_rank_arm2": 195.0,
+        "eb_rank_shift": 93.0
+      },
+      {
+        "intersection_id": "62e1ef5c56ea",
+        "bike_total": 0,
+        "bike_ksi_total": 0,
+        "total_crashes": 3,
+        "mu_ksi_arm1": 0.045832421545879354,
+        "mu_ksi_arm2": 0.02416453522217196,
+        "rank_arm1": 110.0,
+        "rank_arm2": 198.0,
+        "rank_shift": 88.0,
+        "eb_rank_arm1": 111.0,
+        "eb_rank_arm2": 198.0,
+        "eb_rank_shift": 87.0
+      },
+      {
+        "intersection_id": "d2627b97845d",
+        "bike_total": 0,
+        "bike_ksi_total": 0,
+        "total_crashes": 5,
+        "mu_ksi_arm1": 0.07213814285360802,
+        "mu_ksi_arm2": 0.031487119178217074,
+        "rank_arm1": 82.0,
+        "rank_arm2": 162.0,
+        "rank_shift": 80.0,
+        "eb_rank_arm1": 86.0,
+        "eb_rank_arm2": 163.0,
+        "eb_rank_shift": 77.0
+      },
+      {
+        "intersection_id": "394633f5fc08",
+        "bike_total": 0,
+        "bike_ksi_total": 0,
+        "total_crashes": 4,
+        "mu_ksi_arm1": 0.03419931269340655,
+        "mu_ksi_arm2": 0.05395633127300503,
+        "rank_arm1": 176.5,
+        "rank_arm2": 100.0,
+        "rank_shift": 76.5,
+        "eb_rank_arm1": 176.5,
+        "eb_rank_arm2": 102.0,
+        "eb_rank_shift": 74.5
+      },
+      {
+        "intersection_id": "71ddc4d720dc",
+        "bike_total": 0,
+        "bike_ksi_total": 0,
+        "total_crashes": 6,
+        "mu_ksi_arm1": 0.07305755297789811,
+        "mu_ksi_arm2": 0.0348172796327584,
+        "rank_arm1": 80.0,
+        "rank_arm2": 156.0,
+        "rank_shift": 76.0,
+        "eb_rank_arm1": 84.0,
+        "eb_rank_arm2": 157.0,
+        "eb_rank_shift": 73.0
+      },
+      {
+        "intersection_id": "4cf57bebe8b0",
+        "bike_total": 0,
+        "bike_ksi_total": 0,
+        "total_crashes": 0,
+        "mu_ksi_arm1": 0.06739074466954838,
+        "mu_ksi_arm2": 0.031842486317849805,
+        "rank_arm1": 89.0,
+        "rank_arm2": 161.0,
+        "rank_shift": 72.0,
+        "eb_rank_arm1": 90.0,
+        "eb_rank_arm2": 162.0,
+        "eb_rank_shift": 72.0
+      },
+      {
+        "intersection_id": "a06f9bbfefb0",
+        "bike_total": 1,
+        "bike_ksi_total": 0,
+        "total_crashes": 4,
+        "mu_ksi_arm1": 0.03813187401834675,
+        "mu_ksi_arm2": 0.059350943541601774,
+        "rank_arm1": 155.0,
+        "rank_arm2": 86.0,
+        "rank_shift": 69.0,
+        "eb_rank_arm1": 156.0,
+        "eb_rank_arm2": 88.0,
+        "eb_rank_shift": 68.0
+      },
+      {
+        "intersection_id": "01699c227158",
+        "bike_total": 0,
+        "bike_ksi_total": 0,
+        "total_crashes": 2,
+        "mu_ksi_arm1": 0.0715897288817082,
+        "mu_ksi_arm2": 0.03789293477481264,
+        "rank_arm1": 83.0,
+        "rank_arm2": 150.0,
+        "rank_shift": 67.0,
+        "eb_rank_arm1": 87.0,
+        "eb_rank_arm2": 151.0,
+        "eb_rank_shift": 64.0
+      },
+      {
+        "intersection_id": "ab7174653e32",
+        "bike_total": 0,
+        "bike_ksi_total": 0,
+        "total_crashes": 1,
+        "mu_ksi_arm1": 0.06267399665104394,
+        "mu_ksi_arm2": 0.03419794119746333,
+        "rank_arm1": 92.0,
+        "rank_arm2": 157.0,
+        "rank_shift": 65.0,
+        "eb_rank_arm1": 93.0,
+        "eb_rank_arm2": 158.0,
+        "eb_rank_shift": 65.0
+      }
+    ],
+    "largest_10_rank_shifts_eb": [
+      {
+        "intersection_id": "035bd7c03c9d",
+        "bike_total": 0,
+        "bike_ksi_total": 0,
+        "total_crashes": 1,
+        "mu_ksi_arm1": 0.04943285666110519,
+        "mu_ksi_arm2": 0.01902652623544792,
+        "rank_arm1": 98.0,
+        "rank_arm2": 219.0,
+        "rank_shift": 121.0,
+        "eb_rank_arm1": 99.0,
+        "eb_rank_arm2": 219.0,
+        "eb_rank_shift": 120.0
+      },
+      {
+        "intersection_id": "78f6e60e1693",
+        "bike_total": 0,
+        "bike_ksi_total": 0,
+        "total_crashes": 2,
+        "mu_ksi_arm1": 0.04790790279697104,
+        "mu_ksi_arm2": 0.0250701508552798,
+        "rank_arm1": 101.0,
+        "rank_arm2": 195.0,
+        "rank_shift": 94.0,
+        "eb_rank_arm1": 102.0,
+        "eb_rank_arm2": 195.0,
+        "eb_rank_shift": 93.0
+      },
+      {
+        "intersection_id": "62e1ef5c56ea",
+        "bike_total": 0,
+        "bike_ksi_total": 0,
+        "total_crashes": 3,
+        "mu_ksi_arm1": 0.045832421545879354,
+        "mu_ksi_arm2": 0.02416453522217196,
+        "rank_arm1": 110.0,
+        "rank_arm2": 198.0,
+        "rank_shift": 88.0,
+        "eb_rank_arm1": 111.0,
+        "eb_rank_arm2": 198.0,
+        "eb_rank_shift": 87.0
+      },
+      {
+        "intersection_id": "d2627b97845d",
+        "bike_total": 0,
+        "bike_ksi_total": 0,
+        "total_crashes": 5,
+        "mu_ksi_arm1": 0.07213814285360802,
+        "mu_ksi_arm2": 0.031487119178217074,
+        "rank_arm1": 82.0,
+        "rank_arm2": 162.0,
+        "rank_shift": 80.0,
+        "eb_rank_arm1": 86.0,
+        "eb_rank_arm2": 163.0,
+        "eb_rank_shift": 77.0
+      },
+      {
+        "intersection_id": "394633f5fc08",
+        "bike_total": 0,
+        "bike_ksi_total": 0,
+        "total_crashes": 4,
+        "mu_ksi_arm1": 0.03419931269340655,
+        "mu_ksi_arm2": 0.05395633127300503,
+        "rank_arm1": 176.5,
+        "rank_arm2": 100.0,
+        "rank_shift": 76.5,
+        "eb_rank_arm1": 176.5,
+        "eb_rank_arm2": 102.0,
+        "eb_rank_shift": 74.5
+      },
+      {
+        "intersection_id": "71ddc4d720dc",
+        "bike_total": 0,
+        "bike_ksi_total": 0,
+        "total_crashes": 6,
+        "mu_ksi_arm1": 0.07305755297789811,
+        "mu_ksi_arm2": 0.0348172796327584,
+        "rank_arm1": 80.0,
+        "rank_arm2": 156.0,
+        "rank_shift": 76.0,
+        "eb_rank_arm1": 84.0,
+        "eb_rank_arm2": 157.0,
+        "eb_rank_shift": 73.0
+      },
+      {
+        "intersection_id": "4cf57bebe8b0",
+        "bike_total": 0,
+        "bike_ksi_total": 0,
+        "total_crashes": 0,
+        "mu_ksi_arm1": 0.06739074466954838,
+        "mu_ksi_arm2": 0.031842486317849805,
+        "rank_arm1": 89.0,
+        "rank_arm2": 161.0,
+        "rank_shift": 72.0,
+        "eb_rank_arm1": 90.0,
+        "eb_rank_arm2": 162.0,
+        "eb_rank_shift": 72.0
+      },
+      {
+        "intersection_id": "a06f9bbfefb0",
+        "bike_total": 1,
+        "bike_ksi_total": 0,
+        "total_crashes": 4,
+        "mu_ksi_arm1": 0.03813187401834675,
+        "mu_ksi_arm2": 0.059350943541601774,
+        "rank_arm1": 155.0,
+        "rank_arm2": 86.0,
+        "rank_shift": 69.0,
+        "eb_rank_arm1": 156.0,
+        "eb_rank_arm2": 88.0,
+        "eb_rank_shift": 68.0
+      },
+      {
+        "intersection_id": "ab7174653e32",
+        "bike_total": 0,
+        "bike_ksi_total": 0,
+        "total_crashes": 1,
+        "mu_ksi_arm1": 0.06267399665104394,
+        "mu_ksi_arm2": 0.03419794119746333,
+        "rank_arm1": 92.0,
+        "rank_arm2": 157.0,
+        "rank_shift": 65.0,
+        "eb_rank_arm1": 93.0,
+        "eb_rank_arm2": 158.0,
+        "eb_rank_shift": 65.0
+      },
+      {
+        "intersection_id": "01699c227158",
+        "bike_total": 0,
+        "bike_ksi_total": 0,
+        "total_crashes": 2,
+        "mu_ksi_arm1": 0.0715897288817082,
+        "mu_ksi_arm2": 0.03789293477481264,
+        "rank_arm1": 83.0,
+        "rank_arm2": 150.0,
+        "rank_shift": 67.0,
+        "eb_rank_arm1": 87.0,
+        "eb_rank_arm2": 151.0,
+        "eb_rank_shift": 64.0
+      }
+    ],
+    "top10_sites_arm1": [
+      {
+        "intersection_id": "4efd4397bfbc",
+        "mu_ksi_arm1": 0.1844570601957303,
+        "mu_ksi_arm2": 0.19584930371787845,
+        "rank_arm1": 1.0,
+        "rank_arm2": 2.0,
+        "bike_total": 1,
+        "bike_ksi_total": 0
+      },
+      {
+        "intersection_id": "a69226a229ad",
+        "mu_ksi_arm1": 0.15739594872273635,
+        "mu_ksi_arm2": 0.16290684517073492,
+        "rank_arm1": 2.0,
+        "rank_arm2": 13.0,
+        "bike_total": 0,
+        "bike_ksi_total": 0
+      },
+      {
+        "intersection_id": "cdb875cde624",
+        "mu_ksi_arm1": 0.1446516900760353,
+        "mu_ksi_arm2": 0.15511962381644964,
+        "rank_arm1": 3.0,
+        "rank_arm2": 20.0,
+        "bike_total": 2,
+        "bike_ksi_total": 1
+      },
+      {
+        "intersection_id": "407803206118",
+        "mu_ksi_arm1": 0.14177460572521103,
+        "mu_ksi_arm2": 0.14625809401894774,
+        "rank_arm1": 4.0,
+        "rank_arm2": 22.0,
+        "bike_total": 0,
+        "bike_ksi_total": 0
+      },
+      {
+        "intersection_id": "a932fcb41bb1",
+        "mu_ksi_arm1": 0.13994876126503347,
+        "mu_ksi_arm2": 0.1668288900690524,
+        "rank_arm1": 5.0,
+        "rank_arm2": 9.0,
+        "bike_total": 0,
+        "bike_ksi_total": 0
+      },
+      {
+        "intersection_id": "05467827ef34",
+        "mu_ksi_arm1": 0.13815065968515663,
+        "mu_ksi_arm2": 0.08339028653902573,
+        "rank_arm1": 6.0,
+        "rank_arm2": 46.0,
+        "bike_total": 1,
+        "bike_ksi_total": 0
+      },
+      {
+        "intersection_id": "3dec2b9f9160",
+        "mu_ksi_arm1": 0.13793493435214568,
+        "mu_ksi_arm2": 0.1632172176486787,
+        "rank_arm1": 7.0,
+        "rank_arm2": 12.0,
+        "bike_total": 2,
+        "bike_ksi_total": 0
+      },
+      {
+        "intersection_id": "afbd562d0b58",
+        "mu_ksi_arm1": 0.137579378330213,
+        "mu_ksi_arm2": 0.17559246237729717,
+        "rank_arm1": 8.0,
+        "rank_arm2": 6.0,
+        "bike_total": 0,
+        "bike_ksi_total": 0
+      },
+      {
+        "intersection_id": "a6b897eea101",
+        "mu_ksi_arm1": 0.13383019349109584,
+        "mu_ksi_arm2": 0.17398982511618197,
+        "rank_arm1": 9.0,
+        "rank_arm2": 7.0,
+        "bike_total": 2,
+        "bike_ksi_total": 1
+      },
+      {
+        "intersection_id": "5786cba5578d",
+        "mu_ksi_arm1": 0.1328661015943899,
+        "mu_ksi_arm2": 0.14427779811550726,
+        "rank_arm1": 10.0,
+        "rank_arm2": 27.0,
+        "bike_total": 3,
+        "bike_ksi_total": 0
+      }
+    ],
+    "top10_sites_arm2": [
+      {
+        "intersection_id": "1aa39a558f89",
+        "mu_ksi_arm1": 0.12340641649998915,
+        "mu_ksi_arm2": 0.20072193488421153,
+        "rank_arm1": 20.0,
+        "rank_arm2": 1.0,
+        "bike_total": 0,
+        "bike_ksi_total": 0
+      },
+      {
+        "intersection_id": "4efd4397bfbc",
+        "mu_ksi_arm1": 0.1844570601957303,
+        "mu_ksi_arm2": 0.19584930371787845,
+        "rank_arm1": 1.0,
+        "rank_arm2": 2.0,
+        "bike_total": 1,
+        "bike_ksi_total": 0
+      },
+      {
+        "intersection_id": "712128e34142",
+        "mu_ksi_arm1": 0.1071645233978499,
+        "mu_ksi_arm2": 0.193513859524222,
+        "rank_arm1": 37.0,
+        "rank_arm2": 3.0,
+        "bike_total": 2,
+        "bike_ksi_total": 0
+      },
+      {
+        "intersection_id": "aa90d1c8a2c3",
+        "mu_ksi_arm1": 0.09862258961740174,
+        "mu_ksi_arm2": 0.1766353940135676,
+        "rank_arm1": 50.0,
+        "rank_arm2": 4.0,
+        "bike_total": 0,
+        "bike_ksi_total": 0
+      },
+      {
+        "intersection_id": "33f5b8caa58f",
+        "mu_ksi_arm1": 0.13267640568867167,
+        "mu_ksi_arm2": 0.1763960137542048,
+        "rank_arm1": 11.0,
+        "rank_arm2": 5.0,
+        "bike_total": 0,
+        "bike_ksi_total": 0
+      },
+      {
+        "intersection_id": "afbd562d0b58",
+        "mu_ksi_arm1": 0.137579378330213,
+        "mu_ksi_arm2": 0.17559246237729717,
+        "rank_arm1": 8.0,
+        "rank_arm2": 6.0,
+        "bike_total": 0,
+        "bike_ksi_total": 0
+      },
+      {
+        "intersection_id": "a6b897eea101",
+        "mu_ksi_arm1": 0.13383019349109584,
+        "mu_ksi_arm2": 0.17398982511618197,
+        "rank_arm1": 9.0,
+        "rank_arm2": 7.0,
+        "bike_total": 2,
+        "bike_ksi_total": 1
+      },
+      {
+        "intersection_id": "ffc015bea08e",
+        "mu_ksi_arm1": 0.12928610217285386,
+        "mu_ksi_arm2": 0.1735366100508687,
+        "rank_arm1": 14.0,
+        "rank_arm2": 8.0,
+        "bike_total": 0,
+        "bike_ksi_total": 0
+      },
+      {
+        "intersection_id": "a932fcb41bb1",
+        "mu_ksi_arm1": 0.13994876126503347,
+        "mu_ksi_arm2": 0.1668288900690524,
+        "rank_arm1": 5.0,
+        "rank_arm2": 9.0,
+        "bike_total": 0,
+        "bike_ksi_total": 0
+      },
+      {
+        "intersection_id": "6f39cc8b472f",
+        "mu_ksi_arm1": 0.13092188314886546,
+        "mu_ksi_arm2": 0.16483132596554115,
+        "rank_arm1": 12.0,
+        "rank_arm2": 10.0,
+        "bike_total": 9,
+        "bike_ksi_total": 1
+      }
+    ],
+    "kendall_tau_prior": 0.8233220373480318,
+    "kendall_tau_eb": 0.829786798948965,
+    "head_of_ranking": {
+      "n_sites_in_union_of_top50": 58,
+      "rank_shift_within_top50_union": {
+        "mean": 17.810344827586206,
+        "median": 16.0,
+        "max": 46.0
+      },
+      "n_sites_in_union_of_top20": 28,
+      "rank_shift_within_top20_union": {
+        "mean": 17.0,
+        "median": 16.0,
+        "max": 46.0
+      },
+      "top20_union_table": [
+        {
+          "intersection_id": "4efd4397bfbc",
+          "bike_total": 1,
+          "bike_ksi_total": 0,
+          "total_crashes": 24,
+          "mu_ksi_arm1": 0.1844570601957303,
+          "mu_ksi_arm2": 0.19584930371787845,
+          "rank_arm1": 1.0,
+          "rank_arm2": 2.0,
+          "rank_shift": 1.0
+        },
+        {
+          "intersection_id": "a69226a229ad",
+          "bike_total": 0,
+          "bike_ksi_total": 0,
+          "total_crashes": 7,
+          "mu_ksi_arm1": 0.15739594872273635,
+          "mu_ksi_arm2": 0.16290684517073492,
+          "rank_arm1": 2.0,
+          "rank_arm2": 13.0,
+          "rank_shift": 11.0
+        },
+        {
+          "intersection_id": "cdb875cde624",
+          "bike_total": 2,
+          "bike_ksi_total": 1,
+          "total_crashes": 4,
+          "mu_ksi_arm1": 0.1446516900760353,
+          "mu_ksi_arm2": 0.15511962381644964,
+          "rank_arm1": 3.0,
+          "rank_arm2": 20.0,
+          "rank_shift": 17.0
+        },
+        {
+          "intersection_id": "407803206118",
+          "bike_total": 0,
+          "bike_ksi_total": 0,
+          "total_crashes": 9,
+          "mu_ksi_arm1": 0.14177460572521103,
+          "mu_ksi_arm2": 0.14625809401894774,
+          "rank_arm1": 4.0,
+          "rank_arm2": 22.0,
+          "rank_shift": 18.0
+        },
+        {
+          "intersection_id": "a932fcb41bb1",
+          "bike_total": 0,
+          "bike_ksi_total": 0,
+          "total_crashes": 40,
+          "mu_ksi_arm1": 0.13994876126503347,
+          "mu_ksi_arm2": 0.1668288900690524,
+          "rank_arm1": 5.0,
+          "rank_arm2": 9.0,
+          "rank_shift": 4.0
+        },
+        {
+          "intersection_id": "05467827ef34",
+          "bike_total": 1,
+          "bike_ksi_total": 0,
+          "total_crashes": 24,
+          "mu_ksi_arm1": 0.13815065968515663,
+          "mu_ksi_arm2": 0.08339028653902573,
+          "rank_arm1": 6.0,
+          "rank_arm2": 46.0,
+          "rank_shift": 40.0
+        },
+        {
+          "intersection_id": "3dec2b9f9160",
+          "bike_total": 2,
+          "bike_ksi_total": 0,
+          "total_crashes": 28,
+          "mu_ksi_arm1": 0.13793493435214568,
+          "mu_ksi_arm2": 0.1632172176486787,
+          "rank_arm1": 7.0,
+          "rank_arm2": 12.0,
+          "rank_shift": 5.0
+        },
+        {
+          "intersection_id": "afbd562d0b58",
+          "bike_total": 0,
+          "bike_ksi_total": 0,
+          "total_crashes": 8,
+          "mu_ksi_arm1": 0.137579378330213,
+          "mu_ksi_arm2": 0.17559246237729717,
+          "rank_arm1": 8.0,
+          "rank_arm2": 6.0,
+          "rank_shift": 2.0
+        },
+        {
+          "intersection_id": "a6b897eea101",
+          "bike_total": 2,
+          "bike_ksi_total": 1,
+          "total_crashes": 21,
+          "mu_ksi_arm1": 0.13383019349109584,
+          "mu_ksi_arm2": 0.17398982511618197,
+          "rank_arm1": 9.0,
+          "rank_arm2": 7.0,
+          "rank_shift": 2.0
+        },
+        {
+          "intersection_id": "5786cba5578d",
+          "bike_total": 3,
+          "bike_ksi_total": 0,
+          "total_crashes": 17,
+          "mu_ksi_arm1": 0.1328661015943899,
+          "mu_ksi_arm2": 0.14427779811550726,
+          "rank_arm1": 10.0,
+          "rank_arm2": 27.0,
+          "rank_shift": 17.0
+        },
+        {
+          "intersection_id": "33f5b8caa58f",
+          "bike_total": 0,
+          "bike_ksi_total": 0,
+          "total_crashes": 0,
+          "mu_ksi_arm1": 0.13267640568867167,
+          "mu_ksi_arm2": 0.1763960137542048,
+          "rank_arm1": 11.0,
+          "rank_arm2": 5.0,
+          "rank_shift": 6.0
+        },
+        {
+          "intersection_id": "6f39cc8b472f",
+          "bike_total": 9,
+          "bike_ksi_total": 1,
+          "total_crashes": 40,
+          "mu_ksi_arm1": 0.13092188314886546,
+          "mu_ksi_arm2": 0.16483132596554115,
+          "rank_arm1": 12.0,
+          "rank_arm2": 10.0,
+          "rank_shift": 2.0
+        },
+        {
+          "intersection_id": "ffed5006142f",
+          "bike_total": 9,
+          "bike_ksi_total": 1,
+          "total_crashes": 19,
+          "mu_ksi_arm1": 0.13086657554316647,
+          "mu_ksi_arm2": 0.16008948918654944,
+          "rank_arm1": 13.0,
+          "rank_arm2": 15.0,
+          "rank_shift": 2.0
+        },
+        {
+          "intersection_id": "ffc015bea08e",
+          "bike_total": 0,
+          "bike_ksi_total": 0,
+          "total_crashes": 4,
+          "mu_ksi_arm1": 0.12928610217285386,
+          "mu_ksi_arm2": 0.1735366100508687,
+          "rank_arm1": 14.0,
+          "rank_arm2": 8.0,
+          "rank_shift": 6.0
+        },
+        {
+          "intersection_id": "a20bf0bcdf38",
+          "bike_total": 3,
+          "bike_ksi_total": 1,
+          "total_crashes": 27,
+          "mu_ksi_arm1": 0.1242870315206082,
+          "mu_ksi_arm2": 0.07914861496743811,
+          "rank_arm1": 15.0,
+          "rank_arm2": 50.0,
+          "rank_shift": 35.0
+        },
+        {
+          "intersection_id": "1b69a47ecb58",
+          "bike_total": 1,
+          "bike_ksi_total": 0,
+          "total_crashes": 5,
+          "mu_ksi_arm1": 0.12396519102216973,
+          "mu_ksi_arm2": 0.14389429471676266,
+          "rank_arm1": 17.0,
+          "rank_arm2": 28.0,
+          "rank_shift": 11.0
+        },
+        {
+          "intersection_id": "107d328fd7ac",
+          "bike_total": 3,
+          "bike_ksi_total": 0,
+          "total_crashes": 6,
+          "mu_ksi_arm1": 0.12396519102216973,
+          "mu_ksi_arm2": 0.14904457840792013,
+          "rank_arm1": 17.0,
+          "rank_arm2": 21.0,
+          "rank_shift": 4.0
+        },
+        {
+          "intersection_id": "2d1a747f6a58",
+          "bike_total": 1,
+          "bike_ksi_total": 0,
+          "total_crashes": 3,
+          "mu_ksi_arm1": 0.12396519102216973,
+          "mu_ksi_arm2": 0.1424431701962321,
+          "rank_arm1": 17.0,
+          "rank_arm2": 32.0,
+          "rank_shift": 15.0
+        },
+        {
+          "intersection_id": "6a49a840502c",
+          "bike_total": 0,
+          "bike_ksi_total": 0,
+          "total_crashes": 10,
+          "mu_ksi_arm1": 0.12342974489025983,
+          "mu_ksi_arm2": 0.07811372272730588,
+          "rank_arm1": 19.0,
+          "rank_arm2": 54.0,
+          "rank_shift": 35.0
+        },
+        {
+          "intersection_id": "1aa39a558f89",
+          "bike_total": 0,
+          "bike_ksi_total": 0,
+          "total_crashes": 13,
+          "mu_ksi_arm1": 0.12340641649998915,
+          "mu_ksi_arm2": 0.20072193488421153,
+          "rank_arm1": 20.0,
+          "rank_arm2": 1.0,
+          "rank_shift": 19.0
+        },
+        {
+          "intersection_id": "fb5b5d87c308",
+          "bike_total": 5,
+          "bike_ksi_total": 1,
+          "total_crashes": 20,
+          "mu_ksi_arm1": 0.118052048222943,
+          "mu_ksi_arm2": 0.16426363304959052,
+          "rank_arm1": 27.0,
+          "rank_arm2": 11.0,
+          "rank_shift": 16.0
+        },
+        {
+          "intersection_id": "10e4191de520",
+          "bike_total": 2,
+          "bike_ksi_total": 0,
+          "total_crashes": 12,
+          "mu_ksi_arm1": 0.10972525944147313,
+          "mu_ksi_arm2": 0.15976745032867207,
+          "rank_arm1": 32.0,
+          "rank_arm2": 16.0,
+          "rank_shift": 16.0
+        },
+        {
+          "intersection_id": "569aafe7605a",
+          "bike_total": 0,
+          "bike_ksi_total": 0,
+          "total_crashes": 6,
+          "mu_ksi_arm1": 0.1087132998749308,
+          "mu_ksi_arm2": 0.15761806645758086,
+          "rank_arm1": 35.0,
+          "rank_arm2": 17.0,
+          "rank_shift": 18.0
+        },
+        {
+          "intersection_id": "712128e34142",
+          "bike_total": 2,
+          "bike_ksi_total": 0,
+          "total_crashes": 24,
+          "mu_ksi_arm1": 0.1071645233978499,
+          "mu_ksi_arm2": 0.193513859524222,
+          "rank_arm1": 37.0,
+          "rank_arm2": 3.0,
+          "rank_shift": 34.0
+        },
+        {
+          "intersection_id": "93eee812b2e2",
+          "bike_total": 1,
+          "bike_ksi_total": 0,
+          "total_crashes": 7,
+          "mu_ksi_arm1": 0.10519589686357658,
+          "mu_ksi_arm2": 0.15657094363232293,
+          "rank_arm1": 40.0,
+          "rank_arm2": 18.0,
+          "rank_shift": 22.0
+        },
+        {
+          "intersection_id": "27f43f41187b",
+          "bike_total": 0,
+          "bike_ksi_total": 0,
+          "total_crashes": 23,
+          "mu_ksi_arm1": 0.10464804140204013,
+          "mu_ksi_arm2": 0.16240720987868923,
+          "rank_arm1": 44.0,
+          "rank_arm2": 14.0,
+          "rank_shift": 30.0
+        },
+        {
+          "intersection_id": "aa90d1c8a2c3",
+          "bike_total": 0,
+          "bike_ksi_total": 0,
+          "total_crashes": 4,
+          "mu_ksi_arm1": 0.09862258961740174,
+          "mu_ksi_arm2": 0.1766353940135676,
+          "rank_arm1": 50.0,
+          "rank_arm2": 4.0,
+          "rank_shift": 46.0
+        },
+        {
+          "intersection_id": "293c589368c9",
+          "bike_total": 1,
+          "bike_ksi_total": 0,
+          "total_crashes": 12,
+          "mu_ksi_arm1": 0.0932966561122458,
+          "mu_ksi_arm2": 0.15641461830411757,
+          "rank_arm1": 61.0,
+          "rank_arm2": 19.0,
+          "rank_shift": 42.0
+        }
+      ],
+      "note": "Large absolute rank shifts concentrate in the flat middle of the distribution where predicted KSI differences are numerically tiny; the head of the ranking is where a shift would change decisions."
+    }
+  },
+  "provenance_check_all_crash_target": {
+    "note": "README.md:162 records v2 as sum_pred 1772.7 vs 1720 (+3.1%), MAE 3.47. Comparing both pooled specs on the all-crash target identifies which one corresponds to the historical nb_v2_arterial_aadt.",
+    "arm1_spec_legs_cat": {
+      "mae": 3.1879433956790812,
+      "rmse": 4.838246127063464,
+      "spearman": 0.6880574028319819,
+      "sum_pred": 1705.7027422610058,
+      "sum_actual": 1720.0,
+      "calibration_pct": -0.831235915057801
+    },
+    "v2_spec_num_legs_continuous": {
+      "mae": 3.47384155348173,
+      "rmse": 5.424804135990044,
+      "spearman": 0.646057469359692,
+      "sum_pred": 1772.674489293548,
+      "sum_actual": 1720.0,
+      "calibration_pct": 3.0624703077644213
+    },
+    "readme_recorded_v2": {
+      "sum_pred": 1772.7,
+      "sum_actual": 1720,
+      "calibration_pct": 3.1,
+      "mae": 3.47
+    }
+  },
+  "sensitivity_v2_leg_encoding": {
+    "note": "Historical v2 used num_legs as a continuous slope. Arm 1 above uses the v3 top-coded legs_cat so the A/B isolates pooled-vs-per-mode. This block checks the leg encoding does not drive the result.",
+    "spearman_mu_v2legs_vs_mu_arm1": 0.9278532247136957,
+    "bike": {
+      "mae": 0.6190365129968284,
+      "rmse": 1.0904845891131156,
+      "spearman": 0.40303605617023314,
+      "sum_pred": 174.17557482012188,
+      "sum_actual": 169.0,
+      "calibration_pct": 3.0624703077644266
+    },
+    "bike_ksi": {
+      "mae": 0.08466133906650863,
+      "rmse": 0.2159800284884751,
+      "spearman": 0.20968975780003526,
+      "sum_pred": 16.489995249242305,
+      "sum_actual": 16.0,
+      "calibration_pct": 3.062470307764409
+    }
+  },
+  "repeated_cv_10_seeds": {
+    "n_seeds": 10,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "n_splits": 5,
+    "n_fits": 200,
+    "all_converged": false,
+    "n_failed_fits": 1,
+    "failed_fits": [
+      {
+        "tag": "permode_bike_seed3_fold0",
+        "formula": "bike_total ~ is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + log_bike_centrality",
+        "n_rows": 276,
+        "method": "nm(diagnostic)",
+        "converged": false,
+        "converged_under_production_ladder": false,
+        "rescued_by_out_of_production_method": true,
+        "attempts": [
+          {
+            "method": "newton (statsmodels default)",
+            "raised": false,
+            "mle_converged": false,
+            "convergence_warnings": [
+              "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+            ],
+            "iterations": -1
+          },
+          {
+            "method": "bfgs maxiter=200",
+            "raised": false,
+            "mle_converged": false,
+            "convergence_warnings": [
+              "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+            ],
+            "iterations": -1
+          },
+          {
+            "method": "nm maxiter=10000 (BEYOND production ladder)",
+            "raised": false,
+            "mle_converged": true,
+            "convergence_warnings": [],
+            "iterations": 2792
+          }
+        ],
+        "retry_used": true,
+        "error": null
+      }
+    ],
+    "seed_convergence_flags": {
+      "pooled": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "bike": [
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "ped": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "vehicle": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "part_A": {
+      "bike": {
+        "n_seeds_total": 10,
+        "n_seeds_clean": 9,
+        "seed_converged_flags": [
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "mae": {
+          "arm1_mean": 0.5993015646305265,
+          "arm1_sd": 0.004063958802008694,
+          "arm2_mean": 0.6071060993888203,
+          "arm2_sd": 0.009355331811608891,
+          "diff_mean": 0.007804534758293815,
+          "diff_sd": 0.008654679561847688,
+          "diff_min": -0.006689487811338601,
+          "diff_max": 0.01765284332813566,
+          "n_seeds_arm2_better": 2,
+          "n_seeds_used": 9,
+          "arm1_per_seed_all": [
+            0.6012542770835119,
+            0.5935239623609796,
+            0.5959853517274047,
+            0.6013970106688087,
+            0.5970362930665254,
+            0.6044776708739236,
+            0.5945974353608783,
+            0.6015227956412262,
+            0.6037571281841506,
+            0.6015591673761391
+          ],
+          "arm2_per_seed_all": [
+            0.5945647892721733,
+            0.588378998671005,
+            0.6126054032102298,
+            0.6044066702022522,
+            0.6063075323709405,
+            0.6145379012673727,
+            0.6122502786890139,
+            0.6139140329881391,
+            0.6087661876608167,
+            0.6126297703696928
+          ]
+        },
+        "rmse": {
+          "arm1_mean": 1.0726570443750472,
+          "arm1_sd": 0.004842013748361555,
+          "arm2_mean": 1.0985271429090098,
+          "arm2_sd": 0.0161390136838238,
+          "diff_mean": 0.025870098533962802,
+          "diff_sd": 0.013588971266999109,
+          "diff_min": -0.0011639030116983307,
+          "diff_max": 0.04132652886945154,
+          "n_seeds_arm2_better": 1,
+          "n_seeds_used": 9,
+          "arm1_per_seed_all": [
+            1.0748920578609242,
+            1.064099477235089,
+            1.074804189955761,
+            1.0753604203344524,
+            1.068221390019665,
+            1.0787996077508495,
+            1.068502909928137,
+            1.0716568248323313,
+            1.0764138286245957,
+            1.076523113168071
+          ],
+          "arm2_per_seed_all": [
+            1.0865932880068618,
+            1.0629355742233906,
+            1.0989634482528943,
+            1.1074292905288683,
+            1.0928146257725284,
+            1.1133206398068967,
+            1.1098294387975884,
+            1.1096299847859632,
+            1.1013210052751283,
+            1.111336281259837
+          ]
+        },
+        "rho": {
+          "arm1_mean": 0.4050987376352214,
+          "arm1_sd": 0.00919419579684288,
+          "arm2_mean": 0.36766861494351494,
+          "arm2_sd": 0.016099176883538725,
+          "diff_mean": -0.0374301226917064,
+          "diff_sd": 0.015058345591893535,
+          "diff_min": -0.0655401473617232,
+          "diff_max": -0.009761540914546618,
+          "n_seeds_arm2_better": 0,
+          "n_seeds_used": 9,
+          "arm1_per_seed_all": [
+            0.4014233279993551,
+            0.41963654481100837,
+            0.4106921123104923,
+            0.40048997541890574,
+            0.4063687443280166,
+            0.3902254129156041,
+            0.41552174055396185,
+            0.40483826918350946,
+            0.397196059923103,
+            0.39998642669194184
+          ],
+          "arm2_per_seed_all": [
+            0.3916617870848085,
+            0.38892531646498535,
+            0.3752219874747877,
+            0.3644381574702397,
+            0.37706337761084546,
+            0.34911845678338915,
+            0.34998159319223865,
+            0.35817737021338864,
+            0.3624327280141022,
+            0.3564349176530894
+          ]
+        }
+      },
+      "ped": {
+        "n_seeds_total": 10,
+        "n_seeds_clean": 10,
+        "seed_converged_flags": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "mae": {
+          "arm1_mean": 0.7296111507411371,
+          "arm1_sd": 0.006566913188150113,
+          "arm2_mean": 0.7269510131093421,
+          "arm2_sd": 0.005921721582205439,
+          "diff_mean": -0.0026601376317950455,
+          "diff_sd": 0.00541839823534169,
+          "diff_min": -0.010328005139942253,
+          "diff_max": 0.006849139782006963,
+          "n_seeds_arm2_better": 7,
+          "n_seeds_used": 10,
+          "arm1_per_seed_all": [
+            0.7289514109486673,
+            0.7238994408127464,
+            0.7313411766194438,
+            0.7271550868110042,
+            0.7224170486904432,
+            0.7299365994374911,
+            0.7274060795643577,
+            0.7310760644780834,
+            0.7275031142683311,
+            0.7464254857808034
+          ],
+          "arm2_per_seed_all": [
+            0.7271120534479645,
+            0.72168844168058,
+            0.7210131714795015,
+            0.729426484675763,
+            0.7239786173080409,
+            0.7367857392194981,
+            0.7243959641071561,
+            0.728125863336961,
+            0.720483140561301,
+            0.7365006552766549
+          ]
+        },
+        "rmse": {
+          "arm1_mean": 1.0883547895401176,
+          "arm1_sd": 0.011324484099043528,
+          "arm2_mean": 1.101580686345608,
+          "arm2_sd": 0.010149457529763269,
+          "diff_mean": 0.013225896805490578,
+          "diff_sd": 0.007909538602016675,
+          "diff_min": 0.0005614170672794128,
+          "diff_max": 0.024339251488099567,
+          "n_seeds_arm2_better": 0,
+          "n_seeds_used": 10,
+          "arm1_per_seed_all": [
+            1.0893034883368817,
+            1.0819217775794119,
+            1.0848024857447236,
+            1.0882489270173068,
+            1.0745790440590013,
+            1.0907323397252073,
+            1.0855739649621832,
+            1.0878514098576701,
+            1.0827735301354757,
+            1.117760927983313
+          ],
+          "arm2_per_seed_all": [
+            1.1043663494127343,
+            1.0964234845276437,
+            1.0902358733415614,
+            1.1046436732280127,
+            1.0959642063960688,
+            1.1112128410736404,
+            1.094611072352039,
+            1.1121906613457697,
+            1.087836356728018,
+            1.1183223450505924
+          ]
+        },
+        "rho": {
+          "arm1_mean": 0.5515345889943738,
+          "arm1_sd": 0.0066828688624402735,
+          "arm2_mean": 0.5513804138122965,
+          "arm2_sd": 0.007842146186848177,
+          "diff_mean": -0.00015417518207729852,
+          "diff_sd": 0.008683034311702371,
+          "diff_min": -0.012162059986864482,
+          "diff_max": 0.01388043469742839,
+          "n_seeds_arm2_better": 5,
+          "n_seeds_used": 10,
+          "arm1_per_seed_all": [
+            0.5536277918089937,
+            0.5516853367626101,
+            0.5555770611722584,
+            0.5522548263714733,
+            0.5568923484723746,
+            0.5491387906881146,
+            0.5497010851628654,
+            0.5531335895400038,
+            0.5587700416629315,
+            0.5345650183021123
+          ],
+          "arm2_per_seed_all": [
+            0.5414657318221292,
+            0.5581226749222412,
+            0.5558436584740982,
+            0.5408781428602176,
+            0.554134286342942,
+            0.5411315143169311,
+            0.5541075657944627,
+            0.5618116965805651,
+            0.5578634140098367,
+            0.5484454529995407
+          ]
+        }
+      },
+      "vehicle": {
+        "n_seeds_total": 10,
+        "n_seeds_clean": 10,
+        "seed_converged_flags": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "mae": {
+          "arm1_mean": 2.8707840715055646,
+          "arm1_sd": 0.025378898801917908,
+          "arm2_mean": 2.8841022601635506,
+          "arm2_sd": 0.024457830843455704,
+          "diff_mean": 0.013318188657986152,
+          "diff_sd": 0.00930348823233539,
+          "diff_min": 0.004015298719526772,
+          "diff_max": 0.03651171618189819,
+          "n_seeds_arm2_better": 0,
+          "n_seeds_used": 10,
+          "arm1_per_seed_all": [
+            2.87129865763456,
+            2.8657865637295115,
+            2.871543584107544,
+            2.8583192145215492,
+            2.857256154340064,
+            2.8786640489246724,
+            2.840136337374216,
+            2.9211114155270286,
+            2.8410722904113896,
+            2.90265244848511
+          ],
+          "arm2_per_seed_all": [
+            2.886110125601943,
+            2.8698018624490382,
+            2.8787680529339443,
+            2.8727353941605807,
+            2.865599670678877,
+            2.8888439327244027,
+            2.876648053556114,
+            2.939664953823594,
+            2.8540799196514404,
+            2.9087706360555727
+          ]
+        },
+        "rmse": {
+          "arm1_mean": 4.4775285177626625,
+          "arm1_sd": 0.04021661440240687,
+          "arm2_mean": 4.486247906504685,
+          "arm2_sd": 0.04139743001997053,
+          "diff_mean": 0.00871938874202165,
+          "diff_sd": 0.011327131468599852,
+          "diff_min": -0.0071979689284971116,
+          "diff_max": 0.03389831539552279,
+          "n_seeds_arm2_better": 1,
+          "n_seeds_used": 10,
+          "arm1_per_seed_all": [
+            4.461967411155542,
+            4.460710604314288,
+            4.5029807737382885,
+            4.448070231339787,
+            4.4681466127882254,
+            4.515980773817357,
+            4.43893030870215,
+            4.546043029094926,
+            4.418742381375489,
+            4.513713051300577
+          ],
+          "arm2_per_seed_all": [
+            4.471746779852342,
+            4.453512635385791,
+            4.518165845281527,
+            4.4492581585583935,
+            4.473796372204967,
+            4.518026319759879,
+            4.472828624097673,
+            4.563115443176645,
+            4.426086013591556,
+            4.515942873138072
+          ]
+        },
+        "rho": {
+          "arm1_mean": 0.5847887076932948,
+          "arm1_sd": 0.008155031047861569,
+          "arm2_mean": 0.5728111111372217,
+          "arm2_sd": 0.010157312439911765,
+          "diff_mean": -0.011977596556072945,
+          "diff_sd": 0.0031883989820451256,
+          "diff_min": -0.01783078042340791,
+          "diff_max": -0.00860751311123964,
+          "n_seeds_arm2_better": 0,
+          "n_seeds_used": 10,
+          "arm1_per_seed_all": [
+            0.5895056267877313,
+            0.5830978039777778,
+            0.5750942519725386,
+            0.5825918903037903,
+            0.5945423636908233,
+            0.5897302790044545,
+            0.5927454839765341,
+            0.5766082713404036,
+            0.592211150961237,
+            0.571759954917657
+          ],
+          "arm2_per_seed_all": [
+            0.579463476261628,
+            0.5744902908665381,
+            0.5572634715491307,
+            0.5715288037492231,
+            0.5834751670341124,
+            0.5792736858674171,
+            0.5802933136502764,
+            0.5675332683167206,
+            0.5804350149968636,
+            0.5543546190803081
+          ]
+        }
+      }
+    },
+    "part_B_bike_ksi": {
+      "n_seeds_total": 10,
+      "n_seeds_clean": 9,
+      "seed_converged_flags": [
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "mae": {
+        "arm1_mean": 0.08437306637692704,
+        "arm1_sd": 0.0003137006144810342,
+        "arm2_mean": 0.0849938917339459,
+        "arm2_sd": 0.000904866673223251,
+        "diff_mean": 0.0006208253570188674,
+        "diff_sd": 0.000876559665814261,
+        "diff_min": -0.0008289499743667911,
+        "diff_max": 0.0021518752945460656,
+        "n_seeds_arm2_better": 2,
+        "n_seeds_used": 9,
+        "arm1_per_seed_all": [
+          0.08492375792959066,
+          0.08411571132173382,
+          0.08469131965575505,
+          0.08499110639672232,
+          0.08395714802223964,
+          0.08446776493076057,
+          0.08419081397426459,
+          0.08413530722447034,
+          0.08457276104823404,
+          0.0843030132852946
+        ],
+        "arm2_per_seed_all": [
+          0.08409480795522387,
+          0.08369119276088019,
+          0.08684319495030111,
+          0.08538359570814426,
+          0.08500104873537014,
+          0.08477191867704656,
+          0.08485606787298532,
+          0.08476914777934111,
+          0.08565094244858253,
+          0.08526670442578228
+        ]
+      },
+      "rmse": {
+        "arm1_mean": 0.2187316176263497,
+        "arm1_sd": 0.000637676684423623,
+        "arm2_mean": 0.22218217965589573,
+        "arm2_sd": 0.001462162846605871,
+        "diff_mean": 0.003450562029546035,
+        "diff_sd": 0.0011437487435139151,
+        "diff_min": 0.0009159105924394784,
+        "diff_max": 0.0046749371377031446,
+        "n_seeds_arm2_better": 0,
+        "n_seeds_used": 9,
+        "arm1_per_seed_all": [
+          0.21928966149892165,
+          0.2180808820164127,
+          0.21948246869936341,
+          0.21919331160785854,
+          0.2178614334516568,
+          0.21810743334752453,
+          0.21911812087643207,
+          0.2187025315716751,
+          0.21949193928959215,
+          0.21845008788556908
+        ],
+        "arm2_per_seed_all": [
+          0.2219480231514791,
+          0.2189967926088522,
+          0.22342562135609068,
+          0.22326451962972682,
+          0.2216325848750363,
+          0.2210602559824709,
+          0.22292928580420318,
+          0.22316092681138724,
+          0.22336110129027,
+          0.22312502502327222
+        ]
+      },
+      "rho": {
+        "arm1_mean": 0.20538907136793488,
+        "arm1_sd": 0.003922207066605221,
+        "arm2_mean": 0.1514326445214818,
+        "arm2_sd": 0.02076596215758757,
+        "diff_mean": -0.05395642684645311,
+        "diff_sd": 0.01953230788027745,
+        "diff_min": -0.0867356573924454,
+        "diff_max": -0.0226675122597777,
+        "n_seeds_arm2_better": 0,
+        "n_seeds_used": 9,
+        "arm1_per_seed_all": [
+          0.2043419873827287,
+          0.20254334964446366,
+          0.20043357040304552,
+          0.20140075951098899,
+          0.2123553656253512,
+          0.2111762165762452,
+          0.20349511270402665,
+          0.2038154372213343,
+          0.2044157387337854,
+          0.20592486402043342
+        ],
+        "arm2_per_seed_all": [
+          0.16814816424371398,
+          0.17987583738468596,
+          0.14225977948281707,
+          0.13705499324611076,
+          0.17075361996980667,
+          0.16674997003913872,
+          0.11675945531158125,
+          0.13589702727971945,
+          0.144169213604713,
+          0.13828073337716
+        ]
+      }
+    },
+    "note": "'n_seeds_arm2_better' counts seeds where per-mode wins (lower MAE/RMSE, higher rho). Aggregates EXCLUDE seeds containing a fit that failed production's newton->bfgs ladder; per-seed values for all 10 seeds are kept in *_per_seed_all."
+  }
+}

@@ -7,12 +7,26 @@ used to read it back.
 
 Leg count enters the model as a *top-coded categorical*, not a continuous
 slope. A log-linear per-leg term forces a constant multiplicative effect and
-extrapolates it without bound: fit on Capitol Hill — where 2-to-4-leg sites
-are 97% of the data — the slope reads a 6-leg intersection as roughly +280%
-over a 4-leg one, with a credible interval spanning +80% to +700% and no
-six-leg site actually supporting it. Collapsing 5-or-more legs into a single
-category lets the observed data, rather than an extrapolated line, set the
-effect for rare high-leg geometries.
+extrapolates it without bound. Fit on Capitol Hill, where 2-to-4-leg sites
+make up 96% of the data (333/346), the slope reads a 6-leg intersection as
++283% over a 4-leg one, with a 95% confidence interval spanning +83% to
++701%. Collapsing 5-or-more legs into a single category lets the observed
+data, rather than an extrapolated line, set the effect for rare high-leg
+geometries.
+
+Measured support (experiments/results/, experiment E5). Nested LR tests
+against a full per-level categorical reject the continuous slope in every
+mode (p = 0.0088 bike, 9.0e-08 ped, 1.5e-07 vehicle) and never reject this
+top-coding (p = 0.63, 0.70, 0.81).
+
+Note the extrapolation is not merely uncertain, it points the wrong way.
+Three six-leg sites do exist (4 bike, 5 ped, 32 vehicle crashes), and fit
+unconstrained they show exp(beta) ~ 0.79 for bike and 0.83 for ped, i.e.
+*fewer* crashes than a 4-leg site, the opposite sign to the extrapolated
++283%. The
+real signal is that 3-leg sites are much safer than 4-leg ones (exp(beta)
+0.21 / 0.18 / 0.28, all p < 1e-05); forcing a straight line through that
+drop is what manufactures the +283% figure.
 """
 
 from __future__ import annotations

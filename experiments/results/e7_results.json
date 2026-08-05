@@ -1,0 +1,803 @@
+{
+  "experiment": "E7 - NB vs Zero-Inflated NB",
+  "environment": {
+    "python": "3.13.2",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.15.1",
+    "statsmodels": "0.14.6",
+    "patsy": "1.0.2",
+    "sklearn": "1.6.1"
+  },
+  "n_rows": 346,
+  "api_note": "ZINB fit via statsmodels ARRAY API (ZeroInflatedNegativeBinomialP, p=2, inflation='logit', exog_infl = constant only) on a patsy design matrix built from the production formula; offset = log(years_observed).",
+  "modes": {
+    "bike": {
+      "target": "bike_total",
+      "formula": "bike_total ~ is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + log_bike_centrality",
+      "n_events": 169,
+      "observed_zero_sites": 256,
+      "n_sites": 346,
+      "nb": {
+        "converged": true,
+        "converged_on": "bfgs,maxiter=1000,start=poisson+MoM_alpha [selected: highest LL among converged rungs]",
+        "fit_attempts": [
+          {
+            "attempt": "default(bfgs,maxiter=35)",
+            "converged": false,
+            "loglik": -275.68829345307984,
+            "warnings": [
+              "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+            ]
+          },
+          {
+            "attempt": "bfgs,maxiter=200 [production retry]",
+            "converged": true,
+            "loglik": -275.6564470776231,
+            "warnings": []
+          },
+          {
+            "attempt": "bfgs,maxiter=1000",
+            "converged": true,
+            "loglik": -275.6564470776231,
+            "warnings": []
+          },
+          {
+            "attempt": "nelder-mead,maxiter=8000",
+            "converged": true,
+            "loglik": -275.8090219135779,
+            "warnings": []
+          },
+          {
+            "attempt": "bfgs,maxiter=1000,start=poisson+MoM_alpha",
+            "converged": true,
+            "loglik": -275.6564470771343,
+            "warnings": []
+          }
+        ],
+        "loglik": -275.6564470771343,
+        "k_params": 12,
+        "aic_manual": 575.3128941542686,
+        "bic_manual": 621.4701594549613,
+        "aic_statsmodels": 575.3128941542686,
+        "bic_statsmodels": 621.4701594549613,
+        "alpha": 1.2381952141975139,
+        "expected_zero_sites": 256.45236257447056,
+        "zero_gap_observed_minus_expected": -0.4523625744705555,
+        "in_sample_mae": 0.5773512182693845,
+        "in_sample_rmse": 1.0457866723136617,
+        "cv": {
+          "backend": "sklearn.model_selection.KFold",
+          "folds": [
+            {
+              "fold": 0,
+              "converged": true,
+              "mae": 0.6136357487231827,
+              "rmse": 1.086826810221958
+            },
+            {
+              "fold": 1,
+              "converged": true,
+              "mae": 0.46077234056084126,
+              "rmse": 0.695681229491323
+            },
+            {
+              "fold": 2,
+              "converged": true,
+              "mae": 0.7523737956620663,
+              "rmse": 1.5397936619073878
+            },
+            {
+              "fold": 3,
+              "converged": true,
+              "mae": 0.599902133326301,
+              "rmse": 1.037819501195033
+            },
+            {
+              "fold": 4,
+              "converged": true,
+              "mae": 0.5458640320296282,
+              "rmse": 0.8889397120615866
+            }
+          ],
+          "n_folds_failed": 0,
+          "mae_across_folds": {
+            "mean": 0.5945096100604039,
+            "sd": 0.10673335830252899,
+            "n": 5
+          },
+          "rmse_across_folds": {
+            "mean": 1.0498121829754576,
+            "sd": 0.31340247320989745,
+            "n": 5
+          },
+          "pooled_out_of_fold_mae": 0.5945648879178108,
+          "pooled_out_of_fold_rmse": 1.0865928316097608
+        }
+      },
+      "zero_count_parametric_bootstrap": {
+        "n_sim": 4000,
+        "rng": "numpy.random.default_rng(0)",
+        "observed_zero_sites": 256,
+        "simulated_zero_mean": 256.534,
+        "simulated_zero_sd": 7.550304349755941,
+        "simulated_zero_p05": 244.0,
+        "simulated_zero_p95": 269.0,
+        "observed_inside_90pct_band": true,
+        "p_value_observed_ge_simulated": 0.55475
+      },
+      "zinb": {
+        "converged": true,
+        "converged_on": "nelder-mead,start=NB+logit_intercept(-3) [selected: highest LL among converged rungs]",
+        "fit_attempts": [
+          {
+            "attempt": "default(bfgs,maxiter=35)",
+            "converged": false,
+            "loglik": -275.67438809059024,
+            "warnings": [
+              "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+            ]
+          },
+          {
+            "attempt": "bfgs,maxiter=500 [task-specified retry]",
+            "converged": true,
+            "loglik": -275.6564575005516,
+            "warnings": []
+          },
+          {
+            "attempt": "bfgs,maxiter=2000",
+            "converged": true,
+            "loglik": -275.6564575005516,
+            "warnings": []
+          },
+          {
+            "attempt": "nelder-mead,maxiter=20000",
+            "converged": true,
+            "loglik": -284.436375484699,
+            "warnings": []
+          },
+          {
+            "attempt": "bfgs,maxiter=2000,start=NB+logit_intercept(-3)",
+            "converged": true,
+            "loglik": -275.65644710575464,
+            "warnings": []
+          },
+          {
+            "attempt": "nelder-mead,start=NB+logit_intercept(-3)",
+            "converged": true,
+            "loglik": -275.65644707608743,
+            "warnings": []
+          },
+          {
+            "attempt": "bfgs,maxiter=2000,start=NB+logit_intercept(-1)",
+            "converged": true,
+            "loglik": -275.6564490160118,
+            "warnings": []
+          },
+          {
+            "attempt": "nelder-mead,start=NB+logit_intercept(-1)",
+            "converged": true,
+            "loglik": -275.7081555367269,
+            "warnings": []
+          }
+        ],
+        "loglik": -275.65644707608743,
+        "k_params": 13,
+        "aic_manual": 577.3128941521749,
+        "bic_manual": 627.3165982279253,
+        "aic_statsmodels": 577.3128941521749,
+        "bic_statsmodels": 627.3165982279253,
+        "alpha": 1.2381952243493715,
+        "inflation_logit_intercept": -29.641069309398077,
+        "inflation_logit_intercept_se": 30352.773763156893,
+        "inflation_probability_pi": 1.3398221744527644e-13,
+        "expected_zero_sites": 256.4523615686034,
+        "zero_gap_observed_minus_expected": -0.4523615686034077,
+        "in_sample_mae": 0.5773512889744304,
+        "in_sample_rmse": 1.04578661505237,
+        "statsmodels_cross_check": {
+          "max_abs_diff_mean_vs_statsmodels": 0.0,
+          "max_abs_diff_p_zero_vs_statsmodels": 6.661338147750939e-16
+        },
+        "cv": {
+          "backend": "sklearn.model_selection.KFold",
+          "folds": [
+            {
+              "fold": 0,
+              "converged": true,
+              "mae": 0.6136357101580396,
+              "rmse": 1.086826990308947
+            },
+            {
+              "fold": 1,
+              "converged": true,
+              "mae": 0.46077240080560805,
+              "rmse": 0.6956797116226999
+            },
+            {
+              "fold": 2,
+              "converged": true,
+              "mae": 0.7523729658745406,
+              "rmse": 1.5397938461298097
+            },
+            {
+              "fold": 3,
+              "converged": true,
+              "mae": 0.5999031164021518,
+              "rmse": 1.0378202748535132
+            },
+            {
+              "fold": 4,
+              "converged": true,
+              "mae": 0.5458883842172731,
+              "rmse": 0.8890076074316375
+            }
+          ],
+          "n_folds_failed": 0,
+          "mae_across_folds": {
+            "mean": 0.5945145154915227,
+            "sd": 0.10673026907341877,
+            "n": 5
+          },
+          "rmse_across_folds": {
+            "mean": 1.0498256860693216,
+            "sd": 0.3133942604453764,
+            "n": 5
+          },
+          "pooled_out_of_fold_mae": 0.5945697790599229,
+          "pooled_out_of_fold_rmse": 1.0866039509491605
+        }
+      },
+      "comparison": {
+        "delta_loglik_zinb_minus_nb": 1.0468852451595012e-09,
+        "delta_aic_zinb_minus_nb": 1.9999999979062295,
+        "delta_bic_zinb_minus_nb": 5.846438772964007,
+        "zero_count_observed": 256,
+        "zero_count_expected_nb": 256.45236257447056,
+        "zero_count_expected_zinb": 256.4523615686034
+      },
+      "vuong": {
+        "computed": true,
+        "degenerate": true,
+        "statistic_raw": 2.9495467886961432e-05,
+        "p_two_sided": 0.9999764660215628,
+        "statistic_aic_corrected": null,
+        "statistic_bic_corrected": null,
+        "suppressed_reason": "The fitted inflation probability collapsed to pi = 1.340e-13 (the NB boundary), and the fitted ZINB reproduces the NB per-observation log-likelihoods to max|difference| = 1.937e-05. The parameter-count-corrected Vuong variants are then a fixed constant divided by a numerical-noise standard deviation and take arbitrary huge values; they carry no information and are suppressed. The raw statistic is ~0, i.e. the two models are numerically the same model.",
+        "loglikeobs_check": {
+          "sum_ll_nb_obs_vs_llf": 0.0,
+          "sum_ll_zinb_obs_vs_llf": 0.0,
+          "max_abs_per_obs_ll_difference": 1.9368717126599932e-05,
+          "sd_per_obs_ll_difference": 1.9080293615166616e-06,
+          "zinb_inflation_probability_pi": 1.3398221744527644e-13
+        },
+        "mean_per_obs_ll_difference": 3.0255357843946416e-12
+      }
+    },
+    "ped": {
+      "target": "ped_total",
+      "formula": "ped_total ~ is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + log_aadt",
+      "n_events": 266,
+      "observed_zero_sites": 204,
+      "n_sites": 346,
+      "nb": {
+        "converged": true,
+        "converged_on": "bfgs,maxiter=1000,start=poisson+MoM_alpha [selected: highest LL among converged rungs]",
+        "fit_attempts": [
+          {
+            "attempt": "default(bfgs,maxiter=35)",
+            "converged": false,
+            "loglik": -346.4039940353546,
+            "warnings": [
+              "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+            ]
+          },
+          {
+            "attempt": "bfgs,maxiter=200 [production retry]",
+            "converged": true,
+            "loglik": -346.4017044344532,
+            "warnings": []
+          },
+          {
+            "attempt": "bfgs,maxiter=1000",
+            "converged": true,
+            "loglik": -346.4017044344532,
+            "warnings": []
+          },
+          {
+            "attempt": "nelder-mead,maxiter=8000",
+            "converged": true,
+            "loglik": -346.4103527232516,
+            "warnings": []
+          },
+          {
+            "attempt": "bfgs,maxiter=1000,start=poisson+MoM_alpha",
+            "converged": true,
+            "loglik": -346.401703713811,
+            "warnings": []
+          }
+        ],
+        "loglik": -346.401703713811,
+        "k_params": 12,
+        "aic_manual": 716.803407427622,
+        "bic_manual": 762.9606727283146,
+        "aic_statsmodels": 716.803407427622,
+        "bic_statsmodels": 762.9606727283146,
+        "alpha": 0.3049021976637001,
+        "expected_zero_sites": 206.02157117820275,
+        "zero_gap_observed_minus_expected": -2.0215711782027483,
+        "in_sample_mae": 0.6976372255229761,
+        "in_sample_rmse": 1.05014663655358,
+        "cv": {
+          "backend": "sklearn.model_selection.KFold",
+          "folds": [
+            {
+              "fold": 0,
+              "converged": true,
+              "mae": 0.8074849847947321,
+              "rmse": 1.27795539882044
+            },
+            {
+              "fold": 1,
+              "converged": true,
+              "mae": 0.6576614857920366,
+              "rmse": 0.9507310927521612
+            },
+            {
+              "fold": 2,
+              "converged": true,
+              "mae": 0.7761408552645566,
+              "rmse": 1.1965175485107913
+            },
+            {
+              "fold": 3,
+              "converged": true,
+              "mae": 0.7368182622431768,
+              "rmse": 1.0721916785348933
+            },
+            {
+              "fold": 4,
+              "converged": true,
+              "mae": 0.6562722762486068,
+              "rmse": 0.9867992484714719
+            }
+          ],
+          "n_folds_failed": 0,
+          "mae_across_folds": {
+            "mean": 0.7268755728686218,
+            "sd": 0.06855511971414378,
+            "n": 5
+          },
+          "rmse_across_folds": {
+            "mean": 1.0968389934179517,
+            "sd": 0.13856651912268544,
+            "n": 5
+          },
+          "pooled_out_of_fold_mae": 0.7271085480475991,
+          "pooled_out_of_fold_rmse": 1.1043618210154256
+        }
+      },
+      "zero_count_parametric_bootstrap": {
+        "n_sim": 4000,
+        "rng": "numpy.random.default_rng(0)",
+        "observed_zero_sites": 204,
+        "simulated_zero_mean": 205.887,
+        "simulated_zero_sd": 8.032861427640771,
+        "simulated_zero_p05": 193.0,
+        "simulated_zero_p95": 219.0,
+        "observed_inside_90pct_band": true,
+        "p_value_observed_ge_simulated": 0.62375
+      },
+      "zinb": {
+        "converged": true,
+        "converged_on": "nelder-mead,start=NB+logit_intercept(-3) [selected: highest LL among converged rungs]",
+        "fit_attempts": [
+          {
+            "attempt": "default(bfgs,maxiter=35)",
+            "converged": false,
+            "loglik": -346.42307638167284,
+            "warnings": [
+              "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+            ]
+          },
+          {
+            "attempt": "bfgs,maxiter=500 [task-specified retry]",
+            "converged": true,
+            "loglik": -346.40170394336394,
+            "warnings": []
+          },
+          {
+            "attempt": "bfgs,maxiter=2000",
+            "converged": true,
+            "loglik": -346.40170394336394,
+            "warnings": []
+          },
+          {
+            "attempt": "nelder-mead,maxiter=20000",
+            "converged": true,
+            "loglik": -346.40170371080944,
+            "warnings": []
+          },
+          {
+            "attempt": "bfgs,maxiter=2000,start=NB+logit_intercept(-3)",
+            "converged": true,
+            "loglik": -346.4017039334302,
+            "warnings": []
+          },
+          {
+            "attempt": "nelder-mead,start=NB+logit_intercept(-3)",
+            "converged": true,
+            "loglik": -346.40170371080853,
+            "warnings": []
+          },
+          {
+            "attempt": "bfgs,maxiter=2000,start=NB+logit_intercept(-1)",
+            "converged": true,
+            "loglik": -346.40171871773384,
+            "warnings": []
+          },
+          {
+            "attempt": "nelder-mead,start=NB+logit_intercept(-1)",
+            "converged": true,
+            "loglik": -346.40170371080933,
+            "warnings": []
+          }
+        ],
+        "loglik": -346.40170371080853,
+        "k_params": 13,
+        "aic_manual": 718.8034074216171,
+        "bic_manual": 768.8071114973675,
+        "aic_statsmodels": 718.8034074216171,
+        "bic_statsmodels": 768.8071114973675,
+        "alpha": 0.30490230255315554,
+        "inflation_logit_intercept": -30.63483714772689,
+        "inflation_logit_intercept_se": "nan",
+        "inflation_probability_pi": 4.959744137325791e-14,
+        "expected_zero_sites": 206.0214848104102,
+        "zero_gap_observed_minus_expected": -2.021484810410186,
+        "in_sample_mae": 0.6976376128102937,
+        "in_sample_rmse": 1.0501466793127736,
+        "statsmodels_cross_check": {
+          "max_abs_diff_mean_vs_statsmodels": 0.0,
+          "max_abs_diff_p_zero_vs_statsmodels": 1.4432899320127035e-15
+        },
+        "cv": {
+          "backend": "sklearn.model_selection.KFold",
+          "folds": [
+            {
+              "fold": 0,
+              "converged": true,
+              "mae": 0.8074860216315736,
+              "rmse": 1.277956324634002
+            },
+            {
+              "fold": 1,
+              "converged": true,
+              "mae": 0.6576635115805085,
+              "rmse": 0.9507330012466081
+            },
+            {
+              "fold": 2,
+              "converged": true,
+              "mae": 0.7761414590641664,
+              "rmse": 1.1965172753692164
+            },
+            {
+              "fold": 3,
+              "converged": true,
+              "mae": 0.7368181931665456,
+              "rmse": 1.0721916244796466
+            },
+            {
+              "fold": 4,
+              "converged": true,
+              "mae": 0.6562723567631155,
+              "rmse": 0.9867994593459604
+            }
+          ],
+          "n_folds_failed": 0,
+          "mae_across_folds": {
+            "mean": 0.726876308441182,
+            "sd": 0.0685549984324093,
+            "n": 5
+          },
+          "rmse_across_folds": {
+            "mean": 1.0968395370150865,
+            "sd": 0.13856622997761522,
+            "n": 5
+          },
+          "pooled_out_of_fold_mae": 0.7271092844908652,
+          "pooled_out_of_fold_rmse": 1.1043623335058272
+        }
+      },
+      "comparison": {
+        "delta_loglik_zinb_minus_nb": 3.0024693842278793e-09,
+        "delta_aic_zinb_minus_nb": 1.9999999939950612,
+        "delta_bic_zinb_minus_nb": 5.846438769052838,
+        "zero_count_observed": 204,
+        "zero_count_expected_nb": 206.02157117820275,
+        "zero_count_expected_zinb": 206.0214848104102
+      },
+      "vuong": {
+        "computed": true,
+        "degenerate": true,
+        "statistic_raw": 3.9201278063900227e-05,
+        "p_two_sided": 0.999968721905477,
+        "statistic_aic_corrected": null,
+        "statistic_bic_corrected": null,
+        "suppressed_reason": "The fitted inflation probability collapsed to pi = 4.960e-14 (the NB boundary), and the fitted ZINB reproduces the NB per-observation log-likelihoods to max|difference| = 2.608e-05. The parameter-count-corrected Vuong variants are then a fixed constant divided by a numerical-noise standard deviation and take arbitrary huge values; they carry no information and are suppressed. The raw statistic is ~0, i.e. the two models are numerically the same model.",
+        "loglikeobs_check": {
+          "sum_ll_nb_obs_vs_llf": 0.0,
+          "sum_ll_zinb_obs_vs_llf": 0.0,
+          "max_abs_per_obs_ll_difference": 2.608096281875305e-05,
+          "sd_per_obs_ll_difference": 4.117488139713362e-06,
+          "zinb_inflation_probability_pi": 4.959744137325791e-14
+        },
+        "mean_per_obs_ll_difference": 8.677498232050637e-12
+      }
+    },
+    "vehicle": {
+      "target": "vehicle_only_total",
+      "formula": "vehicle_only_total ~ is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + log_aadt",
+      "n_events": 1295,
+      "observed_zero_sites": 89,
+      "n_sites": 346,
+      "nb": {
+        "converged": true,
+        "converged_on": "bfgs,maxiter=200 [production retry] [selected: highest LL among converged rungs]",
+        "fit_attempts": [
+          {
+            "attempt": "default(bfgs,maxiter=35)",
+            "converged": false,
+            "loglik": -745.2063646988257,
+            "warnings": [
+              "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+            ]
+          },
+          {
+            "attempt": "bfgs,maxiter=200 [production retry]",
+            "converged": true,
+            "loglik": -745.2022378610164,
+            "warnings": []
+          },
+          {
+            "attempt": "bfgs,maxiter=1000",
+            "converged": true,
+            "loglik": -745.2022378610164,
+            "warnings": []
+          },
+          {
+            "attempt": "nelder-mead,maxiter=8000",
+            "converged": true,
+            "loglik": -745.2022378859442,
+            "warnings": []
+          },
+          {
+            "attempt": "bfgs,maxiter=1000,start=poisson+MoM_alpha",
+            "converged": true,
+            "loglik": -745.2022378640404,
+            "warnings": []
+          }
+        ],
+        "loglik": -745.2022378610164,
+        "k_params": 12,
+        "aic_manual": 1514.4044757220329,
+        "bic_manual": 1560.5617410227255,
+        "aic_statsmodels": 1514.4044757220329,
+        "bic_statsmodels": 1560.5617410227255,
+        "alpha": 0.6585386174605015,
+        "expected_zero_sites": 90.86061846535813,
+        "zero_gap_observed_minus_expected": -1.8606184653581295,
+        "in_sample_mae": 2.7639200377660567,
+        "in_sample_rmse": 4.2936579312944,
+        "cv": {
+          "backend": "sklearn.model_selection.KFold",
+          "folds": [
+            {
+              "fold": 0,
+              "converged": true,
+              "mae": 2.6665449390935945,
+              "rmse": 4.969124369105941
+            },
+            {
+              "fold": 1,
+              "converged": true,
+              "mae": 2.836294000431551,
+              "rmse": 4.005985860652006
+            },
+            {
+              "fold": 2,
+              "converged": true,
+              "mae": 3.046203019963781,
+              "rmse": 4.384187641064573
+            },
+            {
+              "fold": 3,
+              "converged": true,
+              "mae": 3.1826203679133833,
+              "rmse": 4.786319634461952
+            },
+            {
+              "fold": 4,
+              "converged": true,
+              "mae": 2.702089505892224,
+              "rmse": 4.128504026102397
+            }
+          ],
+          "n_folds_failed": 0,
+          "mae_across_folds": {
+            "mean": 2.8867503666589065,
+            "sd": 0.2225421954425001,
+            "n": 5
+          },
+          "rmse_across_folds": {
+            "mean": 4.454824306277374,
+            "sd": 0.4145250659582985,
+            "n": 5
+          },
+          "pooled_out_of_fold_mae": 2.8861139347873306,
+          "pooled_out_of_fold_rmse": 4.471748543737075
+        }
+      },
+      "zero_count_parametric_bootstrap": {
+        "n_sim": 4000,
+        "rng": "numpy.random.default_rng(0)",
+        "observed_zero_sites": 89,
+        "simulated_zero_mean": 91.01225,
+        "simulated_zero_sd": 7.439921911351741,
+        "simulated_zero_p05": 79.0,
+        "simulated_zero_p95": 104.0,
+        "observed_inside_90pct_band": true,
+        "p_value_observed_ge_simulated": 0.63025
+      },
+      "zinb": {
+        "converged": true,
+        "converged_on": "nelder-mead,start=NB+logit_intercept(-1) [selected: highest LL among converged rungs]",
+        "fit_attempts": [
+          {
+            "attempt": "default(bfgs,maxiter=35)",
+            "converged": false,
+            "loglik": -745.2246129758557,
+            "warnings": [
+              "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+            ]
+          },
+          {
+            "attempt": "bfgs,maxiter=500 [task-specified retry]",
+            "converged": true,
+            "loglik": -745.2022384509263,
+            "warnings": []
+          },
+          {
+            "attempt": "bfgs,maxiter=2000",
+            "converged": true,
+            "loglik": -745.2022384509263,
+            "warnings": []
+          },
+          {
+            "attempt": "nelder-mead,maxiter=20000",
+            "converged": true,
+            "loglik": -760.2216416583941,
+            "warnings": []
+          },
+          {
+            "attempt": "bfgs,maxiter=2000,start=NB+logit_intercept(-3)",
+            "converged": true,
+            "loglik": -745.2022387925856,
+            "warnings": []
+          },
+          {
+            "attempt": "nelder-mead,start=NB+logit_intercept(-3)",
+            "converged": true,
+            "loglik": -745.2022378610125,
+            "warnings": []
+          },
+          {
+            "attempt": "bfgs,maxiter=2000,start=NB+logit_intercept(-1)",
+            "converged": true,
+            "loglik": -745.2022378617479,
+            "warnings": []
+          },
+          {
+            "attempt": "nelder-mead,start=NB+logit_intercept(-1)",
+            "converged": true,
+            "loglik": -745.2022378610104,
+            "warnings": []
+          }
+        ],
+        "loglik": -745.2022378610104,
+        "k_params": 13,
+        "aic_manual": 1516.4044757220208,
+        "bic_manual": 1566.4081797977713,
+        "aic_statsmodels": 1516.4044757220208,
+        "bic_statsmodels": 1566.4081797977713,
+        "alpha": 0.6585386382697063,
+        "inflation_logit_intercept": -31.673187543481802,
+        "inflation_logit_intercept_se": "nan",
+        "inflation_probability_pi": 1.7559390032770685e-14,
+        "expected_zero_sites": 90.86061421179127,
+        "zero_gap_observed_minus_expected": -1.8606142117912725,
+        "in_sample_mae": 2.7639200292758317,
+        "in_sample_rmse": 4.293657833600888,
+        "statsmodels_cross_check": {
+          "max_abs_diff_mean_vs_statsmodels": 0.0,
+          "max_abs_diff_p_zero_vs_statsmodels": 5.551115123125783e-16
+        },
+        "cv": {
+          "backend": "sklearn.model_selection.KFold",
+          "folds": [
+            {
+              "fold": 0,
+              "converged": true,
+              "mae": 2.6665469126135832,
+              "rmse": 4.969125214601661
+            },
+            {
+              "fold": 1,
+              "converged": true,
+              "mae": 2.8362932856462115,
+              "rmse": 4.005985569011549
+            },
+            {
+              "fold": 2,
+              "converged": true,
+              "mae": 3.046188515392941,
+              "rmse": 4.384178097010487
+            },
+            {
+              "fold": 3,
+              "converged": true,
+              "mae": 3.182620280985619,
+              "rmse": 4.786318423357086
+            },
+            {
+              "fold": 4,
+              "converged": true,
+              "mae": 2.70208953219859,
+              "rmse": 4.128504026891147
+            }
+          ],
+          "n_folds_failed": 0,
+          "mae_across_folds": {
+            "mean": 2.886747705367389,
+            "sd": 0.22253911533785076,
+            "n": 5
+          },
+          "rmse_across_folds": {
+            "mean": 4.454822266174386,
+            "sd": 0.4145255714771107,
+            "n": 5
+          },
+          "pooled_out_of_fold_mae": 2.886111286891222,
+          "pooled_out_of_fold_rmse": 4.471746557325058
+        }
+      },
+      "comparison": {
+        "delta_loglik_zinb_minus_nb": 6.0254023992456496e-12,
+        "delta_aic_zinb_minus_nb": 1.9999999999879492,
+        "delta_bic_zinb_minus_nb": 5.846438775045726,
+        "zero_count_observed": 89,
+        "zero_count_expected_nb": 90.86061846535813,
+        "zero_count_expected_zinb": 90.86061421179127
+      },
+      "vuong": {
+        "computed": true,
+        "degenerate": true,
+        "statistic_raw": 1.9114792739899625e-06,
+        "p_two_sided": 0.999998474860199,
+        "statistic_aic_corrected": null,
+        "statistic_bic_corrected": null,
+        "suppressed_reason": "The fitted inflation probability collapsed to pi = 1.756e-14 (the NB boundary), and the fitted ZINB reproduces the NB per-observation log-likelihoods to max|difference| = 9.018e-07. The parameter-count-corrected Vuong variants are then a fixed constant divided by a numerical-noise standard deviation and take arbitrary huge values; they carry no information and are suppressed. The raw statistic is ~0, i.e. the two models are numerically the same model.",
+        "loglikeobs_check": {
+          "sum_ll_nb_obs_vs_llf": 0.0,
+          "sum_ll_zinb_obs_vs_llf": 0.0,
+          "max_abs_per_obs_ll_difference": 9.017793010102082e-07,
+          "sd_per_obs_ll_difference": 1.678490658286785e-07,
+          "zinb_inflation_probability_pi": 1.7559390032770685e-14
+        },
+        "mean_per_obs_ll_difference": 1.7248465821974015e-14
+      }
+    }
+  }
+}

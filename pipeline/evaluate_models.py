@@ -3,13 +3,13 @@
 Run after `python -m pipeline.fit_risk_model` to inspect:
 
   - Coefficient precision per mode (z-stats, p-values, 90% CIs)
-  - Variance Inflation Factors — flags multicollinearity > 5
+  - Variance Inflation Factors, flagging multicollinearity > 5
   - Pseudo R², AIC, log-likelihood, LL ratio test
   - Calibration sum_pred vs sum_actual
   - Mean absolute error, root mean squared error, Spearman rank correlation
   - Top positive and negative residuals (edge-case sites)
   - Observed-vs-predicted zero-count comparison (zero-inflation check)
-  - Cross-mode residual correlation — proxy for unobserved site heterogeneity
+  - Cross-mode residual correlation, a proxy for unobserved site heterogeneity
 
 Out-of-sample cross-validation is intentionally out of scope here; it's a
 Phase 8 capability that requires refactoring the fit logic to be callable
@@ -30,7 +30,6 @@ from scipy import stats as scipy_stats
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 
 from pipeline.fit_risk_model import (
-    DESIGN_PREDICTORS,
     MODES,
     ModeSpec,
     load_and_join,
@@ -104,7 +103,9 @@ def print_vif_table(df: pd.DataFrame, mode: ModeSpec) -> None:
 
 
 def _design_matrix(mode: ModeSpec, df: pd.DataFrame) -> pd.DataFrame:
-    formula = f"{mode.target} ~ {DESIGN_PREDICTORS}"
+    """Design matrix for THIS mode's formula, so the VIF table covers the
+    mode-specific volume term (log_aadt / log_bike_centrality) too."""
+    formula = f"{mode.target} ~ {mode.predictors}"
     _y, X = patsy.dmatrices(formula, data=df, return_type="dataframe")
     return X
 
@@ -175,7 +176,7 @@ def print_zero_prediction_check(mode: ModeSpec, result, df: pd.DataFrame) -> Non
     print(f"  NB-predicted P(0) summed across sites:  {n_expected_zero:.1f}")
     diff = n_observed_zero - n_expected_zero
     diagnosis = (
-        "Observed excess zeros — consider zero-inflated NB"
+        "Observed excess zeros; consider zero-inflated NB"
         if diff > 0.10 * len(df)
         else "NB handles the zero count adequately"
     )
@@ -197,7 +198,7 @@ def _nb_zero_probability_sum(mu: pd.Series, alpha: float) -> float:
 def print_cross_mode_residual_correlation(predictions: pd.DataFrame) -> None:
     """If residuals correlate across modes at the same site, there's an
     unobserved site-level factor (lighting, sight distance, etc.) that
-    affects all modes — a hint that random-effects / spatial structure
+    affects all modes. That hints random-effects / spatial structure
     would tighten the fits."""
     residual_frame = predictions[[f"{m.label}_residual" for m in MODES]].copy()
     residual_frame.columns = [m.label for m in MODES]

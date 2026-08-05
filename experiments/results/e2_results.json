@@ -1,0 +1,1204 @@
+{
+  "experiment": "E2 - NB2 vs Poisson",
+  "environment": {
+    "python": "3.13.2",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.15.1",
+    "statsmodels": "0.14.6",
+    "patsy": "1.0.2",
+    "sklearn": "1.6.1"
+  },
+  "n_rows": 346,
+  "modes": {
+    "bike": {
+      "target": "bike_total",
+      "formula": "bike_total ~ is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + log_bike_centrality",
+      "offset": "log(years_observed) == log(6) == 1.791759 for every row",
+      "descriptives": {
+        "n_events": 169,
+        "mean": 0.4884393063583815,
+        "variance": 1.35783697746502,
+        "variance_over_mean": 2.7799502615556033,
+        "max": 9.0,
+        "n_zero_sites": 256
+      },
+      "nb": {
+        "spec": "NB2 (production)",
+        "n": 346,
+        "k_params_incl_dispersion": 12,
+        "loglik": -275.6564470776231,
+        "aic_manual": 575.3128941552462,
+        "bic_manual": 621.470159455939,
+        "aic_statsmodels": 575.3128941552462,
+        "bic_statsmodels": 621.470159455939,
+        "converged": true,
+        "mle_converged_flag": true,
+        "convergence_warnings": [],
+        "optimizer_iterations": -1,
+        "fit_attempts": [
+          {
+            "attempt": "default(bfgs,maxiter=35)",
+            "converged": false,
+            "loglik": -275.68829345307984,
+            "warnings": [
+              "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+            ]
+          },
+          {
+            "attempt": "bfgs,maxiter=200 [production retry]",
+            "converged": true,
+            "loglik": -275.6564470776231,
+            "warnings": []
+          }
+        ],
+        "converged_on": "bfgs,maxiter=200 [production retry]",
+        "alpha": 1.2381950605728138,
+        "alpha_se": 0.3287181671011864,
+        "alpha_z": 3.7667375414382596,
+        "alpha_wald_p_two_sided": 0.00016539471431280817,
+        "alpha_ci95": [
+          0.5939192919904692,
+          1.8824708291551584
+        ],
+        "in_sample_coverage_90": {
+          "coverage_pct": 96.53179190751445,
+          "mean_width": 2.1300578034682083,
+          "median_width": 2.0
+        },
+        "in_sample_mae": 0.5773510967191097,
+        "in_sample_rmse": 1.0457866554298887,
+        "cv": {
+          "backend": "sklearn.model_selection.KFold",
+          "n_splits": 5,
+          "seed": 0,
+          "folds": [
+            {
+              "fold": 0,
+              "n_train": 276,
+              "n_test": 70,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(bfgs,maxiter=35)",
+                  "converged": false,
+                  "warnings": [
+                    "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+                  ]
+                },
+                {
+                  "attempt": "bfgs,maxiter=500,start=poisson",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 0.6136326705639737,
+              "rmse": 1.0868347648021033,
+              "alpha": 1.0993000745849673
+            },
+            {
+              "fold": 1,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(bfgs,maxiter=35)",
+                  "converged": false,
+                  "warnings": [
+                    "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+                  ]
+                },
+                {
+                  "attempt": "bfgs,maxiter=500,start=poisson",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 0.4607715145457064,
+              "rmse": 0.695682957835629,
+              "alpha": 1.4486431376200093
+            },
+            {
+              "fold": 2,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(bfgs,maxiter=35)",
+                  "converged": false,
+                  "warnings": [
+                    "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+                  ]
+                },
+                {
+                  "attempt": "bfgs,maxiter=500,start=poisson",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 0.752373143006134,
+              "rmse": 1.5398020440848126,
+              "alpha": 1.1374437771046235
+            },
+            {
+              "fold": 3,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(bfgs,maxiter=35)",
+                  "converged": false,
+                  "warnings": [
+                    "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+                  ]
+                },
+                {
+                  "attempt": "bfgs,maxiter=500,start=poisson",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 0.5999168282987968,
+              "rmse": 1.0378303693513287,
+              "alpha": 1.2113916219926926
+            },
+            {
+              "fold": 4,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(bfgs,maxiter=35)",
+                  "converged": false,
+                  "warnings": [
+                    "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+                  ]
+                },
+                {
+                  "attempt": "bfgs,maxiter=500,start=poisson",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 0.5458923267505144,
+              "rmse": 0.8890151541275527,
+              "alpha": 1.144426658709426
+            }
+          ],
+          "mae_across_folds": {
+            "mean": 0.5945172966330251,
+            "sd": 0.10673020029392317,
+            "n": 5
+          },
+          "rmse_across_folds": {
+            "mean": 1.0498330580402853,
+            "sd": 0.31339571224667656,
+            "n": 5
+          },
+          "pooled_out_of_fold": {
+            "mae": 0.5945725433784902,
+            "rmse": 1.0866114093008177
+          },
+          "out_of_fold_coverage_90": {
+            "coverage_pct": 96.24277456647398,
+            "mean_width": 2.153179190751445,
+            "median_width": 2.0
+          },
+          "all_folds_converged": true
+        }
+      },
+      "poisson": {
+        "spec": "Poisson",
+        "n": 346,
+        "k_params_incl_dispersion": 11,
+        "loglik": -301.1937921605104,
+        "aic_manual": 624.3875843210208,
+        "bic_manual": 666.6984108466557,
+        "aic_statsmodels": 624.3875843210208,
+        "bic_statsmodels": 666.6984108466557,
+        "converged": true,
+        "mle_converged_flag": true,
+        "convergence_warnings": [],
+        "optimizer_iterations": 9,
+        "fit_attempts": [
+          {
+            "attempt": "default(newton,maxiter=35)",
+            "converged": true,
+            "loglik": -301.1937921605104,
+            "warnings": []
+          }
+        ],
+        "converged_on": "default(newton,maxiter=35)",
+        "in_sample_coverage_90": {
+          "coverage_pct": 94.79768786127167,
+          "mean_width": 1.638728323699422,
+          "median_width": 1.0
+        },
+        "in_sample_mae": 0.5750903335299508,
+        "in_sample_rmse": 1.039230532300335,
+        "cv": {
+          "backend": "sklearn.model_selection.KFold",
+          "n_splits": 5,
+          "seed": 0,
+          "folds": [
+            {
+              "fold": 0,
+              "n_train": 276,
+              "n_test": 70,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(newton,maxiter=35)",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 0.6118048139704578,
+              "rmse": 1.0862150788576876,
+              "alpha": null
+            },
+            {
+              "fold": 1,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(newton,maxiter=35)",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 0.4523366682237812,
+              "rmse": 0.6978396522613927,
+              "alpha": null
+            },
+            {
+              "fold": 2,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(newton,maxiter=35)",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 0.7654952185958966,
+              "rmse": 1.5361326336358982,
+              "alpha": null
+            },
+            {
+              "fold": 3,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(newton,maxiter=35)",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 0.5885009891740074,
+              "rmse": 1.0342803707859958,
+              "alpha": null
+            },
+            {
+              "fold": 4,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(newton,maxiter=35)",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 0.5370710642490227,
+              "rmse": 0.8598672382709742,
+              "alpha": null
+            }
+          ],
+          "mae_across_folds": {
+            "mean": 0.5910417508426331,
+            "sd": 0.11513416915400701,
+            "n": 5
+          },
+          "rmse_across_folds": {
+            "mean": 1.0428669947623896,
+            "sd": 0.31535557508491635,
+            "n": 5
+          },
+          "pooled_out_of_fold": {
+            "mae": 0.5911017596956037,
+            "rmse": 1.080355348189085
+          },
+          "out_of_fold_coverage_90": {
+            "coverage_pct": 94.79768786127167,
+            "mean_width": 1.6242774566473988,
+            "median_width": 1.0
+          },
+          "all_folds_converged": true
+        }
+      },
+      "lr_test_alpha_zero": {
+        "LR_statistic": 51.07469016577454,
+        "naive_chi2_1df_p": 8.891741212767364e-13,
+        "boundary_corrected_p": 4.445870606383682e-13,
+        "note": "alpha=0 lies on the boundary of the parameter space, so the null distribution of LR is the 50:50 mixture 0.5*chi2(0) + 0.5*chi2(1); the naive chi2(1) p-value is therefore exactly twice the correct one (i.e. conservative - it understates the evidence against Poisson)."
+      },
+      "sanity": {
+        "design_columns": [
+          "Intercept",
+          "C(legs_cat, Treatment(reference=4))[T.2]",
+          "C(legs_cat, Treatment(reference=4))[T.3]",
+          "C(legs_cat, Treatment(reference=4))[T.5]",
+          "C(arterial_class)[T.2]",
+          "C(arterial_class)[T.3]",
+          "C(arterial_class)[T.5]",
+          "is_signalized",
+          "max_speed_limit",
+          "bike_facility",
+          "log_bike_centrality"
+        ],
+        "design_rank": 11,
+        "design_ncols": 11,
+        "max_abs_diff_nb_predict_vs_manual": 0.0,
+        "max_abs_diff_poisson_predict_vs_manual": 0.0
+      },
+      "coverage_comparison": {
+        "nb_minus_poisson_coverage_pts": 1.734104046242777,
+        "nb_over_poisson_mean_width_ratio": 1.2998236331569666,
+        "n_sites_outside_poisson_interval": 18,
+        "n_sites_outside_nb_interval": 12
+      },
+      "cv_paired_difference_nb_minus_poisson": {
+        "mae_delta": {
+          "mean": 0.0034755457903918987,
+          "sd": 0.009929948669582075,
+          "n": 5
+        },
+        "rmse_delta": {
+          "mean": 0.006966063277895529,
+          "sd": 0.012630055573870718,
+          "n": 5
+        },
+        "mae_delta_per_fold": [
+          0.0018278565935159197,
+          0.008434846321925205,
+          -0.013122075589762638,
+          0.011415839124789384,
+          0.008821262501491622
+        ],
+        "rmse_delta_per_fold": [
+          0.0006196859444156377,
+          -0.0021566944257637166,
+          0.003669410448914334,
+          0.0035499985653328903,
+          0.0291479158565785
+        ],
+        "mae_paired_t_p": 0.4775792338549068
+      }
+    },
+    "ped": {
+      "target": "ped_total",
+      "formula": "ped_total ~ is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + log_aadt",
+      "offset": "log(years_observed) == log(6) == 1.791759 for every row",
+      "descriptives": {
+        "n_events": 266,
+        "mean": 0.7687861271676301,
+        "variance": 1.5927620005026342,
+        "variance_over_mean": 2.071788166067336,
+        "max": 8.0,
+        "n_zero_sites": 204
+      },
+      "nb": {
+        "spec": "NB2 (production)",
+        "n": 346,
+        "k_params_incl_dispersion": 12,
+        "loglik": -346.4017044344532,
+        "aic_manual": 716.8034088689064,
+        "bic_manual": 762.9606741695991,
+        "aic_statsmodels": 716.8034088689064,
+        "bic_statsmodels": 762.9606741695991,
+        "converged": true,
+        "mle_converged_flag": true,
+        "convergence_warnings": [],
+        "optimizer_iterations": -1,
+        "fit_attempts": [
+          {
+            "attempt": "default(bfgs,maxiter=35)",
+            "converged": false,
+            "loglik": -346.4039940353546,
+            "warnings": [
+              "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+            ]
+          },
+          {
+            "attempt": "bfgs,maxiter=200 [production retry]",
+            "converged": true,
+            "loglik": -346.4017044344532,
+            "warnings": []
+          }
+        ],
+        "converged_on": "bfgs,maxiter=200 [production retry]",
+        "alpha": 0.3049278342239912,
+        "alpha_se": 0.1193696957233552,
+        "alpha_z": 2.554482797130317,
+        "alpha_wald_p_two_sided": 0.010634568459925013,
+        "alpha_ci95": [
+          0.07096752976071014,
+          0.5388881386872724
+        ],
+        "in_sample_coverage_90": {
+          "coverage_pct": 97.10982658959537,
+          "mean_width": 2.5838150289017343,
+          "median_width": 2.0
+        },
+        "in_sample_mae": 0.6976343611116456,
+        "in_sample_rmse": 1.0501461327718902,
+        "cv": {
+          "backend": "sklearn.model_selection.KFold",
+          "n_splits": 5,
+          "seed": 0,
+          "folds": [
+            {
+              "fold": 0,
+              "n_train": 276,
+              "n_test": 70,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(bfgs,maxiter=35)",
+                  "converged": false,
+                  "warnings": [
+                    "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+                  ]
+                },
+                {
+                  "attempt": "bfgs,maxiter=500,start=poisson",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 0.8074859245546119,
+              "rmse": 1.277956185861755,
+              "alpha": 0.1790088098032348
+            },
+            {
+              "fold": 1,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(bfgs,maxiter=35)",
+                  "converged": false,
+                  "warnings": [
+                    "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+                  ]
+                },
+                {
+                  "attempt": "bfgs,maxiter=500,start=poisson",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 0.6576823786539093,
+              "rmse": 0.9507701614965793,
+              "alpha": 0.30463750056802485
+            },
+            {
+              "fold": 2,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(bfgs,maxiter=35)",
+                  "converged": false,
+                  "warnings": [
+                    "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+                  ]
+                },
+                {
+                  "attempt": "bfgs,maxiter=500,start=poisson",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 0.7761413062406434,
+              "rmse": 1.196519342409686,
+              "alpha": 0.36910450626168295
+            },
+            {
+              "fold": 3,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(bfgs,maxiter=35)",
+                  "converged": false,
+                  "warnings": [
+                    "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+                  ]
+                },
+                {
+                  "attempt": "bfgs,maxiter=500,start=poisson",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 0.7368092439614403,
+              "rmse": 1.0721785311598855,
+              "alpha": 0.2804693979202966
+            },
+            {
+              "fold": 4,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(bfgs,maxiter=35)",
+                  "converged": false,
+                  "warnings": [
+                    "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+                  ]
+                },
+                {
+                  "attempt": "bfgs,maxiter=500,start=poisson",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 0.6562778417890219,
+              "rmse": 0.9868069920944895,
+              "alpha": 0.31767686025159325
+            }
+          ],
+          "mae_across_folds": {
+            "mean": 0.7268793390399254,
+            "sd": 0.06854844417144822,
+            "n": 5
+          },
+          "rmse_across_folds": {
+            "mean": 1.0968462426044792,
+            "sd": 0.13855584838250976,
+            "n": 5
+          },
+          "pooled_out_of_fold": {
+            "mae": 0.7271123060500835,
+            "rmse": 1.1043679346846655
+          },
+          "out_of_fold_coverage_90": {
+            "coverage_pct": 95.95375722543352,
+            "mean_width": 2.552023121387283,
+            "median_width": 2.0
+          },
+          "all_folds_converged": true
+        }
+      },
+      "poisson": {
+        "spec": "Poisson",
+        "n": 346,
+        "k_params_incl_dispersion": 11,
+        "loglik": -352.39016818766464,
+        "aic_manual": 726.7803363753293,
+        "bic_manual": 769.0911629009643,
+        "aic_statsmodels": 726.7803363753293,
+        "bic_statsmodels": 769.0911629009643,
+        "converged": true,
+        "mle_converged_flag": true,
+        "convergence_warnings": [],
+        "optimizer_iterations": 9,
+        "fit_attempts": [
+          {
+            "attempt": "default(newton,maxiter=35)",
+            "converged": true,
+            "loglik": -352.39016818766464,
+            "warnings": []
+          }
+        ],
+        "converged_on": "default(newton,maxiter=35)",
+        "in_sample_coverage_90": {
+          "coverage_pct": 96.53179190751445,
+          "mean_width": 2.260115606936416,
+          "median_width": 2.0
+        },
+        "in_sample_mae": 0.6953003515434316,
+        "in_sample_rmse": 1.0463636001861625,
+        "cv": {
+          "backend": "sklearn.model_selection.KFold",
+          "n_splits": 5,
+          "seed": 0,
+          "folds": [
+            {
+              "fold": 0,
+              "n_train": 276,
+              "n_test": 70,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(newton,maxiter=35)",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 0.8080754742012071,
+              "rmse": 1.2813700106851778,
+              "alpha": null
+            },
+            {
+              "fold": 1,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(newton,maxiter=35)",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 0.6577977316115315,
+              "rmse": 0.955111272857431,
+              "alpha": null
+            },
+            {
+              "fold": 2,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(newton,maxiter=35)",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 0.7726652759592734,
+              "rmse": 1.2003564945828047,
+              "alpha": null
+            },
+            {
+              "fold": 3,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(newton,maxiter=35)",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 0.7365064267441905,
+              "rmse": 1.0655605630786247,
+              "alpha": null
+            },
+            {
+              "fold": 4,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(newton,maxiter=35)",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 0.646474241919956,
+              "rmse": 0.9643152373316066,
+              "alpha": null
+            }
+          ],
+          "mae_across_folds": {
+            "mean": 0.7243038300872316,
+            "sd": 0.07068579613032709,
+            "n": 5
+          },
+          "rmse_across_folds": {
+            "mean": 1.0933427157071292,
+            "sd": 0.1443382160923978,
+            "n": 5
+          },
+          "pooled_out_of_fold": {
+            "mae": 0.7245459446655959,
+            "rmse": 1.101502353229948
+          },
+          "out_of_fold_coverage_90": {
+            "coverage_pct": 94.79768786127167,
+            "mean_width": 2.2341040462427744,
+            "median_width": 2.0
+          },
+          "all_folds_converged": true
+        }
+      },
+      "lr_test_alpha_zero": {
+        "LR_statistic": 11.97692750642284,
+        "naive_chi2_1df_p": 0.0005386332207556397,
+        "boundary_corrected_p": 0.00026931661037781987,
+        "note": "alpha=0 lies on the boundary of the parameter space, so the null distribution of LR is the 50:50 mixture 0.5*chi2(0) + 0.5*chi2(1); the naive chi2(1) p-value is therefore exactly twice the correct one (i.e. conservative - it understates the evidence against Poisson)."
+      },
+      "sanity": {
+        "design_columns": [
+          "Intercept",
+          "C(legs_cat, Treatment(reference=4))[T.2]",
+          "C(legs_cat, Treatment(reference=4))[T.3]",
+          "C(legs_cat, Treatment(reference=4))[T.5]",
+          "C(arterial_class)[T.2]",
+          "C(arterial_class)[T.3]",
+          "C(arterial_class)[T.5]",
+          "is_signalized",
+          "max_speed_limit",
+          "bike_facility",
+          "log_aadt"
+        ],
+        "design_rank": 11,
+        "design_ncols": 11,
+        "max_abs_diff_nb_predict_vs_manual": 0.0,
+        "max_abs_diff_poisson_predict_vs_manual": 0.0
+      },
+      "coverage_comparison": {
+        "nb_minus_poisson_coverage_pts": 0.5780346820809257,
+        "nb_over_poisson_mean_width_ratio": 1.143222506393862,
+        "n_sites_outside_poisson_interval": 12,
+        "n_sites_outside_nb_interval": 10
+      },
+      "cv_paired_difference_nb_minus_poisson": {
+        "mae_delta": {
+          "mean": 0.0025755089526936724,
+          "sd": 0.0043439526482347,
+          "n": 5
+        },
+        "rmse_delta": {
+          "mean": 0.0035035268973501177,
+          "sd": 0.01154909319825561,
+          "n": 5
+        },
+        "mae_delta_per_fold": [
+          -0.0005895496465951888,
+          -0.00011535295762221676,
+          0.0034760302813700017,
+          0.0003028172172497845,
+          0.009803599869065982
+        ],
+        "rmse_delta_per_fold": [
+          -0.003413824823422784,
+          -0.0043411113608516905,
+          -0.003837152173118641,
+          0.0066179680812608055,
+          0.0224917547628829
+        ],
+        "mae_paired_t_p": 0.25556503797446767
+      }
+    },
+    "vehicle": {
+      "target": "vehicle_only_total",
+      "formula": "vehicle_only_total ~ is_signalized + C(legs_cat, Treatment(reference=4)) + max_speed_limit + bike_facility + C(arterial_class) + log_aadt",
+      "offset": "log(years_observed) == log(6) == 1.791759 for every row",
+      "descriptives": {
+        "n_events": 1295,
+        "mean": 3.7427745664739884,
+        "variance": 28.753933149032395,
+        "variance_over_mean": 7.6825180459963,
+        "max": 40.0,
+        "n_zero_sites": 89
+      },
+      "nb": {
+        "spec": "NB2 (production)",
+        "n": 346,
+        "k_params_incl_dispersion": 12,
+        "loglik": -745.2022378610164,
+        "aic_manual": 1514.4044757220329,
+        "bic_manual": 1560.5617410227255,
+        "aic_statsmodels": 1514.4044757220329,
+        "bic_statsmodels": 1560.5617410227255,
+        "converged": true,
+        "mle_converged_flag": true,
+        "convergence_warnings": [],
+        "optimizer_iterations": -1,
+        "fit_attempts": [
+          {
+            "attempt": "default(bfgs,maxiter=35)",
+            "converged": false,
+            "loglik": -745.2063646988257,
+            "warnings": [
+              "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+            ]
+          },
+          {
+            "attempt": "bfgs,maxiter=200 [production retry]",
+            "converged": true,
+            "loglik": -745.2022378610164,
+            "warnings": []
+          }
+        ],
+        "converged_on": "bfgs,maxiter=200 [production retry]",
+        "alpha": 0.6585386174605015,
+        "alpha_se": 0.0832415509448452,
+        "alpha_z": 7.911176689834153,
+        "alpha_wald_p_two_sided": 2.5496735214617124e-15,
+        "alpha_ci95": [
+          0.49538817559134873,
+          0.8216890593296542
+        ],
+        "in_sample_coverage_90": {
+          "coverage_pct": 94.79768786127167,
+          "mean_width": 10.621387283236995,
+          "median_width": 8.5
+        },
+        "in_sample_mae": 2.7639200377660567,
+        "in_sample_rmse": 4.2936579312944,
+        "cv": {
+          "backend": "sklearn.model_selection.KFold",
+          "n_splits": 5,
+          "seed": 0,
+          "folds": [
+            {
+              "fold": 0,
+              "n_train": 276,
+              "n_test": 70,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(bfgs,maxiter=35)",
+                  "converged": false,
+                  "warnings": [
+                    "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+                  ]
+                },
+                {
+                  "attempt": "bfgs,maxiter=500,start=poisson",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 2.6665446448576593,
+              "rmse": 4.969123528726463,
+              "alpha": 0.6614244332208028
+            },
+            {
+              "fold": 1,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(bfgs,maxiter=35)",
+                  "converged": false,
+                  "warnings": [
+                    "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+                  ]
+                },
+                {
+                  "attempt": "bfgs,maxiter=500,start=poisson",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 2.836293745666217,
+              "rmse": 4.0059864930495435,
+              "alpha": 0.5904751982083871
+            },
+            {
+              "fold": 2,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(bfgs,maxiter=35)",
+                  "converged": false,
+                  "warnings": [
+                    "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+                  ]
+                },
+                {
+                  "attempt": "bfgs,maxiter=500,start=poisson",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 3.0461892914149646,
+              "rmse": 4.384178716285103,
+              "alpha": 0.6808610688340345
+            },
+            {
+              "fold": 3,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(bfgs,maxiter=35)",
+                  "converged": false,
+                  "warnings": [
+                    "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+                  ]
+                },
+                {
+                  "attempt": "bfgs,maxiter=500,start=poisson",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 3.1826228052724033,
+              "rmse": 4.786314865553495,
+              "alpha": 0.6663977754534959
+            },
+            {
+              "fold": 4,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(bfgs,maxiter=35)",
+                  "converged": false,
+                  "warnings": [
+                    "Maximum Likelihood optimization failed to converge. Check mle_retvals"
+                  ]
+                },
+                {
+                  "attempt": "bfgs,maxiter=500,start=poisson",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 2.7020900917924187,
+              "rmse": 4.128503058035681,
+              "alpha": 0.6537186131504232
+            }
+          ],
+          "mae_across_folds": {
+            "mean": 2.886748115800733,
+            "sd": 0.22254051218986431,
+            "n": 5
+          },
+          "rmse_across_folds": {
+            "mean": 4.454821332330058,
+            "sd": 0.4145242514254216,
+            "n": 5
+          },
+          "pooled_out_of_fold": {
+            "mae": 2.8861116895841343,
+            "rmse": 4.471745526678691
+          },
+          "out_of_fold_coverage_90": {
+            "coverage_pct": 93.64161849710982,
+            "mean_width": 10.632947976878613,
+            "median_width": 8.0
+          },
+          "all_folds_converged": true
+        }
+      },
+      "poisson": {
+        "spec": "Poisson",
+        "n": 346,
+        "k_params_incl_dispersion": 11,
+        "loglik": -944.4851964500806,
+        "aic_manual": 1910.9703929001612,
+        "bic_manual": 1953.281219425796,
+        "aic_statsmodels": 1910.9703929001612,
+        "bic_statsmodels": 1953.281219425796,
+        "converged": true,
+        "mle_converged_flag": true,
+        "convergence_warnings": [],
+        "optimizer_iterations": 8,
+        "fit_attempts": [
+          {
+            "attempt": "default(newton,maxiter=35)",
+            "converged": true,
+            "loglik": -944.4851964500806,
+            "warnings": []
+          }
+        ],
+        "converged_on": "default(newton,maxiter=35)",
+        "in_sample_coverage_90": {
+          "coverage_pct": 76.58959537572254,
+          "mean_width": 5.6502890173410405,
+          "median_width": 6.0
+        },
+        "in_sample_mae": 2.7454107633330853,
+        "in_sample_rmse": 4.264820720512194,
+        "cv": {
+          "backend": "sklearn.model_selection.KFold",
+          "n_splits": 5,
+          "seed": 0,
+          "folds": [
+            {
+              "fold": 0,
+              "n_train": 276,
+              "n_test": 70,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(newton,maxiter=35)",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 2.706564061380498,
+              "rmse": 5.020371836141558,
+              "alpha": null
+            },
+            {
+              "fold": 1,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(newton,maxiter=35)",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 2.8766437153083415,
+              "rmse": 4.12895700709337,
+              "alpha": null
+            },
+            {
+              "fold": 2,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(newton,maxiter=35)",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 3.0497725677833705,
+              "rmse": 4.364110920888451,
+              "alpha": null
+            },
+            {
+              "fold": 3,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(newton,maxiter=35)",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 3.052165589190856,
+              "rmse": 4.6249326269759266,
+              "alpha": null
+            },
+            {
+              "fold": 4,
+              "n_train": 277,
+              "n_test": 69,
+              "converged": true,
+              "attempts": [
+                {
+                  "attempt": "default(newton,maxiter=35)",
+                  "converged": true,
+                  "warnings": []
+                }
+              ],
+              "mae": 2.7923095343770403,
+              "rmse": 4.2598204740549,
+              "alpha": null
+            }
+          ],
+          "mae_across_folds": {
+            "mean": 2.895491093608021,
+            "sd": 0.154146644611764,
+            "n": 5
+          },
+          "rmse_across_folds": {
+            "mean": 4.479638573030842,
+            "sd": 0.3528976550224751,
+            "n": 5
+          },
+          "pooled_out_of_fold": {
+            "mae": 2.8949450617229706,
+            "rmse": 4.4923657399501185
+          },
+          "out_of_fold_coverage_90": {
+            "coverage_pct": 74.85549132947978,
+            "mean_width": 5.667630057803469,
+            "median_width": 6.0
+          },
+          "all_folds_converged": true
+        }
+      },
+      "lr_test_alpha_zero": {
+        "LR_statistic": 398.5659171781283,
+        "naive_chi2_1df_p": 1.1301025082405382e-88,
+        "boundary_corrected_p": 5.650512541202691e-89,
+        "note": "alpha=0 lies on the boundary of the parameter space, so the null distribution of LR is the 50:50 mixture 0.5*chi2(0) + 0.5*chi2(1); the naive chi2(1) p-value is therefore exactly twice the correct one (i.e. conservative - it understates the evidence against Poisson)."
+      },
+      "sanity": {
+        "design_columns": [
+          "Intercept",
+          "C(legs_cat, Treatment(reference=4))[T.2]",
+          "C(legs_cat, Treatment(reference=4))[T.3]",
+          "C(legs_cat, Treatment(reference=4))[T.5]",
+          "C(arterial_class)[T.2]",
+          "C(arterial_class)[T.3]",
+          "C(arterial_class)[T.5]",
+          "is_signalized",
+          "max_speed_limit",
+          "bike_facility",
+          "log_aadt"
+        ],
+        "design_rank": 11,
+        "design_ncols": 11,
+        "max_abs_diff_nb_predict_vs_manual": 0.0,
+        "max_abs_diff_poisson_predict_vs_manual": 0.0
+      },
+      "coverage_comparison": {
+        "nb_minus_poisson_coverage_pts": 18.20809248554913,
+        "nb_over_poisson_mean_width_ratio": 1.8797953964194374,
+        "n_sites_outside_poisson_interval": 81,
+        "n_sites_outside_nb_interval": 18
+      },
+      "cv_paired_difference_nb_minus_poisson": {
+        "mae_delta": {
+          "mean": -0.008742977807288721,
+          "sd": 0.08369430739574649,
+          "n": 5
+        },
+        "rmse_delta": {
+          "mean": -0.024817240700783928,
+          "sd": 0.12078893393794936,
+          "n": 5
+        },
+        "mae_delta_per_fold": [
+          -0.04001941652283891,
+          -0.04034996964212434,
+          -0.00358327636840583,
+          0.13045721608154714,
+          -0.09021944258462167
+        ],
+        "rmse_delta_per_fold": [
+          -0.05124830741509445,
+          -0.12297051404382664,
+          0.02006779539665171,
+          0.16138223857756806,
+          -0.1313174160192183
+        ],
+        "mae_paired_t_p": 0.8267731546755108
+      }
+    }
+  }
+}
