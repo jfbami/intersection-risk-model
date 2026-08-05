@@ -19,3 +19,6 @@ cache/
 # Legacy / removed artifacts
 features.pdf
 make_features_pdf.py
+
+# Agent scratch worktrees (separate checkouts of this repo, not content)
+.claude/worktrees/
